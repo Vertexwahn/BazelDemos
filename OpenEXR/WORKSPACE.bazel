@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright Contributors to the OpenEXR Project.
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+	name = "openexr",
+	remote = "https://github.com/Vertexwahn/openexr",
+	branch = "master",
+)
+
+load("@openexr//:bazel/third_party/openexr.bzl", "openexr_deps")
+
+openexr_deps()
