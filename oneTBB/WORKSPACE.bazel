@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright Contributors to the OpenEXR Project.
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "oneTBB",
+    # branch = "master",
+    commit = "f6a451defdb780d9022505beb9598a5e73041e9d",
+    remote = "https://github.com/Vertexwahn/oneTBB",
+    shallow_since = "1623600851 +0200",
+)
+
