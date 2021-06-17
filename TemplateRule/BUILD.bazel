@@ -1,0 +1,19 @@
+load("//bazel:template_rule.bzl", "template_rule")
+
+template_rule(
+    name = "config_h",
+    src = "config.h.in",
+    out = "include/config.h",
+    substitutions = {
+        "@VERSION_STR@": "1.0.3",
+    },
+)
+
+cc_binary(
+    name = "HelloWorld",
+    srcs = [
+        "main.cpp",
+        "kernel/some_header.h",
+        ":config_h",
+    ],
+)
