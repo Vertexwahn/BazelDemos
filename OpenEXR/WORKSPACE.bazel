@@ -6,11 +6,11 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "openexr",
     # branch = "master",
-    commit = "28fa44d5c24dbed3f05c38b81d75ae08d72c0cf9",
+    commit = "0d7e229c31db294489749217ff4d571f5a6a8249",
     remote = "https://github.com/AcademySoftwareFoundation/openexr",
-    shallow_since = "1614357727 -0800",
+     shallow_since = "1623711827 -0700",
 )
 
-load("@openexr//:bazel/third_party/openexr.bzl", "openexr_deps")
+load("@openexr//:bazel/third_party/openexr_deps.bzl", "openexr_deps")
 
 openexr_deps()
