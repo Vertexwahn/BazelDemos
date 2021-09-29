@@ -12,5 +12,5 @@ This should output `The answer is 42`.
 
 ## License
 
-The sourcecode and all other files in this directory can be used under the fmtlib license, 
+The sourcecode and all other files in this directory can be used under the {fmt} license, 
 that can be found here: https://github.com/fmtlib/fmt/blob/8.0.1/LICENSE.rst
