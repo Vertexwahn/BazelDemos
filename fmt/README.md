@@ -1,6 +1,6 @@
 # Readme
 
-This is an example that demonstrates how fmt can be used with Bazel.
+This is an example that demonstrates how {fmt} can be used with Bazel.
 
 ## How to run
 
