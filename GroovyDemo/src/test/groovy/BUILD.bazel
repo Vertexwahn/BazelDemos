@@ -1,0 +1,6 @@
+load("@io_bazel_rules_groovy//groovy:groovy.bzl", "groovy_test")
+
+groovy_test(
+    name = "HelloWorldTest",
+    srcs = ["HelloWorldTest.groovy"],
+)
