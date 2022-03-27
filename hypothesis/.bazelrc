@@ -1,0 +1,1 @@
+build --symlink_prefix=/ # Suppress symlink creation (to avoid untracked files issues with git)
