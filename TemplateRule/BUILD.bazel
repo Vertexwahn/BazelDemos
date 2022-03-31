@@ -1,9 +1,9 @@
-load("//bazel:template_rule.bzl", "template_rule")
+load("//bazel:expand_template.bzl", "expand_template")
 
-template_rule(
+expand_template(
     name = "config_h",
-    src = "config.h.in",
-    out = "include/config.h",
+    template = "config.h.in",
+    out = "kernels/config.h",
     substitutions = {
         "@VERSION_STR@": "1.0.3",
     },
@@ -13,7 +13,7 @@ cc_binary(
     name = "HelloWorld",
     srcs = [
         "main.cpp",
-        "kernel/some_header.h",
+        "kernels/bvh/some_header.h",
         ":config_h",
     ],
 )

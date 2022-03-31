@@ -1,4 +1,4 @@
-#include "kernel/some_header.h"
+#include "kernels/bvh/some_header.h"
 #include <iostream>
 
 int main() {
