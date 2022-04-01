@@ -1,0 +1,10 @@
+cc_test(
+    name = "embree_test",
+    srcs = [
+        "embree_test.cpp",
+    ],
+    deps = [
+        "@com_google_googletest//:gtest_main",
+        "@embree",
+    ],
+)
