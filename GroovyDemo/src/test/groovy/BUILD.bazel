@@ -1,6 +1,6 @@
-load("@io_bazel_rules_groovy//groovy:groovy.bzl", "groovy_test")
+load("@io_bazel_rules_groovy//groovy:groovy.bzl", "groovy_junit_test")
 
-groovy_test(
+groovy_junit_test(
     name = "HelloWorldTest",
-    srcs = ["HelloWorldTest.groovy"],
+    tests = ["HelloWorldTest.groovy"],
 )
