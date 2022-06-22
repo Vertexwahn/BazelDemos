@@ -1,0 +1,21 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "io_bazel_rules_webtesting",
+    sha256 = "3ef3bb22852546693c94e9b0b02c2570e74abab6f800fd58e0cbe79492e49c1b",
+    urls = [
+        "https://github.com/bazelbuild/rules_webtesting/archive/581b1557e382f93419da6a03b91a45c2ac9a9ec8/rules_webtesting.tar.gz",
+    ],
+)
+
+load("@io_bazel_rules_webtesting//web:repositories.bzl", "web_test_repositories")
+
+web_test_repositories()
+
+#load("@io_bazel_rules_webtesting//web:py_repositories.bzl", "py_repositories")
+
+#py_repositories()
+
+#load("@io_bazel_rules_webtesting//web/versioned:browsers-581b1557e382f93419da6a03b91a45c2ac9a9ec8.bzl", "browser_repositories")
+
+#browser_repositories(chromium=True, firefox=True)
