@@ -58,3 +58,7 @@ go_internal_repositories()
 load("@io_bazel_rules_webtesting//web:py_repositories.bzl", "py_repositories")
 
 py_repositories()
+
+load("@io_bazel_rules_webtesting//web:java_repositories.bzl", "java_repositories")
+
+java_repositories()

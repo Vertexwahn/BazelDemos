@@ -14,9 +14,14 @@ class BrowserTest(unittest.TestCase):
     finally:
       self.driver = None
 
-  def test_Title(self):
+  def testTitle(self):
     self.driver.get("https://www.python.org")
     self.assertEqual("Welcome to Python.org", self.driver.title)
+
+  def testScreenshot(self):
+    self.driver.set_window_size(1920, 1080)
+    self.driver.get("https://www.python.org")
+    self.driver.get_screenshot_as_file("screenshot.png")  
 
 if __name__ == "__main__":
   unittest.main()
