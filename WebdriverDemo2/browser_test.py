@@ -1,6 +1,8 @@
 import unittest
 from testing.web import webtest
 
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 class BrowserTest(unittest.TestCase):
   def setUp(self):
@@ -12,7 +14,9 @@ class BrowserTest(unittest.TestCase):
     finally:
       self.driver = None
 
-  # Your tests here
+  def test_Title(self):
+    self.driver.get("https://www.python.org")
+    self.assertEqual("Welcome to Python.org", self.driver.title)
 
 if __name__ == "__main__":
   unittest.main()
