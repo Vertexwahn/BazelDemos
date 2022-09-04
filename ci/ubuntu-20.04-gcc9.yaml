@@ -26,6 +26,11 @@ steps:
     displayName: "Show GCC version"
 
   - script: |
+      cd HelloWorld
+      bazel build //...
+    displayName: "Bazel build fmt gcc9-fastbuild"
+
+  - script: |
       cd fmt
       bazel build //...
-    displayName: "Bazel build gcc9-fastbuild"
+    displayName: "Bazel build fmt gcc9-fastbuild"
