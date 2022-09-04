@@ -12,7 +12,6 @@ jobs:
     steps:
       - template: ci/ubuntu-20.04-gcc9.yaml
 
-jobs:
   - job: Ubuntu22GCC11
     displayName: "GCC11 on Ubuntu 22.04"
     pool:
@@ -20,3 +19,9 @@ jobs:
     steps:
       - template: ci/ubuntu-22.04-gcc11.yaml
   
+  - job: MacOSClang13Monterey
+    displayName: "Apple Clang13 on macOS 12 (Monterey)"
+    pool:
+      vmImage: 'macOS-12'
+    steps:
+      - template: ci/macOS-12-clang13.yaml
