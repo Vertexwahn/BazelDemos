@@ -5,17 +5,16 @@
 
 [Bazel](https://bazel.build/) is a build system.
 In this repository,
-I store some demos that show how to use Bazel with different libraries and tools.
+I store some demos that show how to use Bazel with different programming languages, libraries, and tools.
 Besides this, 
 you can find here misc experiments related to Bazel.
 
 ## Other
 
-Here you can find a list of other reposities with Bazel demos:
+Here you can find a list of other repositories with Bazel demos:
 
 - [salesforce/bazel-demo](https://github.com/salesforce/bazel-demo)
 - [FaBrand/bazel-learning](https://github.com/FaBrand/bazel-learning)
-
 
 ## License
 
@@ -23,4 +22,4 @@ If not stated otherwise the license of the source files in this repository (Baze
 
 ## Credits
 
-A big thank goes to all the providers, developers and maintainers of the Bazel universe.
+A big thank goes to all the providers, developers, and maintainers of the Bazel universe.
