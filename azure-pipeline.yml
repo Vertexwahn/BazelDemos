@@ -11,3 +11,12 @@ jobs:
       vmImage: 'ubuntu-20.04'
     steps:
       - template: ci/ubuntu-20.04-gcc9.yaml
+
+jobs:
+  - job: Ubuntu22GCC11
+    displayName: "GCC11 on Ubuntu 22.04"
+    pool:
+      vmImage: 'ubuntu-22.04'
+    steps:
+      - template: ci/ubuntu-22.04-gcc11.yaml
+  
