@@ -1,0 +1,18 @@
+sh_binary(
+    name = "a",
+    srcs = ["a.sh"],
+)
+
+sh_binary(
+    name = "b",
+    srcs = ["b.sh"],
+)
+
+sh_binary(
+    name = "c",
+    srcs = ["c.sh"],
+    data = [
+        ":a",
+        ":b",
+    ],
+)
