@@ -1,3 +1,6 @@
+[![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB)](https://opensource.fb.com/support-ukraine)
+[![Build Status](https://vertexwahn.visualstudio.com/BazelDemos/_apis/build/status/Vertexwahn.BazelDemos?branchName=main)](https://vertexwahn.visualstudio.com/BazelDemos/_build/latest?definitionId=6&branchName=master)
+
 # BazelDemos
 
 [Bazel](https://bazel.build/) is a build system.
@@ -5,6 +8,14 @@ In this repository,
 I store some demos that show how to use Bazel with different libraries and tools.
 Besides this, 
 you can find here misc experiments related to Bazel.
+
+## Other
+
+Here you can find a list of other reposities with Bazel demos:
+
+- [salesforce/bazel-demo](https://github.com/salesforce/bazel-demo)
+- [FaBrand/bazel-learning](https://github.com/FaBrand/bazel-learning)
+
 
 ## License
 

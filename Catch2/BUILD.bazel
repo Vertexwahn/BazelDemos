@@ -1,0 +1,5 @@
+cc_test(
+    name = "my_test",
+    srcs = ["my_test.cpp"],
+    deps = ["@catch2//:main"],
+)
