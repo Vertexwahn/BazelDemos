@@ -26,19 +26,19 @@ steps:
     displayName: "Show GCC version"
 
   - script: |
-      cd HelloWorld
+      cd hello_world
       cd Cpp
       bazel build //...
     displayName: "Bazel build HelloWord gcc9-fastbuild"
 
   - script: |
-      cd HelloWorld
+      cd hello_world
       cd Cpp
       bazel build --compilation_mode=dbg //...
     displayName: "Bazel build HelloWord gcc9-dbg"
 
   - script: |
-      cd HelloWorld
+      cd hello_world
       cd Cpp
       bazel build --compilation_mode=opt //...
     displayName: "Bazel build HelloWord gcc9-opt"

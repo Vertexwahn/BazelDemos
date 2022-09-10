@@ -26,19 +26,19 @@ steps:
     displayName: "Show Clang version"
 
   - script: |
-      cd HelloWorld
+      cd hello_world
       cd Cpp
       bazel build //...
     displayName: "Bazel build HelloWord clang13-fastbuild"
 
   - script: |
-      cd HelloWorld
+      cd hello_world
       cd Cpp
       bazel build --compilation_mode=dbg //...
     displayName: "Bazel build HelloWord clang13-dbg"
 
   - script: |
-      cd HelloWorld
+      cd hello_world
       cd Cpp
       bazel build --compilation_mode=opt //...
     displayName: "Bazel build HelloWord clang13-opt"

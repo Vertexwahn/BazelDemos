@@ -5,7 +5,7 @@
 
 [Bazel](https://bazel.build/) is a build system.
 In this repository,
-I store some demos that show how to use Bazel with different programming languages, libraries, and tools.
+I store some demos, experiments, and playgrounds that show how to use Bazel with different programming languages, libraries, and tools.
 Besides this, 
 you can find here misc experiments related to Bazel.
 

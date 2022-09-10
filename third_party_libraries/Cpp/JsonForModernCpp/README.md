@@ -1,5 +1,5 @@
 # Notes
 
-```bash
+```shell
 bazel run //:JsonForModernCppDemo
 ```
