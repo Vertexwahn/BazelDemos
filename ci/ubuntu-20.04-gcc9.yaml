@@ -27,20 +27,18 @@ steps:
 
   - script: |
       cd HelloWorld
+      cd Cpp
       bazel build //...
     displayName: "Bazel build HelloWord gcc9-fastbuild"
 
   - script: |
       cd HelloWorld
+      cd Cpp
       bazel build --compilation_mode=dbg //...
     displayName: "Bazel build HelloWord gcc9-dbg"
 
   - script: |
       cd HelloWorld
+      cd Cpp
       bazel build --compilation_mode=opt //...
     displayName: "Bazel build HelloWord gcc9-opt"
-
-  - script: |
-      cd fmt
-      bazel build //...
-    displayName: "Bazel build fmt gcc9-fastbuild"

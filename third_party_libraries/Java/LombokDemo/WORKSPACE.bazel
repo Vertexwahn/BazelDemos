@@ -1,0 +1,7 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
+
+http_jar(
+    name = "lombok_jar",
+    url = "https://projectlombok.org/lombok-edge.jar",
+    sha256 = "d3584bc2db03f059f984fb0a9c119aac1fa0da578a448e69fc3f68b36584c749",
+)

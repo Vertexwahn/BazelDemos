@@ -1,0 +1,14 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@io_bazel_rules_dotnet//dotnet:defs.bzl", "dotnet_binary")
+
+dotnet_binary(
+    name = "HelloWorld",
+    srcs = [
+        "HelloWorld.cs",
+    ],
+    visibility = ["//visibility:public"],
+)

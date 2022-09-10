@@ -1,0 +1,5 @@
+cc_binary(
+    name = "HelloWorld",
+    srcs = ["main.cpp"],
+	deps = ["@spdlog"]
+)

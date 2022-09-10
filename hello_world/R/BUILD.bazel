@@ -1,0 +1,12 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@com_grail_rules_r//R:defs.bzl", "r_binary")
+
+r_binary(
+    name = "HelloWorld",
+    src = "HelloWorld.R",
+)
+

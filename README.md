@@ -13,8 +13,9 @@ you can find here misc experiments related to Bazel.
 
 Here you can find a list of other repositories with Bazel demos:
 
-- [salesforce/bazel-demo](https://github.com/salesforce/bazel-demo)
+- [aspect-build/bazel-examples](https://github.com/aspect-build/bazel-examples)
 - [FaBrand/bazel-learning](https://github.com/FaBrand/bazel-learning)
+- [salesforce/bazel-demo](https://github.com/salesforce/bazel-demo)
 
 ## License
 

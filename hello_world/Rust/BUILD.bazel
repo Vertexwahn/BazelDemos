@@ -1,0 +1,28 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+package(default_visibility = ["//visibility:public"])
+
+load(
+    "@rules_rust//rust:rust.bzl",
+    "rust_binary",
+    "rust_doc",
+    "rust_test",
+)
+
+rust_binary(
+    name = "hello_world",
+    srcs = ["main.rs"],
+)
+
+rust_doc(
+    name = "hello_world_doc",
+    dep = ":hello_world",
+)
+
+rust_test(
+    name = "test_square",
+    srcs = ["test_square.rs"],
+)

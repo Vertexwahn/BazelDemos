@@ -1,0 +1,37 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "io_bazel_rules_dotnet",
+    remote = "https://github.com/bazelbuild/rules_dotnet",
+    tag = "0.0.4",
+)
+
+load(
+    "@io_bazel_rules_dotnet//dotnet:defs.bzl",
+    "core_register_sdk",
+    "dotnet_register_toolchains",
+    "dotnet_repositories",
+    "mono_register_sdk",
+    "net_register_sdk",
+)
+
+dotnet_repositories()
+
+dotnet_register_toolchains()
+
+mono_register_sdk()
+
+core_register_sdk(
+    "v2.1.502",
+    name = "core_sdk",
+)
+
+net_register_sdk(
+    "net471",
+    name = "net_sdk",
+)

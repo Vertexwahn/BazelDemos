@@ -1,0 +1,22 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+workspace(name = "de_vertexwahn_hello_world_r")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# Change master to the git tag you want.
+http_archive(
+    name = "com_grail_rules_r",
+    #sha256 = "7f07b332e5cabca0f9e3d78cb5c0521cdf11d2378b46432fe9b6ee1ed7e0abf1",
+    strip_prefix = "rules_r-master",
+    urls = ["https://github.com/grailbio/rules_r/archive/master.tar.gz"],
+)
+
+load("@com_grail_rules_r//R:dependencies.bzl", "r_register_toolchains", "r_rules_dependencies")
+
+r_rules_dependencies()
+
+r_register_toolchains()

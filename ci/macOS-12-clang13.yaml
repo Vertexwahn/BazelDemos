@@ -25,8 +25,20 @@ steps:
       clang --version
     displayName: "Show Clang version"
 
-  # fastbuild
   - script: |
       cd HelloWorld
+      cd Cpp
       bazel build //...
-    displayName: "Bazel build macos-fastbuild"
+    displayName: "Bazel build HelloWord clang13-fastbuild"
+
+  - script: |
+      cd HelloWorld
+      cd Cpp
+      bazel build --compilation_mode=dbg //...
+    displayName: "Bazel build HelloWord clang13-dbg"
+
+  - script: |
+      cd HelloWorld
+      cd Cpp
+      bazel build --compilation_mode=opt //...
+    displayName: "Bazel build HelloWord clang13-opt"
