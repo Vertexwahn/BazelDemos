@@ -26,9 +26,16 @@ steps:
     displayName: "Show GCC version"
 
   - script: |
+      ROOT_DIR=$(pwd)
+
       cd hello_world
       cd Cpp
       bazel build //...
+
+      # core_principles/ConfigurableBuildAttributes
+      cd ${ROOT_DIR}/core_principles/ConfigurableBuildAttributes
+      bazel build //...
+      bazel run //:HelloWorld
     displayName: "Bazel build HelloWord gcc11-fastbuild"
 
   - script: |
@@ -41,4 +48,5 @@ steps:
       cd hello_world
       cd Cpp
       bazel build --compilation_mode=opt //...
+
     displayName: "Bazel build HelloWord gcc11-opt"

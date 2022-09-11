@@ -1,0 +1,26 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+workspace(name = "LaTeXDemo")
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+#load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+#http_archive(
+#    name = "bazel_latex",
+#    sha256 = "23093c498f643f6ea0ffc9211c311178a0f4dd1e6b8be47478d1d00a226a0050",
+#    strip_prefix = "bazel-latex-73852bd96a1341e3e5f026b6a24f4c0908a7183b",
+#    url = "https://github.com/ProdriveTechnologies/bazel-latex/archive/73852bd96a1341e3e5f026b6a24f4c0908a7183b.tar.gz",
+#)
+
+git_repository(
+     name = "bazel_latex",
+     branch = "view-output",
+     remote = "https://github.com/Kernald/bazel-latex.git",
+)
+
+load("@bazel_latex//:repositories.bzl", "latex_repositories")
+
+latex_repositories()

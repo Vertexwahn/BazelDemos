@@ -26,9 +26,16 @@ steps:
     displayName: "Show Clang version"
 
   - script: |
+      ROOT_DIR=$(pwd)
+
       cd hello_world
       cd Cpp
       bazel build //...
+
+      # core_principles/ConfigurableBuildAttributes
+      cd ${ROOT_DIR}/core_principles/ConfigurableBuildAttributes
+      bazel build //...
+      bazel run //:HelloWorld
     displayName: "Bazel build HelloWord clang13-fastbuild"
 
   - script: |

@@ -1,0 +1,40 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+# see https://github.com/Vertexwahn/Piper/commit/8be398527013653a5d5f9987d65a73b223a73c6b
+
+config_setting(
+    name = "arm_build",
+    values = {"cpu": "arm"},
+)
+
+config_setting(
+    name = "x86_debug_build",
+    values = {
+        "cpu": "x86",
+        "compilation_mode": "dbg",
+    },
+)
+
+config_setting(
+    name = "macOS_arm64",
+    values = {
+        "cpu": "arm64",
+        #"os": "osx",
+    },
+)
+
+cc_binary(
+    name = "HelloWorld",
+    srcs = select({
+        #":arm_build": ["main_arm.cpp"],
+        #":x86_debug_build": ["main_x86_debug.cpp"],
+        "@platforms//os:osx": ["main_osx_intel.cpp"],
+        ":macOS_arm64": ["main_osx_M1.cpp"],
+        "@platforms//os:linux": ["main_linux.cpp"],
+        "@platforms//os:windows": ["main_windows.cpp"],
+        "//conditions:default": ["main.cpp"],
+    }),
+)
