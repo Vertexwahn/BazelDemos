@@ -1,4 +1,9 @@
-#include "catch2.hpp"
+/*
+ *  SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+ *  SPDX-License-Identifier: Apache-2.0
+ */
+
+#include "catch2/catch_test_macros.hpp"
 
 unsigned int Factorial( unsigned int number ) {
     return number <= 1 ? number : Factorial(number-1)*number;

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+SPDX-License-Identifier: Apache-2.0
+-->
+
 [![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB)](https://opensource.fb.com/support-ukraine)
 [![Build Status](https://vertexwahn.visualstudio.com/BazelDemos/_apis/build/status/Vertexwahn.BazelDemos?branchName=main)](https://vertexwahn.visualstudio.com/BazelDemos/_build/latest?definitionId=6&branchName=master)
 
@@ -14,6 +19,7 @@ you can find here misc experiments related to Bazel.
 Here you can find a list of other repositories with Bazel demos:
 
 - [aspect-build/bazel-examples](https://github.com/aspect-build/bazel-examples)
+- [bazelbuild/examples](https://github.com/bazelbuild/examples)
 - [FaBrand/bazel-learning](https://github.com/FaBrand/bazel-learning)
 - [salesforce/bazel-demo](https://github.com/salesforce/bazel-demo)
 

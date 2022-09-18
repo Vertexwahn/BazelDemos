@@ -9,6 +9,6 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
     name = "nlohmann_json",
-    branch = "add-bazel-support",
-    remote = "https://github.com/Vertexwahn/json",
+    branch = "develop",
+    remote = "https://github.com/nlohmann/json",
 )

@@ -5,7 +5,8 @@
 using json = nlohmann::json;
 
 int main() {
-	json performance_json_data;
-	performance_json_data["application"] = "okapi.cli";
-	std::cout << performance_json_data.dump(4) << std::endl;
+	json json_data;
+	json_data["application"] = "myApp";
+	json_data["version"] = "1.0.0";
+	std::cout << json_data.dump(4) << std::endl;
 }

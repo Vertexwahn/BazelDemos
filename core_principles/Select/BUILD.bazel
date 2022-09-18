@@ -1,0 +1,15 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+cc_binary(
+    name = "HelloWorld",
+    srcs = select({
+        "@bazel_tools//src/conditions:darwin_x86_64": ["main_osx_intel.cpp"],
+        "@bazel_tools//src/conditions:darwin_arm64": ["main_osx_M1.cpp"],
+        "@platforms//os:linux": ["main_linux.cpp"],
+        "@platforms//os:windows": ["main_windows.cpp"],
+        "//conditions:default": ["main.cpp"],
+    }),
+)
