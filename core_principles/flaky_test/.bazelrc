@@ -1,0 +1,16 @@
+test --test_output=errors       # Make output more verbose
+test --test_env="GTEST_COLOR=1" # Colour output
+
+build --cxxopt=-Werror
+build --cxxopt=-std=c++14
+build --cxxopt=-Wall
+build --cxxopt=-Wextra
+build --cxxopt=-Wpedantic
+build --cxxopt=-Wshadow
+build --cxxopt=-Wold-style-cast
+build --cxxopt=-Woverloaded-virtual
+build --cxxopt=-Wfloat-equal
+build --cxxopt=-Wconversion
+build --cxxopt=-Wsign-conversion
+build --cxxopt=-Wno-error=deprecated-declarations
+build --cxxopt=-Wformat-security

@@ -1,0 +1,9 @@
+cc_test(
+    name = "tests",
+    timeout = "short",
+    srcs = ["test.cpp"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@googletest//:gtest_main",
+    ],
+)

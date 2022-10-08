@@ -1,0 +1,58 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+workspace(name = "de_vertexwahn_docker")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "io_bazel_rules_docker",
+    sha256 = "b1e80761a8a8243d03ebca8845e9cc1ba6c82ce7c5179ce2b295cd36f7e394bf",
+    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v0.25.0/rules_docker-v0.25.0.tar.gz"],
+)
+
+load(
+    "@io_bazel_rules_docker//repositories:repositories.bzl",
+    container_repositories = "repositories",
+)
+container_repositories()
+
+load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
+
+container_deps()
+
+load(
+    "@io_bazel_rules_docker//container:container.bzl",
+    "container_pull",
+)
+
+container_pull(
+  name = "java11_arm64",
+  registry = "gcr.io",
+  repository = "distroless/java11-debian11",
+  digest = "sha256:2184282f01097038fcf83b86196e225ae079b973c8fe9960f8db4961c5662388",
+)
+
+#container_pull(
+#  name = "java_base",
+#  registry = "gcr.io",
+#  repository = "distroless/java",
+#  # 'tag' is also supported, but digest is encouraged for reproducibility.
+#  digest = "sha256:deadbeef",
+#)
+
+load(
+    "@io_bazel_rules_docker//repositories:repositories.bzl",
+    container_repositories = "repositories",
+)
+
+container_repositories()
+
+load(
+    "@io_bazel_rules_docker//java:image.bzl",
+    _java_image_repos = "repositories",
+)
+
+_java_image_repos()

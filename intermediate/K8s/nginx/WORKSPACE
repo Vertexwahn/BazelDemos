@@ -1,0 +1,47 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+workspace(name = "de_vertexwahn_k8s")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# Go
+
+http_archive(
+    name = "io_bazel_rules_go",
+    sha256 = "099a9fb96a376ccbbb7d291ed4ecbdfd42f6bc822ab77ae6f1b5cb9e914e94fa",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.35.0/rules_go-v0.35.0.zip",
+        "https://github.com/bazelbuild/rules_go/releases/download/v0.35.0/rules_go-v0.35.0.zip",
+    ],
+)
+
+# Gazelle
+
+http_archive(
+    name = "bazel_gazelle",
+    sha256 = "efbbba6ac1a4fd342d5122cbdfdb82aeb2cf2862e35022c752eaddffada7c3f3",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.27.0/bazel-gazelle-v0.27.0.tar.gz",
+        "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.27.0/bazel-gazelle-v0.27.0.tar.gz",
+    ],
+)
+
+# K8s
+
+http_archive(
+    name = "io_bazel_rules_k8s",
+    sha256 = "ce5b9bc0926681e2e7f2147b49096f143e6cbc783e71bc1d4f36ca76b00e6f4a",
+    strip_prefix = "rules_k8s-0.7",
+    urls = ["https://github.com/bazelbuild/rules_k8s/archive/v0.7.tar.gz"],
+)
+
+load("@io_bazel_rules_k8s//k8s:k8s.bzl", "k8s_repositories")
+
+k8s_repositories()
+
+load("@io_bazel_rules_k8s//k8s:k8s_go_deps.bzl", k8s_go_deps = "deps")
+
+k8s_go_deps()

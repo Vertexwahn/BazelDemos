@@ -3,8 +3,8 @@
 #   SPDX-License-Identifier: Apache-2.0
 #
 
-# GCC9 on Ubuntu 20.04
-# Make sure we can build with GCC9
+# GCC 11 on Ubuntu 22.04
+# Make sure we can build with GCC 11
 
 steps:
   - checkout: self
@@ -28,41 +28,70 @@ steps:
   - script: |
       ROOT_DIR=$(pwd)
 
-      cd hello_world
-      cd Cpp
+      echo "Cpp"
+      cd ${ROOT_DIR}/hello_world/Cpp
       bazel build //...
+      bazel build --compilation_mode=dbg //...
+      bazel build --compilation_mode=opt //...
+      bazel run //:HelloWorld
 
-      # core_principles/ConfigurableBuildAttributes
-      cd ${ROOT_DIR}/core_principles/ConfigurableBuildAttributes
+      echo "Go"
+      cd ${ROOT_DIR}/hello_world/Go
       bazel build //...
       bazel run //:HelloWorld
 
+      echo "Java"
+      cd ${ROOT_DIR}/hello_world/Java
+      bazel build //...
+      bazel run //:HelloWorld
+
+      echo "Rust"
+      cd ${ROOT_DIR}/hello_world/Rust
+      bazel build //...
+      bazel run //:HelloWorld
+
+      echo "Select"
+      cd ${ROOT_DIR}/core_principles/select
+      bazel build //...
+      bazel run //:HelloWorld
+    displayName: "Bazel build HelloWord demos"
+
+  - script: |
+      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/third_party_libraries/Cpp/Catch2
       bazel test --config=gcc11 //...
+      bazel test --config=gcc11 --compilation_mode=dbg //...
+      bazel test --config=gcc11 --compilation_mode=opt //...
+    displayName: "Bazel build Catch2 demo"
 
+  - script: |
+      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/third_party_libraries/Cpp/JsonForModernCpp
+      echo "fast"
       bazel build --config=gcc11 //...
       bazel test --config=gcc11 //...
+      echo "dbg"
+      bazel build --config=gcc11 --compilation_mode=dbg //...
+      bazel test --config=gcc11 --compilation_mode=dbg //...
+      echo "opt"
+      bazel build --config=gcc11 --compilation_mode=opt //...
+      #bazel test --config=gcc11 --compilation_mode=opt //...
+    displayName: "Bazel build & Test JsonForModernCpp demo"
 
+  - script: |
+      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/third_party_libraries/Cpp/fmt
       bazel build //...
+    displayName: "Bazel build fmt demo gcc11-fastbuild"
 
+  - script: |
+      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/third_party_libraries/Cpp/oneTBB
       bazel build //...
+    displayName: "Bazel build oneTBB demo gcc11-fastbuild"
 
+  - script: |
+      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/third_party_libraries/Cpp/OpenEXR
       bazel build //...
-    displayName: "Bazel build HelloWord gcc11-fastbuild"
-
-  - script: |
-      cd hello_world
-      cd Cpp
-      bazel build --compilation_mode=dbg //...
-    displayName: "Bazel build HelloWord gcc11-dbg"
-
-  - script: |
-      cd hello_world
-      cd Cpp
-      bazel build --compilation_mode=opt //...
-
-    displayName: "Bazel build HelloWord gcc11-opt"
+    displayName: "Bazel build OpenEXR demo gcc11-fastbuild"

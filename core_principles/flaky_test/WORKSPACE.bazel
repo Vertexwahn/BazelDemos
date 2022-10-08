@@ -1,0 +1,11 @@
+workspace(name = "GTestDemo")
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+# Googletest - Google Testing and Mocking Framework
+git_repository(
+    name = "googletest",
+    commit = "703bd9caab50b139428cea1aaff9974ebee5742e",  # googletest v1.10.0
+    remote = "https://github.com/google/googletest",
+    shallow_since = "1570114335 -0400",
+)
