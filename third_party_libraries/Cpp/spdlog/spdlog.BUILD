@@ -21,5 +21,4 @@ cc_library(
         "//conditions:default": ["-lpthread"],
     }),
     visibility = ["//visibility:public"],
-    #deps = ["@fmt"],
 )
