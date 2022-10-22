@@ -16,13 +16,19 @@ steps:
       bazel version
     displayName: "Show Bazel version"
 
- 
   - script: |
+      # BEGIN-INTERNAL
+      cd BazelDemos
+      # END-INTERNAL
       SET ROOT_DIR=%cd%
 
       echo "Cpp"
       cd %ROOT_DIR%/hello_world/Cpp
       bazel build //...
+      echo "hello_world dbg"
       bazel build --compilation_mode=dbg //...
+      echo "hello_world opt"
       bazel build --compilation_mode=opt //...
+      echo "run HelloWorld"
       bazel run //:HelloWorld
+    displayName: "Compile and run HelloWorld"
