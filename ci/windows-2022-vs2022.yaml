@@ -39,14 +39,19 @@ steps:
       call bazel build //...
       call bazel run //:HelloWorld
 
-      echo "Rust"
-      cd %ROOT_DIR%/hello_world/Rust
-      call bazel build //...
-      call bazel run //:HelloWorld
-
       echo "Python"
       cd %ROOT_DIR%/hello_world/Python
       call bazel build //...
       call bazel run //:HelloWorld
 
-    displayName: "Bazel Hello World demos"
+      echo "Rust"
+      cd %ROOT_DIR%/hello_world/Rust
+      call bazel build //...
+      call bazel run //:HelloWorld
+
+      echo "Shell"
+      cd %ROOT_DIR%/hello_world/Shell
+      call bazel build //...
+      call bazel run //:HelloWorld
+
+    displayName: "Hello World demos"

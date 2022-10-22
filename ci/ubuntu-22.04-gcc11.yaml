@@ -45,13 +45,18 @@ steps:
       bazel build //...
       bazel run //:HelloWorld
 
+      echo "Python"
+      cd ${ROOT_DIR}/hello_world/Python
+      bazel build //...
+      bazel run //:HelloWorld
+
       echo "Rust"
       cd ${ROOT_DIR}/hello_world/Rust
       bazel build //...
       bazel run //:HelloWorld
 
-      echo "Python"
-      cd ${ROOT_DIR}/hello_world/Python
+      echo "Shell"
+      cd ${ROOT_DIR}/hello_world/Shell
       bazel build //...
       bazel run //:HelloWorld
 
@@ -59,7 +64,7 @@ steps:
       cd ${ROOT_DIR}/core_principles/select
       bazel build //...
       bazel run //:HelloWorld
-    displayName: "Bazel Hello World demos"
+    displayName: "Hello World demos"
 
   - script: |
       ROOT_DIR=$(pwd)
