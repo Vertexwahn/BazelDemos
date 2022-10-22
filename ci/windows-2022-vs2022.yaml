@@ -39,6 +39,10 @@ steps:
       call bazel build //...
       call bazel run //:HelloWorld
 
+      echo "LaTeX"
+      cd %ROOT_DIR%/hello_world/LaTeX
+      bazel build //...
+
       echo "Python"
       cd %ROOT_DIR%/hello_world/Python
       call bazel build //...

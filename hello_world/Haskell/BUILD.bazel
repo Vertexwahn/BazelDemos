@@ -14,7 +14,7 @@ load(
 haskell_toolchain_library(name = "base")
 
 haskell_binary(
-    name = "HelloHaskell",
+    name = "HelloWorld",
     srcs = [":HelloWorld.hs"],
     deps = [":base"],
 )

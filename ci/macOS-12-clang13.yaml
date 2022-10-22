@@ -45,6 +45,10 @@ steps:
       bazel build //...
       bazel run //:HelloWorld
 
+      echo "LaTeX"
+      cd ${ROOT_DIR}/hello_world/LaTeX
+      bazel build //...
+
       echo "Python"
       cd ${ROOT_DIR}/hello_world/Python
       bazel build //...
