@@ -31,4 +31,4 @@ jobs:
     pool:
       vmImage: 'windows-2022'
     steps:
-      - template: devertexwahn/ci/windows-2022-vs2022.yaml
+      - template: ci/windows-2022-vs2022.yaml
