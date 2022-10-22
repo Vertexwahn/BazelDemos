@@ -17,9 +17,6 @@ steps:
     displayName: "Show Bazel version"
 
   - script: |
-      # BEGIN-INTERNAL
-      cd BazelDemos
-      # END-INTERNAL
       SET ROOT_DIR=%cd%
 
       echo "Cpp"
