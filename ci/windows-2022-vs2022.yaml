@@ -44,4 +44,9 @@ steps:
       call bazel build //...
       call bazel run //:HelloWorld
 
+      echo "Python"
+      cd %ROOT_DIR%/hello_world/Python
+      call bazel build //...
+      call bazel run //:HelloWorld
+
     displayName: "Bazel Hello World demos"

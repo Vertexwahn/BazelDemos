@@ -50,6 +50,11 @@ steps:
       bazel build //...
       bazel run //:HelloWorld
 
+      echo "Python"
+      cd ${ROOT_DIR}/hello_world/Python
+      bazel build //...
+      bazel run //:HelloWorld
+
       echo "Select"
       cd ${ROOT_DIR}/core_principles/select
       bazel build //...
