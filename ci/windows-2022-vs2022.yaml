@@ -21,11 +21,22 @@ steps:
 
       echo "Cpp"
       cd %ROOT_DIR%/hello_world/Cpp
-      bazel build //...
+      call bazel build //...
       echo "hello_world dbg"
-      bazel build --compilation_mode=dbg //...
+      call bazel build --compilation_mode=dbg //...
       echo "hello_world opt"
-      bazel build --compilation_mode=opt //...
+      call bazel build --compilation_mode=opt //...
       echo "run HelloWorld"
-      bazel run //:HelloWorld
+      call bazel run //:HelloWorld
+
+      echo "Go"
+      cd %ROOT_DIR%/hello_world/Go
+      call bazel build //...
+      call bazel run //:HelloWorld
+
+      echo "Java"
+      cd %ROOT_DIR%/hello_world/Java
+      call bazel build //...
+      call bazel run //:HelloWorld
+
     displayName: "Compile and run HelloWorld"
