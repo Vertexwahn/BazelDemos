@@ -1,0 +1,99 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
+load("@de_vertexwahn_rules_qt6//:qt.bzl", "qt_cc_library", "qt_resource", "qt_resource_via_qrc", "qt_ui_library")
+
+qt_cc_library(
+    name = "render_widget",
+    srcs = [
+        "qt/render_widget.cpp",
+    ],
+    hdrs = ["qt/render_widget.h"],
+    deps = [
+        "@de_vertexwahn_rules_qt6//:qt_widgets",
+    ],
+)
+
+cc_binary(
+    name = "DawnDemo",
+    srcs = [
+        "defines.h",
+        "qt/window.cpp",
+        "main.cpp",
+        "webgpu.h",
+        "qt/webgpu.cpp",
+        "window.h",
+    ],
+        data = select({
+        "@platforms//os:linux": ["@qt_6.2.4_linux_desktop_gcc_64//:plugin_files"],
+        "@bazel_tools//src/conditions:darwin_x86_64": ["@qt_6.2.4_mac_desktop_clang_64//:plugin_files"],
+        "@bazel_tools//src/conditions:darwin_arm64": ["@qt_6.3.2_mac_desktop_clang_64_M1//:plugin_files"],
+        "@platforms//os:windows": ["@qt_6.2.4_windows_desktop_win64_msvc2019_64//:plugin_files"],
+    }),
+    env = select({
+        "@platforms//os:linux": {
+            "QT_QPA_PLATFORM_PLUGIN_PATH": "external/qt_6.2.4_linux_desktop_gcc_64/plugins",
+        },
+        "@bazel_tools//src/conditions:darwin_x86_64": {
+            "QT_QPA_PLATFORM_PLUGIN_PATH": "external/qt_6.2.4_mac_desktop_clang_64/share/qt/plugins",
+        },
+        "@bazel_tools//src/conditions:darwin_arm64": {
+            "QT_QPA_PLATFORM_PLUGIN_PATH": "external/qt_6.3.2_mac_desktop_clang_64_M1/share/qt/plugins",
+        },
+        "@platforms//os:windows": {
+            "QT_QPA_PLATFORM_PLUGIN_PATH": "external/qt_6.2.4_windows_desktop_win64_msvc2019_64/plugins",
+        },
+    }),
+    deps = [
+        "@dawn","@vulkan_sdk//:vulkan",
+        "//:render_widget",
+        "@de_vertexwahn_rules_qt6//:qt_core",
+        "@de_vertexwahn_rules_qt6//:qt_qml",
+        "@de_vertexwahn_rules_qt6//:qt_widgets",
+    ],
+)
+
+cc_binary(
+    name = "index",
+    srcs = [
+        "defines.h",
+        "ems/webgpu.cpp",
+        "ems/window.cpp",
+        "main.cpp",
+        "webgpu.h",
+        "window.h",
+    ],
+    copts = [
+        "-Wno-unused-variable",
+        "-Wno-unused-but-set-variable",
+        "-Wno-unused-function",
+        "-fexceptions",
+    ],
+    data = ["ems/shell.html"],
+    linkopts = [
+        "-s USE_GLFW=3",
+        "-s USE_WEBGPU=1",
+        "-s WASM=1",
+        "-s ALLOW_MEMORY_GROWTH=1",
+        "-s NO_EXIT_RUNTIME=0",
+        "-s ASSERTIONS=1",
+        "-s ERROR_ON_UNDEFINED_SYMBOLS=0",
+        "--bind",
+    ],
+    tags = ["manual"],
+    deps = [
+        #"//core:logging",
+        #"//core:namespace",
+        #"//core:reference_counted",
+        #"//math:vector",
+    ],
+)
+
+wasm_cc_binary(
+    name = "index-wasm",
+    cc_target = ":index",
+)

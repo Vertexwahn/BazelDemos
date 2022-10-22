@@ -25,3 +25,10 @@ jobs:
       vmImage: 'macOS-12'
     steps:
       - template: ci/macOS-12-clang13.yaml
+
+  - job: VisualStudio2022
+    displayName: "VS2022 on Windows Server 2022"
+    pool:
+      vmImage: 'windows-2022'
+    steps:
+      - template: devertexwahn/ci/windows-2022-vs2022.yaml

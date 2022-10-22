@@ -1,0 +1,28 @@
+#
+#   SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
+
+# VS2022 on Windows Server 2022
+# Make sure we can build with VS2022 in all different compilation modes
+steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 1
+    lfs: false
+    submodules: false
+
+  - script: |
+      bazel version
+    displayName: "Show Bazel version"
+
+ 
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      echo "Cpp"
+      cd %ROOT_DIR%/hello_world/Cpp
+      bazel build //...
+      bazel build --compilation_mode=dbg //...
+      bazel build --compilation_mode=opt //...
+      bazel run //:HelloWorld
