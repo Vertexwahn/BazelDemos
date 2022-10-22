@@ -28,11 +28,32 @@ steps:
   - script: |
       ROOT_DIR=$(pwd)
 
-      cd hello_world
-      cd Cpp
+      echo "Cpp"
+      cd ${ROOT_DIR}/hello_world/Cpp
       bazel build //...
       bazel build --compilation_mode=dbg //...
       bazel build --compilation_mode=opt //...
+      bazel run //:HelloWorld
+
+      echo "Go"
+      cd ${ROOT_DIR}/hello_world/Go
+      bazel build //...
+      bazel run //:HelloWorld
+
+      echo "Java"
+      cd ${ROOT_DIR}/hello_world/Java
+      bazel build //...
+      bazel run //:HelloWorld
+
+      echo "Rust"
+      cd ${ROOT_DIR}/hello_world/Rust
+      bazel build //...
+      bazel run //:HelloWorld
+
+      echo "Python"
+      cd ${ROOT_DIR}/hello_world/Python
+      bazel build //...
+      bazel run //:HelloWorld
 
       # core_principles/ConfigurableBuildAttributes
       cd ${ROOT_DIR}/core_principles/ConfigurableBuildAttributes
