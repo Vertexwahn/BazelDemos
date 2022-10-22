@@ -54,7 +54,7 @@ steps:
       cd ${ROOT_DIR}/core_principles/select
       bazel build //...
       bazel run //:HelloWorld
-    displayName: "Bazel build HelloWord demos"
+    displayName: "Bazel Hello World demos"
 
   - script: |
       ROOT_DIR=$(pwd)

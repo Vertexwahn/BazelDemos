@@ -39,4 +39,9 @@ steps:
       call bazel build //...
       call bazel run //:HelloWorld
 
-    displayName: "Compile and run HelloWorld"
+      echo "Rust"
+      cd %ROOT_DIR%/hello_world/Rust
+      call bazel build //...
+      call bazel run //:HelloWorld
+
+    displayName: "Bazel Hello World demos"
