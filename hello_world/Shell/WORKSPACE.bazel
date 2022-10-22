@@ -13,7 +13,8 @@ filegroup(
     srcs = ["bach.sh"],
     visibility = ["//visibility:public"],
 )
-        """,
-    path = "bach-0.2.9.tar.gz",
-    strip_prefix = "bach-0.2.9",
+""",
+    sha256 = "696ababce6ba6444830b76dc43760a0888c3fc7484c5b9b6c26541f0644b69cb",
+    strip_prefix = "bach-0.4.2",
+    url = "https://github.com/bach-sh/bach/archive/refs/tags/0.4.2.tar.gz",
 )
