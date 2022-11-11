@@ -5,8 +5,6 @@ SPDX-License-Identifier: Apache-2.0
 
 # Notes
 
-Run HelloWorld application:
-
 ```shell
-bazel run //:HelloWorld
+bazel build //:java_image
 ```

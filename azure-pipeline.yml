@@ -19,12 +19,12 @@ jobs:
     steps:
       - template: ci/ubuntu-22.04-gcc11.yaml
   
-  - job: MacOSClang13Monterey
-    displayName: "Apple Clang13 on macOS 12 (Monterey)"
+  - job: MacOSClang14Monterey
+    displayName: "Apple Clang14 on macOS 12 (Monterey)"
     pool:
       vmImage: 'macOS-12'
     steps:
-      - template: ci/macOS-12-clang13.yaml
+      - template: ci/macOS-12-apple-clang14.yaml
 
   - job: VisualStudio2022
     displayName: "VS2022 on Windows Server 2022"

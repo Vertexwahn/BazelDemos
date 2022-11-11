@@ -6,6 +6,14 @@
 workspace(name = "de_vertexwahn_docker")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+#git_repository(
+#    name = "io_bazel_rules_docker",
+#    remote = "https://github.com/ray-project/rules_docker.git",
+#    commit = "4ce100ae7763058ac5d5f21e68046300f8aaf63e",
+#    shallow_since = "1646094349 -0800",
+#)
 
 http_archive(
     name = "io_bazel_rules_docker",

@@ -70,7 +70,7 @@ git_repository(
 
 new_git_repository(
     name = "vulkan_headers",
-    #shallow_since = "1666277503 -0400"
+    shallow_since = "1665648471 -0700",
     build_file = "//bazel:vulkan_headers.BUILD",
     commit = "98f440ce6868c94f5ec6e198cc1adda4760e8849",
     remote = "https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Headers.git",

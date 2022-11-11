@@ -72,6 +72,13 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/third_party_libraries/cpp/googletest
+      bazel build --config=macos //...
+      bazel test --config=macos //...
+    displayName: "Bazel third_party lib googletest"
+
+  - script: |
+      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/intermediate/K8s/nginx
       bazel query //...
-    displayName: "Bazel qury K8s/nginx"
+    displayName: "Bazel query K8s/nginx"

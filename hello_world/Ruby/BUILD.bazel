@@ -1,0 +1,9 @@
+load(
+    "@bazelruby_rules_ruby//ruby:defs.bzl",
+    "ruby_binary",
+)
+
+ruby_binary(
+    name = "HelloWorld",
+    srcs = ["HelloWorld.rb"],
+)
