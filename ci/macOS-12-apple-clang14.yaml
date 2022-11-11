@@ -79,6 +79,6 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/K8s/nginx
+      cd ${ROOT_DIR}/intermediate/Kubernetes/nginx
       bazel query //...
     displayName: "Bazel query K8s/nginx"
