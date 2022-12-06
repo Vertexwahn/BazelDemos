@@ -15,6 +15,7 @@ bazel_skylib_workspace()
 
 http_archive(
     name = "rules_erlang",
+    sha256 = "5e59800ecc786d5375951028c959c6e6275c94eff2a52f5d53ccb1ad8b2ea20a",
     strip_prefix = "rules_erlang-3.8.4",
     urls = ["https://github.com/rabbitmq/rules_erlang/archive/refs/tags/3.8.4.zip"],
 )
