@@ -20,9 +20,9 @@ steps:
       SET ROOT_DIR=%cd%
 
       echo "Bazel"
-      cd ${ROOT_DIR}/hello_world/Bazel
-      bazel build //...
-      
+      cd %ROOT_DIR%/hello_world/Bazel
+      call bazel build //...
+
       echo "Cpp"
       cd %ROOT_DIR%/hello_world/Cpp
       call bazel build //...
@@ -39,9 +39,9 @@ steps:
       call bazel run //:HelloWorld
 
       echo "JavaScript"
-      cd ${ROOT_DIR}/hello_world/JavaScript
-      bazel build //...
-      bazel run //:HelloWorld
+      cd %ROOT_DIR%/hello_world/JavaScript
+      call bazel build //...
+      call bazel run //:HelloWorld
       
       echo "Java"
       cd %ROOT_DIR%/hello_world/Java
