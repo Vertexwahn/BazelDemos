@@ -45,6 +45,11 @@ steps:
       bazel build //...
       bazel run //:HelloWorld
 
+      echo "JavaScript"
+      cd ${ROOT_DIR}/hello_world/JavaScript
+      bazel build //...
+      bazel run //:HelloWorld
+
       echo "LaTeX"
       cd ${ROOT_DIR}/hello_world/LaTeX
       bazel build //...

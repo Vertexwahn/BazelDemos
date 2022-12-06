@@ -34,6 +34,11 @@ steps:
       call bazel build //...
       call bazel run //:HelloWorld
 
+      echo "JavaScript"
+      cd ${ROOT_DIR}/hello_world/JavaScript
+      bazel build //...
+      bazel run //:HelloWorld
+      
       echo "Java"
       cd %ROOT_DIR%/hello_world/Java
       call bazel build //...
