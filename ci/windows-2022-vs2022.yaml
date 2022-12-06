@@ -19,6 +19,10 @@ steps:
   - script: |
       SET ROOT_DIR=%cd%
 
+      echo "Bazel"
+      cd ${ROOT_DIR}/hello_world/Bazel
+      bazel build //...
+      
       echo "Cpp"
       cd %ROOT_DIR%/hello_world/Cpp
       call bazel build //...
