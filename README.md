@@ -21,6 +21,7 @@ Here you can find a list of other repositories with Bazel demos:
 - [aspect-build/bazel-examples](https://github.com/aspect-build/bazel-examples)
 - [bazelbuild/examples](https://github.com/bazelbuild/examples)
 - [FaBrand/bazel-learning](https://github.com/FaBrand/bazel-learning)
+- [kriscfoster/multi-language-bazel-monorepo](https://github.com/kriscfoster/multi-language-bazel-monorepo)
 - [salesforce/bazel-demo](https://github.com/salesforce/bazel-demo)
 
 ## License

@@ -6,12 +6,12 @@ SPDX-License-Identifier: Apache-2.0
 # Notes
 
 ```shell
-minkube start
+minikube start
 kubectl get namespaces
 kubectl get pods
 # list all targets
 bazel query //...
 bazel run //:nginx.create # make sure cluster `minikube` is in place
-# do some changes on deployment
+# do some changes on deployment (change replicas to 2)
 bazel run //:nginx.replace
 ```
