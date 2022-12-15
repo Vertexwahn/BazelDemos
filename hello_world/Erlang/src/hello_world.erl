@@ -1,5 +1,5 @@
 -module(hello_world).
--compile(export_all).
+-export([hello/0]).
 
 
 hello() ->
