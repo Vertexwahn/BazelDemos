@@ -11,3 +11,7 @@ erlang_app(
     app_name = APP_NAME,
     app_version = APP_VERSION,
 )
+
+xref()
+
+dialyze()

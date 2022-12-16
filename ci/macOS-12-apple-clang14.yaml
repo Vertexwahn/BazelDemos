@@ -39,6 +39,11 @@ steps:
       bazel build --compilation_mode=opt //...
       bazel run //:HelloWorld
 
+      echo "Erlang"
+      cd ${ROOT_DIR}/hello_world/Erlang
+      brew install erlang
+      bazel build //...
+
       echo "Go"
       cd ${ROOT_DIR}/hello_world/Go
       bazel build //...
