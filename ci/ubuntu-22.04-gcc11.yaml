@@ -58,6 +58,11 @@ steps:
       cd ${ROOT_DIR}/hello_world/LaTeX
       bazel build //...
 
+      echo "Perl"
+      cd ${ROOT_DIR}/hello_world/Perl
+      bazel build //...
+      bazel run //:HelloWorld
+
       echo "Python"
       cd ${ROOT_DIR}/hello_world/Python
       bazel build //...
