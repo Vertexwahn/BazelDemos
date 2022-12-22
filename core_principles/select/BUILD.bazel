@@ -3,11 +3,27 @@
     SPDX-License-Identifier: Apache-2.0
 """
 
+config_setting(
+    name = "osx_arm64",
+    constraint_values = [
+        "@platforms//os:osx",
+        "@platforms//cpu:aarch64",
+    ],
+)
+
+config_setting(
+    name = "osx_x86_64",
+    constraint_values = [
+        "@platforms//os:osx",
+        "@platforms//cpu:x86_64",
+    ],
+)
+
 cc_binary(
     name = "HelloWorld",
     srcs = select({
-        "@bazel_tools//src/conditions:darwin_x86_64": ["main_osx_intel.cpp"],
-        "@bazel_tools//src/conditions:darwin_arm64": ["main_osx_M1.cpp"],
+        ":osx_x86_64": ["main_osx_intel.cpp"],
+        "osx_arm64": ["main_osx_M1.cpp"],
         "@platforms//os:linux": ["main_linux.cpp"],
         "@platforms//os:windows": ["main_windows.cpp"],
         "//conditions:default": ["main.cpp"],
