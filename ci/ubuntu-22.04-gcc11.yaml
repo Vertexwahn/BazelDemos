@@ -26,6 +26,10 @@ steps:
     displayName: "Show GCC version"
 
   - script: |
+      sudo apt-get install erlang-base
+    displayName: "Intall Erlang "
+
+  - script: |
       ROOT_DIR=$(pwd)
 
       echo "Bazel"
@@ -37,6 +41,11 @@ steps:
       bazel build //...
       bazel build --compilation_mode=dbg //...
       bazel build --compilation_mode=opt //...
+      bazel run //:HelloWorld
+
+      echo "Erlang"
+      cd ${ROOT_DIR}/hello_world/Erlang
+      bazel build //...
       bazel run //:HelloWorld
 
       echo "Go"
