@@ -27,7 +27,7 @@ steps:
 
   - script: |
       sudo apt-get install erlang-base
-    displayName: "Intall Erlang "
+    displayName: "Install Erlang"
 
   - script: |
       ROOT_DIR=$(pwd)
