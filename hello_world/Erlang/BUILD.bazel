@@ -15,3 +15,9 @@ erlang_app(
 xref()
 
 dialyze()
+
+load("@rules_erlang//:escript.bzl", "escript_archive")
+escript_archive(
+    name = "hello_world",
+    app = ":erlang_app",
+)

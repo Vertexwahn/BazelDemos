@@ -1,6 +1,6 @@
 -module(hello_world).
--export([hello/0]).
+-export([main/1]).
 
 
-hello() ->
-    io:format("hello world~n").
+main(_) ->
+    io:format("Hello World!~n").
