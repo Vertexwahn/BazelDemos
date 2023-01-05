@@ -46,7 +46,7 @@ steps:
       echo "Erlang"
       cd ${ROOT_DIR}/hello_world/Erlang
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Go"
       cd ${ROOT_DIR}/hello_world/Go
