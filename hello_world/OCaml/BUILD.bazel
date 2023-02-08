@@ -1,0 +1,10 @@
+load(
+    "@rules_ocaml//build:rules.bzl",
+    "ocaml_binary",
+)
+ocaml_binary(
+    name = "hello_world",
+    srcs = glob(["*.ml"]),
+    #src_root = "hello_world.ml",
+    #opam_packages = ["yojson", "lwt"],
+)
