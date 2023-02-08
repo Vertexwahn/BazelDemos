@@ -1,0 +1,10 @@
+load("@poetry//:dependencies.bzl", "dependency")
+load("@rules_python//python:defs.bzl", "py_library")
+
+py_library(
+    name = "main",
+    srcs = ["main.py"],
+    deps = [
+        dependency("mitsuba"),
+    ],
+)
