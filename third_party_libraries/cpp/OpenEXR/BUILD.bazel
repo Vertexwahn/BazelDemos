@@ -4,5 +4,5 @@
 cc_binary(
     name = "Demo",
     srcs = ["main.cpp"],
-    deps = ["@openexr//:OpenEXR"],
+    deps = ["@com_openexr//:OpenEXR"],
 )

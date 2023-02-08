@@ -1,10 +1,17 @@
-#include <ImfRgba.h>
-#include <ImfRgbaFile.h>
+#include "ImfRgba.h"
+#include "ImfRgbaFile.h"
 
+#include <ImfInputFile.h>
+#include <ImfOutputFile.h>
+#include <ImfChannelList.h>
+#include <ImfStringAttribute.h>
+#include <ImfFrameBuffer.h>
+
+#include <cassert>
 #include <string>
 
 // Function copied (with minior modifications) from pbrt-v3 (https://github.com/mmp/pbrt-v3) which is under BSD-2-Clause License
-static void WriteImageEXR(const std::string &name, const float *pixels,
+void write_image_exr(const std::string &name, const float *pixels,
                           int xRes, int yRes, int totalXRes, int totalYRes,
                           int xOffset, int yOffset) {
     using namespace Imf;
@@ -32,16 +39,40 @@ static void WriteImageEXR(const std::string &name, const float *pixels,
 }
 
 int main() {
-    float data [3*100*100];
+    // write open exr image
+    {
+        float data [3*100*100];
 
-    for(int y = 0; y < 100; ++y)
-        for(int x = 0; x < 100; ++x) {
-            data[(y*100+x)*3+0] = 0.f; 
-            data[(y*100+x)*3+1] = 1.f; 
-            data[(y*100+x)*3+2] = 0.f; 
+        for(int y = 0; y < 100; ++y)
+            for(int x = 0; x < 100; ++x) {
+                data[(y*100+x)*3+0] = 0.f; 
+                data[(y*100+x)*3+1] = 1.f; 
+                data[(y*100+x)*3+2] = 0.f; 
+            }
+
+        write_image_exr("test.exr", data, 100, 100, 100, 100, 0, 0);
+    }
+
+    // read open exr image
+    {
+        std::string filename = "test.exr";
+
+        Imf::InputFile exrIn(filename.c_str());
+        const Imf::Header& exrHeader = exrIn.header();
+        const Imath::Box2i &exrDataWindow = exrHeader.dataWindow();
+        auto width = exrDataWindow.max.x - exrDataWindow.min.x + 1;
+        auto height = exrDataWindow.max.y - exrDataWindow.min.y + 1;
+        
+        std::cout << "width: " << width << " height: " << height << std::endl;
+        
+        const Imf::ChannelList &exrChannels = exrHeader.channels();
+
+        for (Imf::ChannelList::ConstIterator channel = exrChannels.begin();
+                channel != exrChannels.end();
+                channel++) {
+            std::cout << channel.name() << std::endl;
         }
-
-    WriteImageEXR("test.exr", data, 100, 100, 100, 100, 0, 0);
+    }
 
     return 0;
 }
