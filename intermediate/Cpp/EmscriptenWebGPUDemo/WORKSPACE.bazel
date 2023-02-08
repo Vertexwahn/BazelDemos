@@ -2,9 +2,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "emsdk",
-    strip_prefix = "emsdk-891b4491419c42f9d2b9f97c47d1043b26dfd3e5/bazel",
-    url = "https://github.com/emscripten-core/emsdk/archive/891b4491419c42f9d2b9f97c47d1043b26dfd3e5.tar.gz",
-    sha256 = "7be7fad0e649265fa11693ec8d205f475509eb5f1f9b58f915826f10f4801d44",
+    strip_prefix = "emsdk-58904e9b74cd74e618903aa25245c8d830528cfe/bazel",
+    url = "https://github.com/emscripten-core/emsdk/archive/58904e9b74cd74e618903aa25245c8d830528cfe.tar.gz",
+    sha256 = "533a2d4d9463fa63481c87bb79cdf5647edd73488c4f09942073093e890e28f9",
 )
 
 load("@emsdk//:deps.bzl", emsdk_deps = "deps")
@@ -13,4 +13,4 @@ emsdk_deps()
 
 load("@emsdk//:emscripten_deps.bzl", emsdk_emscripten_deps = "emscripten_deps")
 
-emsdk_emscripten_deps(emscripten_version = "3.1.10")
+emsdk_emscripten_deps(emscripten_version = "3.1.29")
