@@ -1,0 +1,17 @@
+load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
+
+expand_template(
+    name = "modifiy_for_bazel",
+    out = "test_modfied_for_bazel.sh",
+    substitutions = {
+        "FILE=testdata/a.txt": "FILE=foo/testdata/a.txt",
+    },
+    template = "test.sh",
+)
+
+sh_test(
+    name = "foo",
+    size = "small",
+    srcs = ["test_modfied_for_bazel.sh"],
+    data = glob(["testdata/*.txt"]),
+)
