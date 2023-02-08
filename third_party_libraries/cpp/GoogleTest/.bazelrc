@@ -13,6 +13,7 @@ build:gcc9 --cxxopt=-Werror
 # macOS (e.g. Clang 12.0.0)
 build:macos --cxxopt=-std=c++2a
 build:macos --cxxopt=-Wall
+build:macos --linkopt=-Wl,-no_fixup_chains
 
 # Visual Studio 2019
 build:vs2019 --cxxopt=/std:c++20

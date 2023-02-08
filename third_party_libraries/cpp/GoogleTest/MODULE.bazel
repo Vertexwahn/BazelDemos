@@ -1,0 +1,9 @@
+# To build with Bzlmod: `bazel build --enable_bzlmod //...`.
+
+module(
+    name = "googletest_demo",
+    version = "1.0.0",
+    repo_name = "de_vertexwahn_googletest_demo",
+)
+
+bazel_dep(name = "googletest", version = "1.11.0")
