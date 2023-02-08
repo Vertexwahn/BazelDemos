@@ -1,0 +1,12 @@
+<!--
+SPDX-FileCopyrightText: 2023 Julian Amann <dev@vertexwahn.de>
+SPDX-License-Identifier: Apache-2.0
+-->
+
+# Notes
+
+Build application:
+
+```shell
+bazel build //:Demo
+```
