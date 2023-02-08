@@ -7,11 +7,14 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
     name = "rules_perl",
+    #branch = "main",
+    commit = "7f10dada09fcba1dc79a6a91da2facc25e72bd7d",
     remote = "https://github.com/bazelbuild/rules_perl.git",
-    branch = "main",
+    shallow_since = "1671487756 -0700",
 )
 
 load("@rules_perl//perl:deps.bzl", "perl_register_toolchains", "perl_rules_dependencies")
 
 perl_rules_dependencies()
+
 perl_register_toolchains()
