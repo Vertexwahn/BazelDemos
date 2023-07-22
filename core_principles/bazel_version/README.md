@@ -13,4 +13,4 @@ bazel build
 
 ## Hints
 
-This demo shows how to check for a specifc range of Bazel versions
+This demo shows how to check for a specific range of Bazel versions
