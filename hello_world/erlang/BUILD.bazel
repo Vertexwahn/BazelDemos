@@ -1,0 +1,22 @@
+load("@rules_erlang//:erlang_app.bzl", "erlang_app")
+load("@rules_erlang//:xref.bzl", "xref")
+load("@rules_erlang//:dialyze.bzl", "dialyze")
+load("@rules_erlang//:escript.bzl", "escript_archive")
+
+APP_NAME = "hello_world"
+
+APP_VERSION = "0.1.0"
+
+erlang_app(
+    app_name = APP_NAME,
+    app_version = APP_VERSION,
+)
+
+xref()
+
+dialyze()
+
+escript_archive(
+    name = "hello_world",
+    app = ":erlang_app",
+)
