@@ -46,8 +46,8 @@ cc_binary(
     name = "Demo",
     srcs = ["main.cpp"],
     deps = [
-        ":foo3_lib",
         ":foo2_lib",
+        ":foo3_lib",
         ":foo_lib",
     ],
 )
