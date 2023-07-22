@@ -18,7 +18,7 @@ echo "constexpr int CONSTANT2 = 43;" > dummy2.h
 touch dummy.cpp
 """.format(tree.path, tree.path),
     )
-    return [DefaultInfo(files=depset([tree]))]
+    return [DefaultInfo(files = depset([tree]))]
 
 tree = rule(
     implementation = _impl,

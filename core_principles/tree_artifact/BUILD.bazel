@@ -7,11 +7,11 @@ tree(
 cc_library(
     name = "lib",
     srcs = [":gen_tree"],
-    hdrs = [":gen_tree"]
+    hdrs = [":gen_tree"],
 )
 
 cc_binary(
     name = "Testbed",
     srcs = ["main.cpp"],
-    deps = [":lib"]
+    deps = [":lib"],
 )

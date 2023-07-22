@@ -5,4 +5,4 @@
 
 load(":workspace_name_var.bzl", "workspace_name_var")
 
-workspace_name_var(name="foo")
+workspace_name_var(name = "foo")
