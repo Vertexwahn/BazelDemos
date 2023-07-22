@@ -8,5 +8,5 @@ SPDX-License-Identifier: Apache-2.0
 Run HelloWorld application:
 
 ```shell
-bazel run //:HelloWorld
+bazel run //:hello_world
 ```

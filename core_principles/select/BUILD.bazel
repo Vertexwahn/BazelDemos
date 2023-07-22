@@ -20,7 +20,7 @@ config_setting(
 )
 
 cc_binary(
-    name = "HelloWorld",
+    name = "hello_world",
     srcs = select({
         ":osx_x86_64": ["main_osx_intel.cpp"],
         ":osx_arm64": ["main_osx_M1.cpp"],
