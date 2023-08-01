@@ -100,7 +100,7 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/third_party_libraries/cpp/googletest
+      cd ${ROOT_DIR}/intermediate/cpp/googletest
       bazel build --config=macos //...
       bazel test --config=macos //...
     displayName: "Bazel third_party lib googletest"
