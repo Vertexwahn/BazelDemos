@@ -4,6 +4,6 @@ load(
 )
 
 ruby_binary(
-    name = "HelloWorld",
+    name = "hello_world",
     srcs = ["HelloWorld.rb"],
 )
