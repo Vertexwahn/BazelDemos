@@ -6,6 +6,6 @@
 package(default_visibility = ["//visibility:public"])
 
 sh_binary(
-    name = "HelloWorld",
+    name = "hello_world",
     srcs = ["HelloWorld.sh"],
 )
