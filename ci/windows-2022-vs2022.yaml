@@ -34,7 +34,7 @@ steps:
       SET ROOT_DIR=%cd%
 
       echo "Bazel"
-      cd %ROOT_DIR%/hello_world/Bazel
+      cd %ROOT_DIR%/hello_world/bazel
       call bazel build //...
 
       echo "Cpp"
@@ -48,37 +48,37 @@ steps:
       call bazel run //:hello_world
 
       echo "Go"
-      cd %ROOT_DIR%/hello_world/Go
+      cd %ROOT_DIR%/hello_world/go
       call bazel build //...
       call bazel run //:hello_world
 
       echo "JavaScript"
-      cd %ROOT_DIR%/hello_world/JavaScript
+      cd %ROOT_DIR%/hello_world/java_script
       call bazel build //...
       call bazel run //:hello_world
       
       echo "Java"
-      cd %ROOT_DIR%/hello_world/Java
+      cd %ROOT_DIR%/hello_world/java
       call bazel build //...
       call bazel run //:hello_world
 
       # Currently Windows is not supported
       #echo "LaTeX"
-      #cd %ROOT_DIR%/hello_world/LaTeX
+      #cd %ROOT_DIR%/hello_world/latex
       #bazel build //...
 
       echo "Python"
-      cd %ROOT_DIR%/hello_world/Python
+      cd %ROOT_DIR%/hello_world/python
       call bazel build //...
       call bazel run //:hello_world
 
       echo "Rust"
-      cd %ROOT_DIR%/hello_world/Rust
+      cd %ROOT_DIR%/hello_world/rust
       call bazel build //...
       call bazel run //:hello_world
 
       echo "Shell"
-      cd %ROOT_DIR%/hello_world/Shell
+      cd %ROOT_DIR%/hello_world/shell
       call bazel build //...
       call bazel run //:hello_world
     displayName: "Hello World demos"
