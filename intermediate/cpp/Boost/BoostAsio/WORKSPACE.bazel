@@ -1,0 +1,16 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+git_repository(
+    name = "com_github_nelhage_rules_boost",
+    commit = "41edb76e207b331a45f6a3c95b1212aa3e7800d2",
+    remote = "https://github.com/nelhage/rules_boost",
+)
+
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+
+boost_deps()
