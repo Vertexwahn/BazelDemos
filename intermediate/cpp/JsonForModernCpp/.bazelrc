@@ -1,5 +1,7 @@
 build --symlink_prefix=/ # Out of source build
 
+build:gcc9 --cxxopt=-std=c++2a
+
 # GCC 11.2
 #build:gcc11 --cxxopt=-std=c++23 # blocked by emsdk
 build:gcc11 --cxxopt=-std=c++20
