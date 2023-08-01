@@ -1,0 +1,94 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# Emscripten
+
+http_archive(
+    name = "emsdk",
+    sha256 = "0c8170d433a51515b524ba07f46b4a893e8790645d5d54935c12669c628a3610",
+    strip_prefix = "emsdk-c04b1bbb3a62bdfa4d69903c870075339b5c77ae/bazel",
+    url = "https://github.com/emscripten-core/emsdk/archive/c04b1bbb3a62bdfa4d69903c870075339b5c77ae.tar.gz",
+)
+
+load("@emsdk//:deps.bzl", emsdk_deps = "deps")
+
+emsdk_deps()
+
+load("@emsdk//:emscripten_deps.bzl", emsdk_emscripten_deps = "emscripten_deps")
+
+emsdk_emscripten_deps(emscripten_version = "3.1.32")
+
+load("@emsdk//:toolchains.bzl", "register_emscripten_toolchains")
+
+register_emscripten_toolchains()
+
+# Python rules
+#http_archive(
+#    name = "rules_python",
+#    sha256 = "497ca47374f48c8b067d786b512ac10a276211810f4a580178ee9b9ad139323a",
+#    strip_prefix = "rules_python-0.16.1",
+#    url = "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.16.1.tar.gz",
+#)
+
+rules_python_version = "de8f428f4a73f39c875d1e03ba5d0be07790f534"
+
+http_archive(
+    name = "rules_python",
+    sha256 = "fcd2d5c462ff19c628c4a3e5217ea18aa6e6e05b038f5b993b0ddc30145b442d",
+    strip_prefix = "rules_python-{}".format(rules_python_version),
+    url = "https://github.com/bazelbuild/rules_python/archive/{}.tar.gz".format(rules_python_version),
+)
+
+load("@rules_python//python:repositories.bzl", "python_register_toolchains")
+
+python_register_toolchains(
+    name = "rules_poetry_python3_10",
+    python_version = "3.10",
+)
+
+# Poetry rules for managing Python dependencies
+http_archive(
+    name = "com_sonia_rules_poetry",
+    sha256 = "6eed0bddee4575f447def6b0bfc7a264b7193f9cdb19308872a4b89642cc4690",
+    strip_prefix = "rules_poetry-50217cf6357b79cfaeebeb370da54675a467be8f",
+    #urls = ["https://github.com/soniaai/rules_poetry/archive/d7a852ae69d22fe4670e34822cd376a69db0485e.tar.gz"],
+    urls = ["https://github.com/carlo-aromando/rules_poetry/archive/50217cf6357b79cfaeebeb370da54675a467be8f.tar.gz"],
+)
+
+load("@com_sonia_rules_poetry//rules_poetry:defs.bzl", "poetry_deps")
+
+poetry_deps()
+
+load("@com_sonia_rules_poetry//rules_poetry:poetry.bzl", "poetry")
+
+poetry(
+    name = "poetry",
+    lockfile = "//:poetry.lock",
+    pyproject = "//:pyproject.toml",
+    # optional, if you would like to pull from pip instead of a Bazel cache
+    #tags = ["no-remote-cache"],
+)
+
+# GLFW
+
+GLFW_VERSION = "3.3.5"
+
+http_archive(
+    name = "glfw",
+    build_file = "@//:glfw.BUILD",
+    sha256 = "32fdb8705784adfe3082f97e0d41e7c515963e977b5a14c467a887cf0da827b5",
+    strip_prefix = "glfw-{}".format(GLFW_VERSION),
+    urls = ["https://github.com/glfw/glfw/archive/{}.tar.gz".format(GLFW_VERSION)],
+)
+
+new_local_repository(
+    name = "system_libs",
+    build_file_content = """
+cc_library(
+    name = "x11",
+    srcs = ["libX11.so"],
+    visibility = ["//visibility:public"],
+)
+""",
+    # pkg-config --variable=libdir x11
+    path = "/usr/lib/x86_64-linux-gnu",
+)

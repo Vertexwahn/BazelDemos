@@ -1,0 +1,192 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+workspace(name = "de_vertexwahn_hello_dawn")
+
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+#http_archive(
+#    name = "bazel_skylib",
+#    sha256 = "66ffd9315665bfaafc96b52278f57c7e2dd09f5ede279ea6d39b2be471e7e3aa",
+#    urls = [
+#        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.4.2/bazel-skylib-1.4.2.tar.gz",
+#        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.4.2/bazel-skylib-1.4.2.tar.gz",
+#    ],
+#)
+
+#--------------------------------------------------------------------------------------
+# Python
+#--------------------------------------------------------------------------------------
+
+# https://github.com/bazelbuild/rules_python
+http_archive(
+    name = "rules_python",
+    sha256 = "5fa3c738d33acca3b97622a13a741129f67ef43f5fdfcec63b29374cc0574c29",
+    strip_prefix = "rules_python-0.9.0",
+    urls = [
+        "https://github.com/bazelbuild/rules_python/archive/refs/tags/0.9.0.tar.gz",
+        "https://storage.googleapis.com/skia-world-readable/bazel/5fa3c738d33acca3b97622a13a741129f67ef43f5fdfcec63b29374cc0574c29.tar.gz",
+    ],
+)
+
+# This sets up a hermetic python3, rather than depending on what is installed.
+load("@rules_python//python:repositories.bzl", "python_register_toolchains")
+
+python_register_toolchains(
+    name = "python3_9",
+    # https://github.com/bazelbuild/rules_python/blob/main/python/versions.bzl
+    python_version = "3.9",
+)
+
+load("@python3_9//:defs.bzl", "interpreter")
+load("@rules_python//python:pip.bzl", "pip_install")
+
+pip_install(
+    name = "py_deps",
+    python_interpreter_target = interpreter,
+    requirements = "//:requirements.txt",
+)
+
+#--------------------------------------------------------------------------------------
+# Other
+#--------------------------------------------------------------------------------------
+
+git_repository(
+    name = "abseil_cpp",
+    commit = "7152f9bc3cbf039ec96f18545b73948a95c9e7ec",
+    remote = "https://github.com/abseil/abseil-cpp.git",
+)
+
+git_repository(
+    name = "spirv_tools",
+    commit = "e751c7e7db28998c3c151e6702343afcfef7b17d",
+    remote = "https://skia.googlesource.com/external/github.com/KhronosGroup/SPIRV-Tools.git",
+)
+
+new_git_repository(
+    name = "vulkan_headers",
+    build_file = "//bazel:vulkan_headers.BUILD",
+    commit = "485c0395ad85bcefe7aed17d23362d93f61f942d",
+    remote = "https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Headers.git",
+    workspace_file_content = "",
+)
+
+new_git_repository(
+    name = "vulkan_tools",
+    build_file = "//bazel:vulkan_tools.BUILD",
+    commit = "39090f9152287903b8fc82877f19366d2f9addaa",
+    remote = "https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Tools",
+    workspace_file_content = "",
+)
+
+git_repository(
+    name = "spirv_headers",
+    commit = "d0006a3938d7acedffb26ab517fe3e95b5288cc6",
+    remote = "https://skia.googlesource.com/external/github.com/KhronosGroup/SPIRV-Headers.git",
+)
+
+new_git_repository(
+    name = "dawn",
+    build_file = "//bazel:dawn.BUILD",
+    commit = "3b9aa123c9d986ea4bbacfa1f814b7749d5daf03",
+    remote = "https://dawn.googlesource.com/dawn.git",
+    workspace_file_content = "",
+)
+
+#-------------------------------------------------------------------------------------
+# emsdk
+#-------------------------------------------------------------------------------------
+
+http_archive(
+    name = "emsdk",
+    sha256 = "96a46920b2483e69b9e828354e70bb414c2ce5f6f689e0998cc84feced11b45b",
+    strip_prefix = "emsdk-e28e47659cf095b5570aa58343d2245ede5d7322/bazel",
+    url = "https://github.com/emscripten-core/emsdk/archive/e28e47659cf095b5570aa58343d2245ede5d7322.tar.gz",
+)
+
+load("@emsdk//:deps.bzl", emsdk_deps = "deps")
+
+emsdk_deps()
+
+load("@emsdk//:emscripten_deps.bzl", emsdk_emscripten_deps = "emscripten_deps")
+
+emsdk_emscripten_deps(emscripten_version = "3.1.42")
+
+#-------------------------------------------------------------------------------------
+# Qt6
+#-------------------------------------------------------------------------------------
+
+git_repository(
+    name = "rules_qt",
+    commit = "2c4a93966c3d642c99567542792eb0203c4bb33d",
+    remote = "https://github.com/Vertexwahn/rules_qt6.git",
+    #shallow_since = "1666212839 +0200",
+)
+
+load("@rules_qt//:fetch_qt.bzl", "fetch_qt6")
+
+fetch_qt6()
+
+load("@rules_qt//tools:qt_toolchain.bzl", "register_qt_toolchains")
+
+register_qt_toolchains()
+
+#-------------------------------------------------------------------------------------
+# Vulkan
+#-------------------------------------------------------------------------------------
+
+http_archive(
+    name = "rules_7zip",
+    sha256 = "89db47017a95de6fc30acd0ff0b70c25e468a21b5e1286940feb21505854f28b",
+    strip_prefix = "rules_7zip-9addcf58cdc5022fa5188b5f270bc0c9bb240f46",
+    url = "https://github.com/zaucy/rules_7zip/archive/9addcf58cdc5022fa5188b5f270bc0c9bb240f46.zip",
+)
+
+load("@rules_7zip//:setup.bzl", "setup_7zip")
+
+setup_7zip()
+
+local_repository(
+    name = "com_github_zaucy_rules_vulkan",
+    path = "../../../../third_party/rules_vulkan",
+)
+
+#http_archive(
+#    name = "com_github_zaucy_rules_vulkan",
+#    sha256 = "f1d00649f56b07797741dc76633d0a2ebf6a04422bff3176296e8379f2976dc6",
+#    strip_prefix = "rules_vulkan-928d0a11c8bde0c28935b2c5899cb0a58732ab96",
+#    url = "https://github.com/zaucy/rules_vulkan/archive/928d0a11c8bde0c28935b2c5899cb0a58732ab96.zip",
+#)
+
+load("@com_github_zaucy_rules_vulkan//:repo.bzl", "vulkan_repos")
+
+vulkan_repos()
+
+#-------------------------------------------------------------------------------------
+# GLFW
+#-------------------------------------------------------------------------------------
+
+GLFW_VERSION = "3.3.8"
+
+http_archive(
+    name = "glfw",
+    build_file = "//bazel:glfw.BUILD",
+    sha256 = "f30f42e05f11e5fc62483e513b0488d5bceeab7d9c5da0ffe2252ad81816c713",
+    strip_prefix = "glfw-{}".format(GLFW_VERSION),
+    urls = ["https://github.com/glfw/glfw/archive/{}.tar.gz".format(GLFW_VERSION)],
+)
+
+new_local_repository(
+    name = "system_libs",
+    build_file_content = """cc_library(
+    name = "x11",
+    srcs = ["libX11.so"],
+    visibility = ["//visibility:public"],
+)
+""",
+    # pkg-config --variable=libdir x11
+    path = "/usr/lib/x86_64-linux-gnu",
+)

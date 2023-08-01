@@ -1,0 +1,9 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "libfuse",
+    build_file = "//:BUILD.libfuse",
+    sha256 = "5e84f81d8dd527ea74f39b6bc001c874c02bad6871d7a9b0c14efb57430eafe3",
+    strip_prefix = "fuse-2.9.8",
+    url = "https://github.com/libfuse/libfuse/releases/download/fuse-2.9.8/fuse-2.9.8.tar.gz",
+)

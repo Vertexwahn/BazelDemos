@@ -1,0 +1,154 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+# Go
+
+http_archive(
+    name = "io_bazel_rules_go",
+    sha256 = "099a9fb96a376ccbbb7d291ed4ecbdfd42f6bc822ab77ae6f1b5cb9e914e94fa",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.35.0/rules_go-v0.35.0.zip",
+        "https://github.com/bazelbuild/rules_go/releases/download/v0.35.0/rules_go-v0.35.0.zip",
+    ],
+)
+
+# Gazelle
+
+http_archive(
+    name = "bazel_gazelle",
+    sha256 = "efbbba6ac1a4fd342d5122cbdfdb82aeb2cf2862e35022c752eaddffada7c3f3",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.27.0/bazel-gazelle-v0.27.0.tar.gz",
+        "https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.27.0/bazel-gazelle-v0.27.0.tar.gz",
+    ],
+)
+
+# K8s
+
+http_archive(
+    name = "io_bazel_rules_k8s",
+    sha256 = "ce5b9bc0926681e2e7f2147b49096f143e6cbc783e71bc1d4f36ca76b00e6f4a",
+    strip_prefix = "rules_k8s-0.7",
+    urls = ["https://github.com/bazelbuild/rules_k8s/archive/v0.7.tar.gz"],
+)
+
+load("@io_bazel_rules_k8s//k8s:k8s.bzl", "k8s_defaults", "k8s_repositories")
+
+k8s_repositories()
+
+load("@io_bazel_rules_k8s//k8s:k8s_go_deps.bzl", k8s_go_deps = "deps")
+
+k8s_go_deps()
+
+_CLUSTER = "gke_rules-k8s_us-central1-f_testing"
+
+_CONTEXT = _CLUSTER
+
+_NAMESPACE = "{STABLE_E2E_NAMESPACE}"
+
+k8s_defaults(
+    name = "k8s_object",
+    cluster = _CLUSTER,
+    context = _CONTEXT,
+    image_chroot = "us.gcr.io/rules_k8s/{BUILD_USER}",
+    namespace = _NAMESPACE,
+)
+
+k8s_defaults(
+    name = "k8s_deploy",
+    cluster = _CLUSTER,
+    context = _CONTEXT,
+    image_chroot = "us.gcr.io/rules_k8s/{BUILD_USER}",
+    kind = "deployment",
+    namespace = _NAMESPACE,
+)
+
+[k8s_defaults(
+    name = "k8s_" + kind,
+    cluster = _CLUSTER,
+    context = _CONTEXT,
+    kind = kind,
+    namespace = _NAMESPACE,
+) for kind in [
+    "service",
+    "crd",
+    "todo",
+]]
+
+# Open API
+
+http_archive(
+    name = "openapi_tools_generator_bazel",
+    sha256 = "c6e4c253f1ae0fbe4d4ded8a719f6647273141d0dc3c0cd8bb074aa7fc3c8d1c",
+    urls = ["https://github.com/OpenAPITools/openapi-generator-bazel/releases/download/0.1.5/openapi-tools-generator-bazel-0.1.5.tar.gz"],
+)
+
+load("@openapi_tools_generator_bazel//:defs.bzl", "openapi_tools_generator_bazel_repositories")
+
+# You can provide any version of the CLI that has been uploaded to Maven
+openapi_tools_generator_bazel_repositories(
+    openapi_generator_cli_version = "5.1.0",
+    sha256 = "62f9842f0fcd91e4afeafc33f19a7af41f2927c7472c601310cedfc72ff1bb19",
+)
+
+git_repository(
+    name = "nlohmann_json",
+    commit = "b2306145e1789368e6f261680e8dc007e91cc986",
+    #branch = "develop",
+    remote = "https://github.com/nlohmann/json",
+    shallow_since = "1675235985 +0100",
+)
+
+# Pistache HTTP server
+git_repository(
+    name = "pistache",
+    build_file_content = """
+cc_library(
+    name = "pistache_lib",
+    srcs = glob(["src/**/*.cc"]),
+    hdrs = glob(["include/pistache/**/*.h"]),
+    includes = ["include/"],
+    visibility = ["//visibility:public"]
+)""",
+    commit = "e18ed9baeb2145af6f9ea41246cf48054ffd9907",
+    init_submodules = 1,
+    remote = "https://github.com/oktal/pistache",
+)
+
+# Docker
+
+http_archive(
+    name = "io_bazel_rules_docker",
+    sha256 = "b1e80761a8a8243d03ebca8845e9cc1ba6c82ce7c5179ce2b295cd36f7e394bf",
+    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v0.25.0/rules_docker-v0.25.0.tar.gz"],
+)
+
+load(
+    "@io_bazel_rules_docker//repositories:repositories.bzl",
+    container_repositories = "repositories",
+)
+
+container_repositories()
+
+load(
+    "@io_bazel_rules_docker//cc:image.bzl",
+    cc_image_repos = "repositories",
+)
+
+cc_image_repos()
+
+load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")
+
+container_deps()
+
+load(
+    "@io_bazel_rules_docker//container:container.bzl",
+    "container_pull",
+)
+
+container_pull(
+    name = "ubuntu",
+    digest = "sha256:c985bc3f77946b8e92c9a3648c6f31751a7dd972e06604785e47303f4ad47c4c",  # 22.04
+    registry = "index.docker.io",
+    repository = "library/ubuntu",
+)

@@ -1,0 +1,12 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_jar")
+
+http_jar(
+    name = "lombok_jar",
+    sha256 = "ecef1581411d7a82cc04281667ee0bac5d7c0a5aae74cfc38430396c91c31831",
+    url = "https://projectlombok.org/downloads/lombok-1.18.22.jar",
+)

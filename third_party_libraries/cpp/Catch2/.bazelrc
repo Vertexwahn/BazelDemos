@@ -1,9 +1,0 @@
-# SPDX-License-Identifier: BSD-3-Clause
-# Copyright Contributors to the OpenEXR Project.
-
-build --symlink_prefix=/ # Out of source build
-build:gcc9 --cxxopt=-std=c++2a
-build:gcc11 --cxxopt=-std=c++2a
-build:clang13 --cxxopt=-std=c++17
-build:vs2019 --cxxopt=/std:c++17
-build:vs2022 --cxxopt=/std:c++17

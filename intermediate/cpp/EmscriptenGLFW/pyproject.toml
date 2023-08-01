@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "EmscriptenGLFW"
+version = "0.1.0"
+description = ""
+authors = ["Julian Amann <julian.amann@tum.de>"]
+readme = "README.md"
+packages = [{include = "glad"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+boto3 = "^1.24.82"
+pytest = "^7.1.3"
+prospector = "^1.7.7"
+mock = "^4.0.3"
+coverage = "^6.5.0"
+glad = "^0.1.36"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

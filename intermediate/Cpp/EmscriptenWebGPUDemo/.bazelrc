@@ -1,6 +1,0 @@
-build --symlink_prefix=/ # Suppress symlink creation (to avoid untracked files issues with git)
-
-# macOS (e.g. Clang 12.0.0)
-build:macos --cxxopt=-std=c++2a
-build:macos --cxxopt=-Wall
-build:macos --define compiler=clang12

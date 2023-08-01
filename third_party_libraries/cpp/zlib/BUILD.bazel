@@ -1,7 +1,0 @@
-cc_binary(
-    name = "zlibTest",
-    srcs = ["main.cpp"],
-    deps = [
-        "@zlib",
-    ],
-)

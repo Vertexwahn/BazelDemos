@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-http-staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-http-staging
+  template:
+    metadata:
+      labels:
+        app: hello-http-staging
+    spec:
+      containers:
+      - name: hello-http
+        image: hello-http-image:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,9 @@
+cc_binary(
+    name = "EmbreeDemo",
+    srcs = [
+        "main.cpp",
+    ],
+    deps = [
+        "@embree",
+    ],
+)

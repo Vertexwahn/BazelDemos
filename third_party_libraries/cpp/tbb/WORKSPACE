@@ -1,6 +1,0 @@
-new_http_archive(
-    name = "com_github_01org_tbb",
-    build_file = "tbb.BUILD",
-    url = "https://github.com/01org/tbb/archive/2018_U3.tar.gz",
-    strip_prefix = "tbb-2018_U3",
-)
