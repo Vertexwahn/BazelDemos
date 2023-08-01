@@ -1,7 +1,5 @@
-Works:
+# Readme
 
-bazel run --crosstool_top=@llvm_toolchain//:toolchain //:HelloWorld
-
-Does not work:
-
-bazel run --extra_toolchains=@llvm_toolchain//:cc-toolchain-linux //:HelloWorld
+```shell
+bazel run --incompatible_enable_cc_toolchain_resolution //:hello_world
+```

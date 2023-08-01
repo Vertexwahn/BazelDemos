@@ -28,6 +28,20 @@ steps:
   - script: |
       ROOT_DIR=$(pwd)
 
+      echo "genrule"
+      cd ${ROOT_DIR}/core_principles/genrule
+      bazel build //...
+      bazel run //:Demo
+
+      echo "select"
+      cd ${ROOT_DIR}/core_principles/select
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "core principles demos"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
       echo "Bazel"
       cd ${ROOT_DIR}/hello_world/Bazel
       bazel build //...
@@ -37,22 +51,22 @@ steps:
       bazel build //...
       bazel build --compilation_mode=dbg //...
       bazel build --compilation_mode=opt //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Go"
       cd ${ROOT_DIR}/hello_world/Go
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Java"
       cd ${ROOT_DIR}/hello_world/Java
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "JavaScript"
       cd ${ROOT_DIR}/hello_world/JavaScript
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "LaTeX"
       cd ${ROOT_DIR}/hello_world/LaTeX
@@ -61,25 +75,60 @@ steps:
       echo "Python"
       cd ${ROOT_DIR}/hello_world/Python
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Rust"
       cd ${ROOT_DIR}/hello_world/Rust
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Ruby"
       cd ${ROOT_DIR}/hello_world/Ruby
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Shell"
       cd ${ROOT_DIR}/hello_world/Shell
       bazel build //...
-      bazel run //:HelloWorld
-
-      echo "Select"
-      cd ${ROOT_DIR}/core_principles/select
-      bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
     displayName: "Hello World demos"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/third_party_libraries/cpp/Catch2
+      bazel test --config=gcc11 //...
+      bazel test --config=gcc11 --compilation_mode=dbg //...
+      bazel test --config=gcc11 --compilation_mode=opt //...
+    displayName: "Bazel build Catch2 demo"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/third_party_libraries/cpp/JsonForModernCpp
+      echo "fast"
+      bazel build --config=gcc11 //...
+      bazel test --config=gcc11 //...
+      echo "dbg"
+      bazel build --config=gcc11 --compilation_mode=dbg //...
+      bazel test --config=gcc11 --compilation_mode=dbg //...
+      echo "opt"
+      bazel build --config=gcc11 --compilation_mode=opt //...
+      #bazel test --config=gcc11 --compilation_mode=opt //...
+    displayName: "Bazel build & Test JsonForModernCpp demo"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/third_party_libraries/cpp/fmt
+      bazel build //...
+    displayName: "Bazel build fmt demo gcc11-fastbuild"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/third_party_libraries/cpp/oneTBB
+      bazel build //...
+    displayName: "Bazel build oneTBB demo gcc11-fastbuild"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/third_party_libraries/cpp/OpenEXR
+      bazel build //...
+    displayName: "Bazel build OpenEXR demo gcc11-fastbuild"

@@ -1,0 +1,19 @@
+load(":ispc_toolchain.bzl", "ispc_toolchain")
+
+package(default_visibility = ["//visibility:public"])
+
+toolchain_type(name = "toolchain_type")
+
+ispc_toolchain(
+    name = "ispc_osx_M1",
+    data = [
+        "@ispc_osx_arm64//:ispc",
+    ],
+    ispc_cmd = "$(location @ispc_osx_arm64//:ispc)",  #"/opt/homebrew/bin/ispc",#
+)
+
+toolchain(
+    name = "ispc_osx_arm64_toolchain",
+    toolchain = ":ispc_osx_M1",
+    toolchain_type = "@rules_ispc//tools:toolchain_type",
+)

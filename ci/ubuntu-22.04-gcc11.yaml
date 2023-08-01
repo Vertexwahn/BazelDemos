@@ -32,6 +32,20 @@ steps:
   - script: |
       ROOT_DIR=$(pwd)
 
+      echo "genrule"
+      cd ${ROOT_DIR}/core_principles/genrule
+      bazel build //...
+      bazel run //:Demo
+
+      echo "select"
+      cd ${ROOT_DIR}/core_principles/select
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "core principles demos"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
       echo "Bazel"
       cd ${ROOT_DIR}/hello_world/Bazel
       bazel build //...
@@ -41,7 +55,7 @@ steps:
       bazel build //...
       bazel build --compilation_mode=dbg //...
       bazel build --compilation_mode=opt //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Erlang"
       cd ${ROOT_DIR}/hello_world/Erlang
@@ -51,17 +65,17 @@ steps:
       echo "Go"
       cd ${ROOT_DIR}/hello_world/Go
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Java"
       cd ${ROOT_DIR}/hello_world/Java
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "JavaScript"
       cd ${ROOT_DIR}/hello_world/JavaScript
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "LaTeX"
       cd ${ROOT_DIR}/hello_world/LaTeX
@@ -70,32 +84,27 @@ steps:
       echo "Perl"
       cd ${ROOT_DIR}/hello_world/Perl
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Python"
       cd ${ROOT_DIR}/hello_world/Python
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Rust"
       cd ${ROOT_DIR}/hello_world/Rust
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Ruby"
       cd ${ROOT_DIR}/hello_world/Ruby
       bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
 
       echo "Shell"
       cd ${ROOT_DIR}/hello_world/Shell
       bazel build //...
-      bazel run //:HelloWorld
-
-      echo "Select"
-      cd ${ROOT_DIR}/core_principles/select
-      bazel build //...
-      bazel run //:HelloWorld
+      bazel run //:hello_world
     displayName: "Hello World demos"
 
   - script: |
