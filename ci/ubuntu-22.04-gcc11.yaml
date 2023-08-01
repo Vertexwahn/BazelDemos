@@ -109,7 +109,7 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/third_party_libraries/cpp/Catch2
+      cd ${ROOT_DIR}/intermediate/cpp/Catch2
       bazel test --config=gcc11 //...
       bazel test --config=gcc11 --compilation_mode=dbg //...
       bazel test --config=gcc11 --compilation_mode=opt //...
@@ -117,7 +117,7 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/third_party_libraries/cpp/JsonForModernCpp
+      cd ${ROOT_DIR}/intermediate/cpp/JsonForModernCpp
       echo "fast"
       bazel build --config=gcc11 //...
       bazel test --config=gcc11 //...
@@ -131,18 +131,18 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/third_party_libraries/cpp/fmt
+      cd ${ROOT_DIR}/intermediate/cpp/fmt
       bazel build //...
     displayName: "Bazel build fmt demo gcc11-fastbuild"
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/third_party_libraries/cpp/oneTBB
+      cd ${ROOT_DIR}/intermediate/cpp/oneTBB
       bazel build //...
     displayName: "Bazel build oneTBB demo gcc11-fastbuild"
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/third_party_libraries/cpp/OpenEXR
+      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR
       bazel build //...
     displayName: "Bazel build OpenEXR demo gcc11-fastbuild"

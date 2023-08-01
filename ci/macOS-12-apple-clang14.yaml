@@ -43,57 +43,57 @@ steps:
       ROOT_DIR=$(pwd)
 
       echo "Bazel"
-      cd ${ROOT_DIR}/hello_world/Bazel
+      cd ${ROOT_DIR}/hello_world/bazel
       bazel build //...
       
       echo "Cpp"
-      cd ${ROOT_DIR}/hello_world/Cpp
+      cd ${ROOT_DIR}/hello_world/cpp
       bazel build //...
       bazel build --compilation_mode=dbg //...
       bazel build --compilation_mode=opt //...
       bazel run //:hello_world
 
       echo "Erlang"
-      cd ${ROOT_DIR}/hello_world/Erlang
+      cd ${ROOT_DIR}/hello_world/erlang
       brew install erlang
       bazel build //...
 
       echo "Go"
-      cd ${ROOT_DIR}/hello_world/Go
+      cd ${ROOT_DIR}/hello_world/go
       bazel build //...
       bazel run //:hello_world
 
       echo "Java"
-      cd ${ROOT_DIR}/hello_world/Java
+      cd ${ROOT_DIR}/hello_world/java
       bazel build //...
       bazel run //:hello_world
 
       echo "JavaScript"
-      cd ${ROOT_DIR}/hello_world/JavaScript
+      cd ${ROOT_DIR}/hello_world/java_script
       bazel build //...
       bazel run //:hello_world
 
       echo "LaTeX"
-      cd ${ROOT_DIR}/hello_world/LaTeX
+      cd ${ROOT_DIR}/hello_world/latex
       bazel build //...
 
       echo "Perl"
-      cd ${ROOT_DIR}/hello_world/Perl
+      cd ${ROOT_DIR}/hello_world/perl
       bazel build //...
       bazel run //:hello_world
 
       echo "Python"
-      cd ${ROOT_DIR}/hello_world/Python
+      cd ${ROOT_DIR}/hello_world/python
       bazel build //...
       bazel run //:hello_world
 
       echo "Rust"
-      cd ${ROOT_DIR}/hello_world/Rust
+      cd ${ROOT_DIR}/hello_world/rust
       bazel build //...
       bazel run //:hello_world
 
       echo "Shell"
-      cd ${ROOT_DIR}/hello_world/Shell
+      cd ${ROOT_DIR}/hello_world/shell
       bazel build //...
       bazel run //:hello_world
     displayName: "Hello World demos"
