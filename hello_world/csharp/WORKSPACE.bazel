@@ -1,37 +1,35 @@
 """
-    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-FileCopyrightText: 2022-2023 Julian Amann <dev@vertexwahn.de>
     SPDX-License-Identifier: Apache-2.0
 """
 
-load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-git_repository(
-    name = "io_bazel_rules_dotnet",
-    remote = "https://github.com/bazelbuild/rules_dotnet",
-    tag = "0.0.4",
+http_archive(
+    name = "rules_dotnet",
+    sha256 = "77575d68c609d98b92f3df8db79944e7b60c035766e1c233349aeb1659c86ff9",
+    strip_prefix = "rules_dotnet-0.8.12",
+    url = "https://github.com/bazelbuild/rules_dotnet/releases/download/v0.8.12/rules_dotnet-v0.8.12.tar.gz",
 )
 
 load(
-    "@io_bazel_rules_dotnet//dotnet:defs.bzl",
-    "core_register_sdk",
+    "@rules_dotnet//dotnet:repositories.bzl",
     "dotnet_register_toolchains",
-    "dotnet_repositories",
-    "mono_register_sdk",
-    "net_register_sdk",
+    "rules_dotnet_dependencies",
 )
 
-dotnet_repositories()
+rules_dotnet_dependencies()
 
-dotnet_register_toolchains()
+dotnet_register_toolchains("dotnet", "7.0.101")
 
-mono_register_sdk()
+load("@rules_dotnet//dotnet:rules_dotnet_nuget_packages.bzl", "rules_dotnet_nuget_packages")
 
-core_register_sdk(
-    "v2.1.502",
-    name = "core_sdk",
-)
+rules_dotnet_nuget_packages()
 
-net_register_sdk(
-    "net471",
-    name = "net_sdk",
-)
+load("@rules_dotnet//dotnet:paket2bazel_dependencies.bzl", "paket2bazel_dependencies")
+
+paket2bazel_dependencies()
+
+load("//:example_deps.bzl", "example_deps")
+
+example_deps()

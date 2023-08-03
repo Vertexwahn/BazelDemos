@@ -1,14 +1,26 @@
 """
-    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-FileCopyrightText: 2022-2023 Julian Amann <dev@vertexwahn.de>
     SPDX-License-Identifier: Apache-2.0
 """
 
-load("@io_bazel_rules_dotnet//dotnet:defs.bzl", "dotnet_binary")
+load(
+    "@rules_dotnet//dotnet:defs.bzl",
+    "csharp_binary",
+)
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 
-dotnet_binary(
-    name = "hello_world",
-    srcs = [
-        "hello_world.cs",
-    ],
+bzl_library(
+    name = "example_deps",
+    srcs = ["example_deps.bzl"],
     visibility = ["//visibility:public"],
+    deps = ["@rules_dotnet//dotnet:defs"],
+)
+
+csharp_binary(
+    name = "hello_world",
+    srcs = ["hello_world.cs"],
+    private_deps = [
+        "@example_deps//microsoft.netcore.app.ref",
+    ],
+    target_frameworks = ["net6.0"],
 )
