@@ -15,6 +15,6 @@ cc_binary(
 )
 
 wasm_cc_binary(
-    name = "index-wasm",
+    name = "index_wasm",
     cc_target = ":index",
 )

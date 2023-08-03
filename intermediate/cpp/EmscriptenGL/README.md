@@ -7,20 +7,20 @@
 ## Ubuntu 22.04
 
 ```shell
-bazel build --config=gcc11 -- //:index-wasm
+bazel build --config=gcc11 -- //:index_wasm
 bazel_genfiles=$(bazel info bazel-genfiles)
-sudo cp index.html $bazel_genfiles/index-wasm/index.html # sudo required!
-cd $bazel_genfiles/index-wasm/
+sudo cp index.html $bazel_genfiles/index_wasm/index.html # sudo required!
+cd $bazel_genfiles/index_wasm/
 python3 -m http.server
 ```
 
 ## macOS
 
 ```shell
-bazel build --config=macos -- //:index-wasm
+bazel build --config=macos -- //:index_wasm
 bazel_genfiles=$(bazel info bazel-genfiles)
-sudo cp index.html $bazel_genfiles/index-wasm/index.html # sudo required!
-cd $bazel_genfiles/index-wasm/
+sudo cp index.html $bazel_genfiles/index_wasm/index.html # sudo required!
+cd $bazel_genfiles/index_wasm/
 python3 -m http.server
 ```
 
