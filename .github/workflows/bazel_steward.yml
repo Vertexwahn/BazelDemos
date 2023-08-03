@@ -7,9 +7,9 @@ on:
 
 jobs:
   bazel-steward:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: VirtusLab/bazel-steward@latest
+      - uses: VirtusLab/bazel-steward@v1
