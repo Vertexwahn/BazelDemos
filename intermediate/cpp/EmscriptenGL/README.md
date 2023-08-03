@@ -28,5 +28,5 @@ python3 -m http.server
 
 ## References
 
-- https://blog.feather.systems/WebGL.html
-- https://medium.com/cyberbotics/porting-a-c-rendering-engine-to-webassembly-9c32d76c31f1
+- [WebGL with Emscripten: The Bare Minimum](https://blog.feather.systems/WebGL.html)
+- [Porting a C++ Rendering Engine to WebAssembly](https://medium.com/cyberbotics/porting-a-c-rendering-engine-to-webassembly-9c32d76c31f1)
