@@ -1,4 +1,4 @@
-# Emscripten OpenGL + GLWF Demo
+# Emscripten OpenGL Demo
 
 ## Ubuntu 22.04
 
