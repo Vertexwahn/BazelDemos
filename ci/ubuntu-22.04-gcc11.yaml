@@ -71,15 +71,21 @@ steps:
   - script: |
       ROOT_DIR=$(pwd)
 
-      echo "Erlang"
       cd ${ROOT_DIR}/hello_world/erlang
       bazel build //...
       bazel run //:hello_world
+    displayName: "Hello World Erlang"
 
-      echo "Go"
+  - script: |
+      ROOT_DIR=$(pwd)
+
       cd ${ROOT_DIR}/hello_world/go
       bazel build //...
       bazel run //:hello_world
+    displayName: "Hello World Go"
+
+  - script: |
+      ROOT_DIR=$(pwd)
 
       echo "Java"
       cd ${ROOT_DIR}/hello_world/java
