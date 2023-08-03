@@ -1,4 +1,10 @@
+
+
 # Emscripten OpenGL Demo
+
+> Note: This demo is based on the blog post
+ "WebGL with Emscripten: The Bare Minimum"
+ which can be found at https://blog.feather.systems/WebGL.html
 
 ## Ubuntu 22.04
 

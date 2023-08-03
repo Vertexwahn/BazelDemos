@@ -1,4 +1,7 @@
-build --symlink_prefix=/ # Suppress symlink creation (to avoid untracked files issues with git)
+#
+#   SPDX-FileCopyrightText: Copyright 2022-2023 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
 
 # GCC 11.3
 #build:gcc11 --cxxopt=-std=c++23 # blocked by emsdk
