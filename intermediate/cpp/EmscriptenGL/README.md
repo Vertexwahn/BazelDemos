@@ -1,5 +1,3 @@
-
-
 # Emscripten OpenGL Demo
 
 > Note: This demo is based on the blog post
