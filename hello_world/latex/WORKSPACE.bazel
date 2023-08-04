@@ -7,9 +7,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "bazel_latex",
-    sha256 = "52eff66049f05716889e06ac71fffdc95c3f0270bd354c8e6c502244577f0748",
-    strip_prefix = "bazel-latex-1.2.0",
-    url = "https://github.com/ProdriveTechnologies/bazel-latex/archive/refs/tags/v1.2.0.tar.gz",
+    sha256 = "82c99edaca50f938cb4881650737174eefedac844350b530942b874540400610",
+    strip_prefix = "bazel-latex-1.2.1",
+    url = "https://github.com/ProdriveTechnologies/bazel-latex/archive/refs/tags/v1.2.1.tar.gz",
 )
 
 load("@bazel_latex//:repositories.bzl", "latex_repositories")
