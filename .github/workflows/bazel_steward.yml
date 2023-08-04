@@ -12,12 +12,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: VirtusLab/bazel-steward@v1
+      - uses: VirtusLab/bazel-steward@latest
         with:
-          additional-args: core_principles/bzlmod
-      - uses: VirtusLab/bazel-steward@v1
-        with:
-          additional-args: core_principles/genrule
-      - uses: VirtusLab/bazel-steward@v1
-        with:
-          additional-args: hello_world/csharp
+          additional-args: ./hello_world/latex
