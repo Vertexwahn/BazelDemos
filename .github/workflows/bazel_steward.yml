@@ -15,6 +15,9 @@ jobs:
       #- uses: VirtusLab/bazel-steward@v1.0.2
       #  with:
       #    additional-args: 'hello_world/latex'
+      #- uses: VirtusLab/bazel-steward@v1.0.2
+      #  with:
+      #    additional-args: 'intermediate/go/Json'
       - uses: VirtusLab/bazel-steward@v1.0.2
         with:
-          additional-args: 'intermediate/go/Json'
+          additional-args: 'intermediate/cpp/Catch2'
