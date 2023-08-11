@@ -1,0 +1,35 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
+
+cc_binary(
+    name = "index",
+    srcs = ["main.cpp"],
+    linkopts = [
+        "-s USE_GLFW=3",
+        "-s USE_WEBGPU=1",
+        "-s WASM=1",
+        "-s ALLOW_MEMORY_GROWTH=1",
+        "-s NO_EXIT_RUNTIME=0",
+        "-s ASSERTIONS=1",
+    ],
+    tags = ["manual"],
+)
+
+wasm_cc_binary(
+    name = "index-wasm",
+    cc_target = ":index",
+)
+
+cc_binary(
+    name = "main",
+    srcs = [
+        "main.cpp",
+    ],
+    deps = [
+        "@glfw",
+    ] + select({
+        "@platforms//os:linux": ["@system_libs//:x11"],
+        "@platforms//os:windows": [],
+        "@bazel_tools//src/conditions:darwin": [],
+    }),
+)

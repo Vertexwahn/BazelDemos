@@ -1,0 +1,29 @@
+load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+cc_binary(
+    name = "index",
+    srcs = ["main.cpp"],
+    linkopts = [
+        "-s USE_GLFW=3",
+        "-s WASM=1",
+        "-s ALLOW_MEMORY_GROWTH=1",
+        "-s NO_EXIT_RUNTIME=0",
+        "-s ASSERTIONS=1",
+    ],
+    tags = ["manual"],
+)
+
+wasm_cc_binary(
+    name = "index_wasm",
+    cc_target = ":index",
+)
+
+pkg_tar(
+    name = "emscripten_webgl_demo_archive",
+    srcs = [
+        ":index_wasm", # buildifier: leave-alone # must come first - do not reorder!
+        ":index.html",
+    ],
+)

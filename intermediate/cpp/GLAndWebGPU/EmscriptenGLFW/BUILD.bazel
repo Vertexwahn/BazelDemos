@@ -1,0 +1,43 @@
+#load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
+
+cc_binary(
+    name = "index",
+    srcs = [
+        "linmath.h",
+        "main.cpp",
+    ],
+    defines = ["__EMSCRIPTEN__"],
+    linkopts = [
+        "-s USE_GLFW=3",
+        #"-s USE_WEBGPU=1",
+        #"-s WASM=1",
+        "-s ALLOW_MEMORY_GROWTH=1",
+        "-s NO_EXIT_RUNTIME=0",
+        "-s ASSERTIONS=1",
+    ],
+    tags = ["manual"],
+)
+
+wasm_cc_binary(
+    name = "index-wasm",
+    cc_target = ":index",
+)
+
+cc_binary(
+    name = "main",
+    srcs = [
+        "linmath.h",
+        "main.cpp",
+    ],
+    deps = [
+        "//glad",
+        "@glfw",
+    ] + select({
+        "@platforms//os:linux": ["@system_libs//:x11"],
+        "@platforms//os:windows": [],
+        "@bazel_tools//src/conditions:darwin": [],
+        #"@rules_qt//:osx_arm64": [],
+        #"@rules_qt//:osx_x86_64": [],
+    }),
+)

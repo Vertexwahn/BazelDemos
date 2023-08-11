@@ -1,0 +1,53 @@
+genrule(
+    name = "foo",
+    srcs = [],
+    outs = ["foo.h"],
+    cmd = "./$(location create_foo.pl) > \"$@\"",
+    tools = ["create_foo.pl"],
+)
+
+cc_library(
+    name = "foo_lib",
+    hdrs = ["foo.h"],
+)
+
+genrule(
+    name = "foo2",
+    srcs = [],
+    outs = ["foo2.h"],
+    cmd = "./$(location create_foo.py) > \"$@\"",
+    tools = ["create_foo.py"],
+)
+
+cc_library(
+    name = "foo2_lib",
+    hdrs = ["foo2.h"],
+)
+
+py_binary(
+    name = "create_foo3",
+    srcs = ["create_foo3.py"],
+)
+
+genrule(
+    name = "foo3",
+    srcs = [],
+    outs = ["weights/foo3.h"],
+    cmd = "./$(location //:create_foo3) > \"$@\"",
+    tools = ["//:create_foo3"],
+)
+
+cc_library(
+    name = "foo3_lib",
+    hdrs = ["weights/foo3.h"],
+)
+
+cc_binary(
+    name = "Demo",
+    srcs = ["main.cpp"],
+    deps = [
+        ":foo2_lib",
+        ":foo3_lib",
+        ":foo_lib",
+    ],
+)

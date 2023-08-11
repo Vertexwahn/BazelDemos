@@ -1,0 +1,89 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
+load("@rules_qt//:qt.bzl", "qt_cc_binary", "qt_cc_library")
+
+qt_cc_library(
+    name = "render_widget",
+    srcs = [
+        "qt/render_widget.cpp",
+    ],
+    hdrs = ["qt/render_widget.h"],
+    deps = [
+        "@rules_qt//:qt_widgets",
+    ],
+)
+
+qt_cc_binary(
+    name = "DawnDemo",
+    srcs = [
+        "defines.h",
+        "main.cpp",
+        "qt/webgpu.cpp",
+        "qt/window.cpp",
+        "webgpu.h",
+        "window.h",
+    ],
+    deps = [
+        "//:render_widget",
+        "@dawn",
+        "@rules_qt//:qt_core",
+        "@rules_qt//:qt_qml",
+        "@rules_qt//:qt_widgets",
+    ],
+)
+
+cc_binary(
+    name = "DawnDemoGlfw",
+    srcs = [
+        "dawn_with_glfw.cpp",
+    ],
+    deps = [
+        "@dawn",
+        "@glfw",
+        "@vulkan_sdk//:vulkan",
+    ] + select({
+        "@platforms//os:linux": ["@system_libs//:x11"],
+        "@platforms//os:windows": [],
+        "@bazel_tools//src/conditions:darwin": [],
+    }),
+)
+
+cc_binary(
+    name = "index",
+    srcs = [
+        "defines.h",
+        "ems/webgpu.cpp",
+        "ems/window.cpp",
+        "main.cpp",
+        "webgpu.h",
+        "window.h",
+    ],
+    copts = [
+        "-Wno-unused-variable",
+        "-Wno-unused-but-set-variable",
+        "-Wno-unused-function",
+        "-fexceptions",
+    ],
+    data = ["ems/shell.html"],
+    linkopts = [
+        "-s USE_GLFW=3",
+        "-s USE_WEBGPU=1",
+        "-s WASM=1",
+        "-s ALLOW_MEMORY_GROWTH=1",
+        "-s NO_EXIT_RUNTIME=0",
+        "-s ASSERTIONS=1",
+        "-s ERROR_ON_UNDEFINED_SYMBOLS=0",
+        "--bind",
+    ],
+    tags = ["manual"],
+)
+
+wasm_cc_binary(
+    name = "index-wasm",
+    cc_target = ":index",
+)

@@ -1,0 +1,9 @@
+#
+#   SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
+
+# Consider also to use --strategy_regexp
+build --spawn_strategy=local
+run --spawn_strategy=local
+test --spawn_strategy=local

@@ -1,0 +1,101 @@
+openapi: 3.0.9
+info:
+  title: Hello World API
+  description: Say hello API
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: /hello-service/v1
+tags:
+- name: Hello Service
+  description: Hello Service to say hello
+# - name: Other Service
+#  description: Other Service with different tag & API interface
+paths:               
+  /hello:
+    put:
+      tags:
+      - Hello Service
+      summary: update the way to say hello. 
+      operationId: updateHello
+      responses:
+        200:
+          description: Updated the way to say hello
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hello' # this can be in another file 'path/to/file#/components/schemas/Hello'
+        500:
+          description: Error to update
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'     
+    get:
+      tags:
+      - Hello Service
+      summary: Get hello 
+      operationId: getHello
+      responses:
+        200:
+          description: Got hello object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hello'
+        500:
+          description: Error getting hello
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'    
+  /hello/{language}:   
+    get:
+      tags:
+      - Hello Service
+      summary: Get hello by language 
+      operationId: getHelloByLang
+      parameters:
+      - name: language
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Got hello object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hello'
+        500:
+          description: Error getting hello
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'        
+components:
+  schemas:
+    Hello:
+      type: object
+      properties:
+        language:
+          type: string
+          enum:
+            - English
+            - French
+            - Chinese
+          default: English
+        Content:
+          type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error message

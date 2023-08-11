@@ -1,0 +1,59 @@
+load("@openapi_tools_generator_bazel//:defs.bzl", "openapi_generator")
+load("@io_bazel_rules_k8s//k8s:object.bzl", "k8s_object")
+load("@k8s_deploy//:defaults.bzl", "k8s_deploy")
+load("@io_bazel_rules_docker//cc:image.bzl", "cc_image")
+
+openapi_generator(
+    name = "hello_world_pistache_stub",
+    generator = "cpp-pistache-server",
+    spec = "hello_world.yaml",
+)
+
+cc_library(
+    name = "hello_world",
+    srcs =
+        glob(["hello_world/**/*.cpp"]) + glob(["hello_world/**/*.h"]),
+    includes = [
+        "hello_world/api",
+        "hello_world/impl",
+        "hello_world/model",
+    ],
+    deps = [
+        "@nlohmann_json//:json",
+        "@pistache//:pistache_lib",
+        #":hello_world_pistache_stub"
+    ],
+)
+
+cc_binary(
+    name = "mops_server",
+    srcs = ["mops.cpp"],
+    deps = [":hello_world"],
+)
+
+cc_image(
+    name = "server",
+    base = "@ubuntu//image",
+    binary = ":mops_server",
+)
+
+k8s_deploy(
+    name = "staging",
+    args = [
+        "--v=2",
+    ],
+    images = {
+        "hello-http-image:latest": ":server",
+    },
+    template = "deployment.yaml",
+)
+
+k8s_object(
+    name = "server-k8s",
+    cluster = "minikube",
+    images = {
+        "hello-http-image:latest": ":server",
+    },
+    kind = "create",
+    template = "deployment.yaml",
+)

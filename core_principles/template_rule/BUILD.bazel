@@ -1,0 +1,24 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("//bazel:expand_template.bzl", "expand_template")
+
+expand_template(
+    name = "config_h",
+    out = "kernels/config.h",
+    substitutions = {
+        "@VERSION_STR@": "1.0.3",
+    },
+    template = "config.h.in",
+)
+
+cc_binary(
+    name = "HelloWorld",
+    srcs = [
+        "kernels/bvh/some_header.h",
+        "main.cpp",
+        ":config_h",
+    ],
+)

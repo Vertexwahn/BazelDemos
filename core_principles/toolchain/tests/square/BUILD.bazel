@@ -1,0 +1,8 @@
+load("@rules_ispc//:ispc.bzl", "ispc_cc_library2")
+
+ispc_cc_library2(
+    name = "square",
+    srcs = ["square.ispc"],
+    generated_header_filename = "square.h",
+    ispc_main_source_file = "square.ispc",
+)

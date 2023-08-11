@@ -1,0 +1,11 @@
+#
+#   SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
+
+build --symlink_prefix=/ # Out of source build
+
+build--cxxopt=-std=c++2a
+build --cxxopt=-Wall
+
+build --spawn_strategy=local

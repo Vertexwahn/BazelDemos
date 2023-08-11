@@ -1,0 +1,23 @@
+name: Bazel Steward
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 5 * * *' # runs every day at 5:30 am
+
+jobs:
+  bazel-steward: # Seems not to work -> https://github.com/VirtusLab/bazel-steward/issues/290
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      #- uses: VirtusLab/bazel-steward@v1.0.2
+      #  with:
+      #    additional-args: 'hello_world/latex'
+      #- uses: VirtusLab/bazel-steward@v1.0.2
+      #  with:
+      #    additional-args: 'intermediate/go/Json'
+      - uses: VirtusLab/bazel-steward@v1.0.2
+        with:
+          additional-args: 'intermediate/cpp/Catch2'

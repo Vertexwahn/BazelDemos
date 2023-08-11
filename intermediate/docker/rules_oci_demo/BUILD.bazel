@@ -1,0 +1,27 @@
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+pkg_tar(
+    name = "app",
+    srcs = ["test.sh"],
+)
+
+oci_image(
+    name = "image",
+    base = "@ubuntu",
+    cmd = ["test.sh"],
+    tars = ["app.tar"],
+)
+
+oci_tarball(
+    name = "tarball",
+    image = ":image",
+    repo_tags = ["vertexwahn/my_example:v0.0.1"],
+)
+
+oci_push(
+    name = "push",
+    image = ":image",
+    remote_tags = ["v0.0.1"],
+    repository = "vertexwahn/my_example",
+)

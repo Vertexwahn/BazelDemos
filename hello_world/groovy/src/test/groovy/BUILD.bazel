@@ -1,0 +1,11 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@io_bazel_rules_groovy//groovy:groovy.bzl", "groovy_junit_test")
+
+groovy_junit_test(
+    name = "HelloWorldTest",
+    tests = ["HelloWorldTest.groovy"],
+)

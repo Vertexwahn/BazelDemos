@@ -1,0 +1,13 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@io_bazel_rules_k8s//k8s:object.bzl", "k8s_object")
+
+k8s_object(
+    name = "nginx",
+    cluster = "minikube",
+    kind = "create",
+    template = "nginx-deployment.yaml",
+)

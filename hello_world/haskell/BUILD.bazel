@@ -1,0 +1,20 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load(
+    "@rules_haskell//haskell:defs.bzl",
+    "haskell_binary",
+    "haskell_toolchain_library",
+)
+
+package(default_visibility = ["//visibility:public"])
+
+haskell_toolchain_library(name = "base")
+
+haskell_binary(
+    name = "HelloWorld",
+    srcs = [":HelloWorld.hs"],
+    deps = [":base"],
+)

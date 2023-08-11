@@ -1,0 +1,7 @@
+update-rules:
+  - kinds: bazel
+    enabled: false
+  - dependencies:
+      - bazel-skylib
+      - rules_scala
+    enabled: false

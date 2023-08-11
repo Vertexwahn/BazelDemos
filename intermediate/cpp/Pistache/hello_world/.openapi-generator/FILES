@@ -1,0 +1,14 @@
+.openapi-generator-ignore
+CMakeLists.txt
+README.md
+api/HelloServiceApi.cpp
+api/HelloServiceApi.h
+impl/HelloServiceApiImpl.cpp
+impl/HelloServiceApiImpl.h
+main-api-server.cpp
+model/Error.cpp
+model/Error.h
+model/Hello.cpp
+model/Hello.h
+model/Helpers.cpp
+model/Helpers.h

@@ -1,0 +1,34 @@
+#
+#   SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
+
+
+jobs:
+  - job: Ubuntu20GCC9
+    displayName: "GCC9 on Ubuntu 20.04"
+    pool:
+      vmImage: 'ubuntu-20.04'
+    steps:
+      - template: ci/ubuntu-20.04-gcc9.yaml
+
+  - job: Ubuntu22GCC11
+    displayName: "GCC11 on Ubuntu 22.04"
+    pool:
+      vmImage: 'ubuntu-22.04'
+    steps:
+      - template: ci/ubuntu-22.04-gcc11.yaml
+  
+  - job: MacOSClang14Monterey
+    displayName: "Apple Clang14 on macOS 12 (Monterey)"
+    pool:
+      vmImage: 'macOS-12'
+    steps:
+      - template: ci/macOS-12-apple-clang14.yaml
+
+  - job: VisualStudio2022
+    displayName: "VS2022 on Windows Server 2022"
+    pool:
+      vmImage: 'windows-2022'
+    steps:
+      - template: ci/windows-2022-vs2022.yaml

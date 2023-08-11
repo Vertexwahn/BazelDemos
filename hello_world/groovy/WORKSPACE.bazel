@@ -1,0 +1,17 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "io_bazel_rules_groovy",
+    sha256 = "3aa52d874e9ceba3261da27fbb7903da21d5806ad207b985a592551136d34dc6",
+    strip_prefix = "rules_groovy-d55a16c68d9ccd7e07bed5e3e46219bd2e55eda6",
+    url = "https://github.com/bazelbuild/rules_groovy/archive/d55a16c68d9ccd7e07bed5e3e46219bd2e55eda6.tar.gz",
+)
+
+load("@io_bazel_rules_groovy//groovy:repositories.bzl", "rules_groovy_dependencies")
+
+rules_groovy_dependencies()

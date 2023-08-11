@@ -1,0 +1,17 @@
+load(":tree.bzl", "tree")
+
+tree(
+    name = "gen_tree",
+)
+
+cc_library(
+    name = "lib",
+    srcs = [":gen_tree"],
+    hdrs = [":gen_tree"],
+)
+
+cc_binary(
+    name = "Testbed",
+    srcs = ["main.cpp"],
+    deps = [":lib"],
+)

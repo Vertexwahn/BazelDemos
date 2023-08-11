@@ -1,0 +1,5 @@
+6.1.1
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright Contributors to the OpenEXR Project.
+
+# NOTE: Other versions of Bazel should work too. Nevertheless, this project was tested with the defined version.

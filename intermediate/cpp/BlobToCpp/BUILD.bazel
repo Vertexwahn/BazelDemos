@@ -1,0 +1,22 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("//bazel:odin_generte_cpp_from_blob.bzl", "generate_cpp_from_blob_cc_library")
+
+py_binary(
+    name = "blob_to_cpp",
+    srcs = ["scripts/blob_to_cpp.py"],
+    data = ["weights/rt_alb.tza"],
+)
+
+generate_cpp_from_blob_cc_library(
+    name = "rt_alb.tza",
+)
+
+cc_binary(
+    name = "Demo",
+    srcs = ["main.cpp"],
+    deps = [":rt_alb.tza"],
+)

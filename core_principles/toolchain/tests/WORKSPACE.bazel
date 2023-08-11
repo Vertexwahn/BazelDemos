@@ -1,0 +1,12 @@
+local_repository(
+    name = "rules_ispc",
+    path = "..",
+)
+
+load("@rules_ispc//:fetch_ispc.bzl", "fetch_ispc")
+
+fetch_ispc()
+
+load("@rules_ispc//tools:ispc_toolchain.bzl", "register_ispc_toolchains")
+
+register_ispc_toolchains()

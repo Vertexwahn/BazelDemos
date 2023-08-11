@@ -1,0 +1,22 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+#http_archive(
+#    name = "googletest",
+#    sha256 = "1d5e983023e43a695d3f49ceaed4e0010baaeb4591d88532b779669dc8f6a68e",
+#    strip_prefix = "googletest-a652ae05755c5d95e9b11ef0c4bc0b715e4332d4",
+#    urls = [
+#        "https://github.com/google/googletest/archive/a652ae05755c5d95e9b11ef0c4bc0b715e4332d4.tar.gz",
+#    ],
+#)
+
+http_archive(
+    name = "googletest",
+    sha256 = "8ad598c73ad796e0d8280b082cebd82a630d73e73cd3c70057938a6501bba5d7",
+    strip_prefix = "googletest-1.14.0",
+    urls = ["https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz"],
+)

@@ -1,0 +1,1 @@
+root/prepared_for_bazel_use

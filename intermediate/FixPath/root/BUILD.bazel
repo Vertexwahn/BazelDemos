@@ -1,0 +1,28 @@
+load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
+
+expand_template(
+    name = "modifiy_use_for_bazel",
+    out = "prepared_for_bazel_use.py",
+    substitutions = {
+        "gen/a.txt": "root/gen/a.txt",
+        "gen/a2.txt": "root/gen/a.txt",
+    },
+    template = "use.py",
+)
+
+py_binary(
+    name = "prepared_for_bazel_use",
+    srcs = ["prepared_for_bazel_use.py"],
+    data = [
+        "gen/a.txt",
+        "gen/a2.txt",
+    ],
+)
+
+sh_binary(
+    name = "use",
+    srcs = ["use.sh"],
+    data = [
+        ":prepared_for_bazel_use",
+    ],
+)

@@ -1,0 +1,8 @@
+workspace(name = "DownloadFile")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
+
+http_file(
+    name = "chalettexture",
+    urls = ["https://vulkan-tutorial.com/resources/chalet.jpg"],
+)

@@ -1,0 +1,10 @@
+package(
+    default_visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "bar",
+    srcs = ["bar.cpp"],
+    hdrs = ["bar.h"],
+    deps = [":something"],
+)

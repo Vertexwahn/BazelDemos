@@ -1,0 +1,10 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+cc_test(
+    name = "my_test",
+    srcs = ["my_test.cpp"],
+    deps = ["@catch2//:catch2_main"],
+)

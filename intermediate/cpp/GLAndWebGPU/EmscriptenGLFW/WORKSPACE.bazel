@@ -1,0 +1,76 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+#-------------------------------------------------------------
+# Emscripten
+#-------------------------------------------------------------
+
+http_archive(
+    name = "emsdk",
+    sha256 = "0c8170d433a51515b524ba07f46b4a893e8790645d5d54935c12669c628a3610",
+    strip_prefix = "emsdk-c04b1bbb3a62bdfa4d69903c870075339b5c77ae/bazel",
+    url = "https://github.com/emscripten-core/emsdk/archive/c04b1bbb3a62bdfa4d69903c870075339b5c77ae.tar.gz",
+)
+
+load("@emsdk//:deps.bzl", emsdk_deps = "deps")
+
+emsdk_deps()
+
+load("@emsdk//:emscripten_deps.bzl", emsdk_emscripten_deps = "emscripten_deps")
+
+emsdk_emscripten_deps(emscripten_version = "3.1.32")
+
+load("@emsdk//:toolchains.bzl", "register_emscripten_toolchains")
+
+register_emscripten_toolchains()
+
+#-------------------------------------------------------------
+# Python
+#-------------------------------------------------------------
+
+http_archive(
+    name = "rules_python",
+    sha256 = "0a8003b044294d7840ac7d9d73eef05d6ceb682d7516781a4ec62eeb34702578",
+    strip_prefix = "rules_python-0.24.0",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.24.0/rules_python-0.24.0.tar.gz",
+)
+
+load("@rules_python//python:pip.bzl", "pip_parse")
+
+# Create a central repo that knows about the dependencies needed from
+# requirements_lock.txt.
+pip_parse(
+    name = "my_deps",
+    requirements_lock = "//:requirements.txt",
+)
+
+# Load the starlark macro which will define your dependencies.
+load("@my_deps//:requirements.bzl", "install_deps")
+
+# Call it to define repos for your requirements.
+install_deps()
+
+#-------------------------------------------------------------
+# GLFW
+#-------------------------------------------------------------
+
+GLFW_VERSION = "3.3.8"
+
+http_archive(
+    name = "glfw",
+    build_file = "//:glfw.BUILD",
+    sha256 = "f30f42e05f11e5fc62483e513b0488d5bceeab7d9c5da0ffe2252ad81816c713",
+    strip_prefix = "glfw-{}".format(GLFW_VERSION),
+    urls = ["https://github.com/glfw/glfw/archive/{}.tar.gz".format(GLFW_VERSION)],
+)
+
+new_local_repository(
+    name = "system_libs",
+    build_file_content = """cc_library(
+    name = "x11",
+    srcs = ["libX11.so"],
+    visibility = ["//visibility:public"],
+)
+""",
+    # pkg-config --variable=libdir x11
+    path = "/usr/lib/x86_64-linux-gnu",
+)
