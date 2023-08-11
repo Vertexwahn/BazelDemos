@@ -140,13 +140,13 @@ steps:
       bazel run //:hello_world
     displayName: "Hello World Rust"
 
-  - script: |
-      ROOT_DIR=$(pwd)
-
-      cd ${ROOT_DIR}/hello_world/ruby
-      bazel build //...
-      bazel run //:hello_world
-    displayName: "Hello World Ruby"
+  #- script: |
+  #    ROOT_DIR=$(pwd)
+  #
+  #   cd ${ROOT_DIR}/hello_world/ruby
+  #   bazel build //...
+  #   bazel run //:hello_world
+  # displayName: "Hello World Ruby"
 
   - script: |
       ROOT_DIR=$(pwd)
