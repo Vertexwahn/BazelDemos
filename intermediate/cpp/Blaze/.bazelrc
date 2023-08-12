@@ -1,0 +1,10 @@
+# GCC 9.3
+build:gcc9 --cxxopt=-std=c++2a
+build:gcc9 --cxxopt=-Wall
+build:gcc9 --define compiler=gcc9
+
+# GCC 11.3
+build:gcc11 --cxxopt=-std=c++20
+build:gcc11 --cxxopt=-Wall
+build:gcc11 --define compiler=gcc11
+build:gcc11 --cxxopt=-fpermissive

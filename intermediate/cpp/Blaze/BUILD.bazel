@@ -3,6 +3,6 @@ cc_binary(
     srcs = ["main.cpp"],
     visibility = ["//visibility:public"],
     deps = [
-        "@blaze",
+        "@blaze-math//:blaze",
     ],
 )
