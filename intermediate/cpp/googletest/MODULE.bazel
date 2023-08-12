@@ -6,4 +6,4 @@ module(
     repo_name = "de_vertexwahn_googletest_demo",
 )
 
-bazel_dep(name = "googletest", version = "1.11.0")
+bazel_dep(name = "googletest", version = "1.14.0")

@@ -1,34 +1,104 @@
 #
-#   SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+#   SPDX-FileCopyrightText: 2022-2023 Julian Amann <dev@vertexwahn.de>
 #   SPDX-License-Identifier: Apache-2.0
 #
 
 
 jobs:
-  - job: Ubuntu20GCC9
-    displayName: "GCC9 on Ubuntu 20.04"
+  - job: CorePrinciplesMacOS12
+    displayName: 'Core Principles: macOS 12 (Monterey)'
     pool:
-      vmImage: 'ubuntu-20.04'
+      vmImage: macOS-12
+    steps:
+      - template: ci/core-principles-macOS-12.yaml
+
+  - job: CorePrinciplesMacOS13
+    displayName: 'Core Principles: macOS 13 (Monterey)'
+    pool:
+      vmImage: macOS-13
+    steps:
+      - template: ci/core-principles-macOS-12.yaml
+
+  - job: CorePrinciplesUbuntu20
+    displayName: 'Core Principles: Ubuntu 20.04'
+    pool:
+      vmImage: ubuntu-20.04
+    steps:
+      - template: ci/core-principles-ubuntu-20.04.yaml
+
+  - job: CorePrinciplesUbuntu22
+    displayName: 'Core Principles: Ubuntu 22.04'
+    pool:
+      vmImage: ubuntu-22.04
+    steps:
+      - template: ci/core-principles-ubuntu-22.04.yaml
+
+  - job: HelloWorldMacOS12
+    displayName: 'Hello World: macOS 12 (Monterey)'
+    pool:
+      vmImage: macOS-12
+    steps:
+      - template: ci/hello-world-macOS-12.yaml
+
+  - job: HelloWorldMacOS13
+    displayName: 'Hello World: macOS 13 (Ventura)'
+    pool:
+      vmImage: macOS-13
+    steps:
+      - template: ci/hello-world-macOS-13.yaml
+
+  - job: HelloWorldUbuntu20
+    displayName: 'Hello World: Ubuntu 20.04'
+    pool:
+      vmImage: ubuntu-20.04
+    steps:
+      - template: ci/hello-world-ubuntu-20.04.yaml
+
+  - job: HelloWorldUbuntu22
+    displayName: 'Hello World: Ubuntu 22.04'
+    pool:
+      vmImage: ubuntu-22.04
+    steps:
+      - template: ci/hello-world-ubuntu-22.04.yaml
+
+  - job: HelloWorldWindows2019
+    displayName: "Hello World: Windows Server 2019"
+    pool:
+      vmImage: windows-2019
+    steps:
+      - template: ci/hello-world-windows-2019.yaml
+
+  - job: HelloWorldWindows2022
+    displayName: 'Hello World: Windows Server 2022'
+    pool:
+      vmImage: windows-2022
+    steps:
+      - template: ci/hello-world-windows-2022.yaml
+
+  - job: IntermediateMacOS12
+    displayName: 'Intermediate: macOS 12 (Monterey)'
+    pool:
+      vmImage: macOS-12
+    steps:
+      - template: ci/intermediate-macOS-12.yaml
+
+  - job: Ubuntu20GCC9
+    displayName: 'GCC9 on Ubuntu 20.04'
+    pool:
+      vmImage: ubuntu-20.04
     steps:
       - template: ci/ubuntu-20.04-gcc9.yaml
 
-  - job: Ubuntu22GCC11
-    displayName: "GCC11 on Ubuntu 22.04"
+  - job: IntermediateUbuntu22
+    displayName: 'Intermediate: Ubuntu 22.04'
     pool:
-      vmImage: 'ubuntu-22.04'
+      vmImage: ubuntu-22.04
     steps:
-      - template: ci/ubuntu-22.04-gcc11.yaml
+      - template: ci/intermediate-ubuntu-22.04.yaml
   
-  - job: MacOSClang14Monterey
-    displayName: "Apple Clang14 on macOS 12 (Monterey)"
-    pool:
-      vmImage: 'macOS-12'
-    steps:
-      - template: ci/macOS-12-apple-clang14.yaml
-
   - job: VisualStudio2022
-    displayName: "VS2022 on Windows Server 2022"
+    displayName: 'VS2022 on Windows Server 2022'
     pool:
-      vmImage: 'windows-2022'
+      vmImage: windows-2022
     steps:
       - template: ci/windows-2022-vs2022.yaml

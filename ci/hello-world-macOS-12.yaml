@@ -1,0 +1,137 @@
+#
+#   SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
+
+steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 1
+    lfs: false
+    submodules: false
+
+  - script: |
+      sw_vers
+      uname
+    displayName: "Show OS version"
+
+  - script: |
+      bazel version
+    displayName: "Show Bazel version"
+
+  - script: |
+      clang --version
+    displayName: "Show Clang version"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/bazel
+      bazel build //...
+    displayName: "Hello World Bazel"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/cpp
+      bazel build //...
+      bazel build --compilation_mode=dbg //...
+      bazel build --compilation_mode=opt //...
+      bazel run //:hello_world
+    displayName: "Hello World C++"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/cpp
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World C#"
+
+  #- script: |
+  #   ROOT_DIR=$(pwd)
+  #
+  #    cd ${ROOT_DIR}/hello_world/d
+  #   bazel build //...
+  #   bazel run //:hello_world
+  # displayName: "Hello World D"
+
+  #- script: |
+  #    ROOT_DIR=$(pwd)
+  #
+  #    cd ${ROOT_DIR}/hello_world/erlang
+  #    bazel build //...
+  #    bazel run //:hello_world
+  #  displayName: "Hello World Erlang"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/go
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Go"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/java
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Java"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/java_script
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Java Script"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/latex
+      bazel build //...
+    displayName: "Hello World LaTeX"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/perl
+      bazel build //...
+      bazel run //:hello_world
+
+    displayName: "Hello World Perl"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/python
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Python"
+
+  #- script: |
+  #    ROOT_DIR=$(pwd)
+  #
+  #    cd ${ROOT_DIR}/hello_world/rust
+  #    bazel build //...
+  #    bazel run //:hello_world
+  #  displayName: "Hello World Rust"
+
+  #- script: |
+  #    ROOT_DIR=$(pwd)
+  #
+  #   cd ${ROOT_DIR}/hello_world/ruby
+  #   bazel build //...
+  #   bazel run //:hello_world
+  # displayName: "Hello World Ruby"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+
+      cd ${ROOT_DIR}/hello_world/shell
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Shell"

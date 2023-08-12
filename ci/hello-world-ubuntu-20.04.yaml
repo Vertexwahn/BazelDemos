@@ -3,9 +3,6 @@
 #   SPDX-License-Identifier: Apache-2.0
 #
 
-# GCC 11 on Ubuntu 22.04
-# Make sure we can build with GCC 11
-
 steps:
   - checkout: self
     clean: true
@@ -25,23 +22,9 @@ steps:
       gcc --version
     displayName: "Show GCC version"
 
-  - script: |
-      sudo apt-get install erlang-base
-    displayName: "Install Erlang"
-
-  - script: |
-      ROOT_DIR=$(pwd)
-
-      echo "genrule"
-      cd ${ROOT_DIR}/core_principles/genrule
-      bazel build //...
-      bazel run //:Demo
-
-      echo "select"
-      cd ${ROOT_DIR}/core_principles/select
-      bazel build //...
-      bazel run //:hello_world
-    displayName: "core principles demos"
+  #- script: |
+  #    sudo apt-get install erlang-base
+  #  displayName: "Install Erlang"
 
   - script: |
       ROOT_DIR=$(pwd)
@@ -59,7 +42,6 @@ steps:
       bazel build --compilation_mode=opt //...
       bazel run //:hello_world
     displayName: "Hello World C++"
-
   - script: |
       ROOT_DIR=$(pwd)
 
@@ -76,13 +58,13 @@ steps:
       bazel run //:hello_world
     displayName: "Hello World D"
 
-  - script: |
-      ROOT_DIR=$(pwd)
-
-      cd ${ROOT_DIR}/hello_world/erlang
-      bazel build //...
-      bazel run //:hello_world
-    displayName: "Hello World Erlang"
+  #- script: |
+  #   ROOT_DIR=$(pwd)#
+  #
+  #   cd ${ROOT_DIR}/hello_world/erlang
+  #   bazel build //...
+  #   bazel run //:hello_world
+  # displayName: "Hello World Erlang"
 
   - script: |
       ROOT_DIR=$(pwd)
@@ -143,10 +125,10 @@ steps:
   #- script: |
   #    ROOT_DIR=$(pwd)
   #
-  #   cd ${ROOT_DIR}/hello_world/ruby
-  #   bazel build //...
-  #   bazel run //:hello_world
-  # displayName: "Hello World Ruby"
+  #    cd ${ROOT_DIR}/hello_world/ruby
+  #    bazel build //...
+  #    bazel run //:hello_world
+  #  displayName: "Hello World Ruby"
 
   - script: |
       ROOT_DIR=$(pwd)
@@ -155,43 +137,3 @@ steps:
       bazel build //...
       bazel run //:hello_world
     displayName: "Hello World Shell"
-
-  - script: |
-      ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/Catch2
-      bazel test --config=gcc11 //...
-      bazel test --config=gcc11 --compilation_mode=dbg //...
-      bazel test --config=gcc11 --compilation_mode=opt //...
-    displayName: "Bazel build Catch2 demo"
-
-  - script: |
-      ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/JsonForModernCpp
-      echo "fast"
-      bazel build --config=gcc11 //...
-      bazel test --config=gcc11 //...
-      echo "dbg"
-      bazel build --config=gcc11 --compilation_mode=dbg //...
-      bazel test --config=gcc11 --compilation_mode=dbg //...
-      echo "opt"
-      bazel build --config=gcc11 --compilation_mode=opt //...
-      #bazel test --config=gcc11 --compilation_mode=opt //...
-    displayName: "Bazel build & Test JsonForModernCpp demo"
-
-  - script: |
-      ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/fmt
-      bazel build //...
-    displayName: "Bazel build fmt demo gcc11-fastbuild"
-
-  - script: |
-      ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/oneTBB
-      bazel build //...
-    displayName: "Bazel build oneTBB demo gcc11-fastbuild"
-
-  - script: |
-      ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR
-      bazel build //...
-    displayName: "Bazel build OpenEXR demo gcc11-fastbuild"

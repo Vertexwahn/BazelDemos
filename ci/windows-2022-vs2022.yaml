@@ -3,8 +3,6 @@
 #   SPDX-License-Identifier: Apache-2.0
 #
 
-# VS2022 on Windows Server 2022
-# Make sure we can build with VS2022 in all different compilation modes
 steps:
   - checkout: self
     clean: true
@@ -29,56 +27,3 @@ steps:
       bazel build //...
       bazel run //:hello_world
     displayName: "core principles demos"
-
-  - script: |
-      SET ROOT_DIR=%cd%
-
-      echo "Bazel"
-      cd %ROOT_DIR%/hello_world/bazel
-      call bazel build //...
-
-      echo "Cpp"
-      cd %ROOT_DIR%/hello_world/Cpp
-      call bazel build //...
-      echo "hello_world dbg"
-      call bazel build --compilation_mode=dbg //...
-      echo "hello_world opt"
-      call bazel build --compilation_mode=opt //...
-      echo "run HelloWorld"
-      call bazel run //:hello_world
-
-      echo "Go"
-      cd %ROOT_DIR%/hello_world/go
-      call bazel build //...
-      call bazel run //:hello_world
-
-      echo "JavaScript"
-      cd %ROOT_DIR%/hello_world/java_script
-      call bazel build //...
-      call bazel run //:hello_world
-      
-      echo "Java"
-      cd %ROOT_DIR%/hello_world/java
-      call bazel build //...
-      call bazel run //:hello_world
-
-      # Currently Windows is not supported
-      #echo "LaTeX"
-      #cd %ROOT_DIR%/hello_world/latex
-      #bazel build //...
-
-      echo "Python"
-      cd %ROOT_DIR%/hello_world/python
-      call bazel build //...
-      call bazel run //:hello_world
-
-      echo "Rust"
-      cd %ROOT_DIR%/hello_world/rust
-      call bazel build //...
-      call bazel run //:hello_world
-
-      echo "Shell"
-      cd %ROOT_DIR%/hello_world/shell
-      call bazel build //...
-      call bazel run //:hello_world
-    displayName: "Hello World demos"

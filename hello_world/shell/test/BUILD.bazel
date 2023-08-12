@@ -9,14 +9,14 @@ sh_test(
     srcs = [
         "TestHelloWorld.sh",
     ],
-    data = ["//:hello_world.sh"],
+    data = ["//:HelloWorld.sh"],
 )
 
 sh_test(
     name = "TestHelloWorldUsingBach",
     srcs = ["TestHelloWorldUsingBach.sh"],
     data = [
-        "//:hello_world.sh",
+        "//:HelloWorld.sh",
         "@bach",
     ],
     deps = [

@@ -1,0 +1,128 @@
+#
+#   SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
+
+steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 1
+    lfs: false
+    submodules: false
+
+  - script: |
+      bazel version
+    displayName: "Show Bazel version"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/bazel
+      bazel build //...
+    displayName: "Hello World Bazel"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/cpp
+      bazel build //...
+      bazel build --compilation_mode=dbg //...
+      bazel build --compilation_mode=opt //...
+      bazel run //:hello_world
+    displayName: "Hello World C++"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/cpp
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World C#"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/d
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World D"
+
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #
+  #    cd %ROOT_DIR%/hello_world/erlang
+  #    bazel build //...
+  #    bazel run //:hello_world
+  #  displayName: "Hello World Erlang"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/go
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Go"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/java
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Java"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/java_script
+      bazel build --enable_runfiles //...
+      bazel run --enable_runfiles //:hello_world
+    displayName: "Hello World Java Script"
+
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #
+  #    cd %ROOT_DIR%/hello_world/latex
+  #    bazel build //...
+  #  displayName: "Hello World LaTeX"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/perl
+      bazel build //...
+      bazel run //:hello_world
+
+    displayName: "Hello World Perl"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/python
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Python"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/rust
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Rust"
+
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #
+  #   cd %ROOT_DIR%/hello_world/ruby
+  #   bazel build //...
+  #   bazel run //:hello_world
+  # displayName: "Hello World Ruby"
+
+  - script: |
+      SET ROOT_DIR=%cd%
+
+      cd %ROOT_DIR%/hello_world/shell
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Shell"
