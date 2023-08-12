@@ -12,15 +12,15 @@ steps:
 
   - script: |
       lsb_release -a
-    displayName: "Show OS version"
+    displayName: 'Show OS version'
 
   - script: |
       bazel version
-    displayName: "Show Bazel version"
+    displayName: 'Show Bazel version'
 
   - script: |
       gcc --version
-    displayName: "Show GCC version"
+    displayName: 'Show GCC version'
  
   - script: |
       ROOT_DIR=$(pwd)
@@ -42,29 +42,30 @@ steps:
       echo "opt"
       bazel build --config=gcc11 --compilation_mode=opt //...
       #bazel test --config=gcc11 --compilation_mode=opt //...
-    displayName: "Bazel build & Test JsonForModernCpp demo"
+    displayName: 'Bazel build & Test JsonForModernCpp demo'
 
   - script: |
       ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/intermediate/cpp/fmt
       bazel build //...
-    displayName: "fmt"
+      bazel build --enable_bzlmod //...
+    displayName: 'fmt'
 
   - script: |
       ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/intermediate/cpp/googletest
       bazel test --config=gcc11 //...
       bazel test --enable_bzlmod --config=gcc11 //...
-    displayName: "OpenEXR"
+    displayName: 'googletest'
 
   - script: |
       ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/intermediate/cpp/oneTBB
       bazel build //...
-    displayName: "oneTBB"
+    displayName: 'oneTBB'
 
   - script: |
       ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/intermediate/cpp/OpenEXR
       bazel build //...
-    displayName: "OpenEXR"
+    displayName: 'OpenEXR'

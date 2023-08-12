@@ -1,0 +1,7 @@
+
+module(
+    name = "fmt_demo",
+    version = "1.0.0",
+)
+
+bazel_dep(name = "fmt", version = "9.1.0")

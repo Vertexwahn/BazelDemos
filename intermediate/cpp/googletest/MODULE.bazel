@@ -1,5 +1,3 @@
-# To build with Bzlmod: `bazel build --enable_bzlmod //...`.
-
 module(
     name = "googletest_demo",
     version = "1.0.0",
