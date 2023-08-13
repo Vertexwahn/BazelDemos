@@ -1,0 +1,4 @@
+module(
+    name = "de_vertexwahn_hello_world_cpp",
+    version = "1.0.0",
+)

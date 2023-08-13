@@ -2,10 +2,11 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "io_bazel_rules_d",
-    urls = ["https://github.com/bazelbuild/rules_d/archive/0e23b60794508983f4a2d21137f5299cdaee6ae3.tar.gz"],
     sha256 = "c30aaca512a376058f9295a4d9c2b3a385ad323b6026295a715b48dd53e20520",
     strip_prefix = "rules_d-0e23b60794508983f4a2d21137f5299cdaee6ae3",
+    urls = ["https://github.com/bazelbuild/rules_d/archive/0e23b60794508983f4a2d21137f5299cdaee6ae3.tar.gz"],
 )
 
 load("@io_bazel_rules_d//d:d.bzl", "d_repositories")
+
 d_repositories()
