@@ -1,0 +1,6 @@
+# How to run?
+
+```shell
+bazel test --config=gcc11 //...
+bazel test --enable_bzlmod --config=gcc11 //...
+```
