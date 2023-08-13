@@ -4,4 +4,4 @@ module(
     version = "1.0.0",
 )
 
-bazel_dep(name = "fmt", version = "9.1.0")
+bazel_dep(name = "fmt", version = "10.1.0")

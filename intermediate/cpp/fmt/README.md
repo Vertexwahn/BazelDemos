@@ -6,7 +6,11 @@ This is an example that demonstrates how {fmt} can be used with Bazel.
 
 Install [Bazel](https://docs.bazel.build/versions/4.2.1/install.html) and run:
 
-    bazel run //:Demo
+
+```shell
+bazel run //:Demo
+bazel run --enable_bzlmod //:Demo
+```
 
 This should output `The answer is 42`.
 
