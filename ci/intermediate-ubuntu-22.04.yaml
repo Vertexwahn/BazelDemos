@@ -53,7 +53,7 @@ steps:
       echo "opt"
       bazel build --config=gcc11 --compilation_mode=opt //...
       #bazel test --config=gcc11 --compilation_mode=opt //...
-    displayName: 'Bazel build & Test JsonForModernCpp demo'
+    displayName: 'JsonForModernCpp'
 
   - script: |
       ROOT_DIR=$(pwd)

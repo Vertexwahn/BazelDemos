@@ -5,6 +5,13 @@
 
 
 jobs:
+  - job: CorePrinciplesMacOS11
+    displayName: 'Core Principles: macOS 11 (Big Sur)'
+    pool:
+      vmImage: macOS-11
+    steps:
+      - template: ci/core-principles-macOS-12.yaml
+
   - job: CorePrinciplesMacOS12
     displayName: 'Core Principles: macOS 12 (Monterey)'
     pool:
@@ -33,12 +40,26 @@ jobs:
     steps:
       - template: ci/core-principles-ubuntu-22.04.yaml
 
+  - job: CorePrinciplesWindows2019
+    displayName: 'Core Principles: Windows Server 2019'
+    pool:
+      vmImage: windows-2019
+    steps:
+      - template: ci/core-principles-windows-2022.yaml
+
   - job: CorePrinciplesWindows2022
     displayName: 'Core Principles: Windows Server 2022'
     pool:
       vmImage: windows-2022
     steps:
       - template: ci/core-principles-windows-2022.yaml
+
+  - job: HelloWorldMacOS11
+    displayName: 'Hello World: macOS 11 (Monterey)'
+    pool:
+      vmImage: macOS-11
+    steps:
+      - template: ci/hello-world-macOS-11.yaml
 
   - job: HelloWorldMacOS12
     displayName: 'Hello World: macOS 12 (Monterey)'
@@ -82,6 +103,13 @@ jobs:
     steps:
       - template: ci/hello-world-windows-2022.yaml
 
+  - job: IntermediateMacOS11
+    displayName: 'Intermediate: macOS 11 (Big Sur)'
+    pool:
+      vmImage: macOS-11
+    steps:
+      - template: ci/intermediate-macOS-12.yaml
+
   - job: IntermediateMacOS12
     displayName: 'Intermediate: macOS 12 (Monterey)'
     pool:
@@ -109,3 +137,17 @@ jobs:
       vmImage: ubuntu-22.04
     steps:
       - template: ci/intermediate-ubuntu-22.04.yaml
+
+  - job: IntermediateWindows2019
+    displayName: 'Intermediate: Windows 2019'
+    pool:
+      vmImage: windows-2019
+    steps:
+      - template: ci/intermediate-windows-2019.yaml
+
+  - job: IntermediateWindows2022
+    displayName: 'Intermediate: Windows 2022'
+    pool:
+      vmImage: windows-2022
+    steps:
+      - template: ci/intermediate-windows-2022.yaml
