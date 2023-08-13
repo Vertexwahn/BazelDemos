@@ -33,6 +33,13 @@ jobs:
     steps:
       - template: ci/core-principles-ubuntu-22.04.yaml
 
+  - job: CorePrinciplesWindows2022
+    displayName: 'Core Principles: Windows Server 2022'
+    pool:
+      vmImage: windows-2022
+    steps:
+      - template: ci/core-principles-windows-2022.yaml
+
   - job: HelloWorldMacOS12
     displayName: 'Hello World: macOS 12 (Monterey)'
     pool:
@@ -82,12 +89,19 @@ jobs:
     steps:
       - template: ci/intermediate-macOS-12.yaml
 
-  - job: Ubuntu20GCC9
-    displayName: 'GCC9 on Ubuntu 20.04'
+  - job: IntermediateMacOS13
+    displayName: 'Intermediate: macOS 13 (Ventura)'
+    pool:
+      vmImage: macOS-13
+    steps:
+      - template: ci/intermediate-macOS-12.yaml
+
+  - job: IntermediateUbuntu20
+    displayName: 'Intermediate: Ubuntu 20.04'
     pool:
       vmImage: ubuntu-20.04
     steps:
-      - template: ci/ubuntu-20.04-gcc9.yaml
+      - template: ci/intermediate-ubuntu-20.04.yaml
 
   - job: IntermediateUbuntu22
     displayName: 'Intermediate: Ubuntu 22.04'
@@ -95,10 +109,3 @@ jobs:
       vmImage: ubuntu-22.04
     steps:
       - template: ci/intermediate-ubuntu-22.04.yaml
-  
-  - job: VisualStudio2022
-    displayName: 'VS2022 on Windows Server 2022'
-    pool:
-      vmImage: windows-2022
-    steps:
-      - template: ci/windows-2022-vs2022.yaml
