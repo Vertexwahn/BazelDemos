@@ -4,13 +4,15 @@ load("@rules_pkg//:pkg.bzl", "pkg_tar")
 pkg_tar(
     name = "app",
     srcs = ["test.sh"],
+    mode = "0755",
+    package_dir = "/usr/bin"
 )
 
 oci_image(
     name = "image",
     base = "@ubuntu",
     cmd = ["test.sh"],
-    tars = ["app.tar"],
+    tars = [":app"],
 )
 
 oci_tarball(
