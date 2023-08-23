@@ -20,6 +20,14 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/intermediate/cpp/Blaze
+      bazel build --config=gcc11 
+      bazel build --config=gcc11 --compilation_mode=dbg //...
+      bazel build --config=gcc11 --compilation_mode=opt //...
+    displayName: "Blaze"
+    
+  - script: |
+      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/intermediate/cpp/catch2
       bazel test --config=gcc11 //...
       bazel test --config=gcc11 --compilation_mode=dbg //...

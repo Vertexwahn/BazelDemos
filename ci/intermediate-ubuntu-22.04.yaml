@@ -39,7 +39,7 @@ steps:
       bazel test --enable_bzlmod --config=gcc11 //...
       bazel test --enable_bzlmod --config=gcc11 --compilation_mode=dbg //...
       bazel test --enable_bzlmod --config=gcc11 --compilation_mode=opt //...
-    displayName: 'Catch2'
+    displayName: 'catch2'
 
   - script: |
       ROOT_DIR=$(pwd)
@@ -48,6 +48,15 @@ steps:
       bazel build --config=gcc11 --compilation_mode=dbg //...
       bazel build --config=gcc11 --compilation_mode=opt //...
     displayName: 'Eigen'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/intermediate/cpp/fmt
+      bazel build //...
+      bazel run //:Demo
+      bazel build --enable_bzlmod //...
+      bazel run --enable_bzlmod //:Demo
+    displayName: 'fmt'
 
   - script: |
       ROOT_DIR=$(pwd)
@@ -62,15 +71,6 @@ steps:
       bazel build --config=gcc11 --compilation_mode=opt //...
       #bazel test --config=gcc11 --compilation_mode=opt //...
     displayName: 'JsonForModernCpp'
-
-  - script: |
-      ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/fmt
-      bazel build //...
-      bazel run //:Demo
-      bazel build --enable_bzlmod //...
-      bazel run --enable_bzlmod //:Demo
-    displayName: 'fmt'
 
   - script: |
       ROOT_DIR=$(pwd)
@@ -90,3 +90,10 @@ steps:
       cd ${ROOT_DIR}/intermediate/cpp/OpenEXR
       bazel build //...
     displayName: 'OpenEXR'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/intermediate/docker/rules_oci_demo
+      bazel run //:tarball
+      docker run vertexwahn/my_example:v0.0.1
+      

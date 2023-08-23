@@ -36,6 +36,8 @@ cd $bazel_genfiles/index_wasm/
 python3 -m http.server
 ```
 
+![](ubuntu22.04_chrome.png)
+
 ## macOS
 
 ```shell

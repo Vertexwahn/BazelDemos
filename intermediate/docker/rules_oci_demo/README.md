@@ -1,8 +1,13 @@
-# rules_oci Demo
+# rules_oci demo
 
 ```shell
 # List all images
 docker images # or docker image ls
+
+# ONLY NEEDED IF IMAGE ALREADY EXISTS
+# delete docker image by name
+docker rmi vertexwahn/my_example:v0.0.1 -f
+
 # Create an image
 bazel run //:tarball
 # Run docker container and delete it on quit
