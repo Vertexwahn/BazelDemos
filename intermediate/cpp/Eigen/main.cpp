@@ -1,5 +1,7 @@
 #include <Eigen/Dense>
 
+#include <iostream>
+
 template <typename ScalarType, int Dimension>
 class Vector : public Eigen::Matrix<ScalarType, Dimension, 1> {
 public:
@@ -26,11 +28,8 @@ using Vector4f = Vector<float, 4>;
 using Matrix44f = Eigen::Matrix<float, 4, 4>;
 
 int main() {
-	// Matrix44f transform;
-	// Vector4f v(10.0f, 10.0f, 10.0f, 10.0f);
-	// Vector4f v2{10.0f, 10.0f, 10.0f, 10.0f};
 	float va[4] = {1.0f, 2.0f, 3.0f, 4.0f};
 	Eigen::Matrix<float, 4, 1> v4{va};
-	// Vector4f v3{va};
-	// Vector4f vt = transform * v;
+
+	std::cout << v4 << std::endl;
 }

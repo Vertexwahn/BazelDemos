@@ -1,9 +1,0 @@
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-http_archive(
-    name = "blaze-math",
-    build_file = "//:blaze.BUILD",
-    sha256 = "4c4e1915971efbedab95790e4c5cf017d8448057fa8f8c62c46e1643bf72cbb1",
-    strip_prefix = "blaze-3.8.2",
-    url = "https://bitbucket.org/blaze-lib/blaze/downloads/blaze-3.8.2.tar.gz",
-)

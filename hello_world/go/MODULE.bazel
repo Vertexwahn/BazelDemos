@@ -1,0 +1,15 @@
+"""
+    SPDX-FileCopyrightText: 2023 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+bazel_dep(name = "rules_go", version = "0.41.0")
+
+go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
+go_sdk.download(
+    name = "go_sdk",
+    version = "1.21.0",
+)
+use_repo(go_sdk, "go_sdk")
+
+register_toolchains("@go_sdk//:all")

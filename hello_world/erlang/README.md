@@ -10,9 +10,3 @@ Run hello_world application:
 ```shell
 bazel run //:hello_world
 ```
-
-Show dependency graph:
-
-```shell
-bazel mod graph
-```

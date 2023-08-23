@@ -110,7 +110,11 @@ void Start() {
   }
 
   glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+
+#if defined(__EMSCRIPTEN__)
+#else
   GLFWwindow* window =
+#endif  
       glfwCreateWindow(kWidth, kHeight, "WebGPU window", nullptr, nullptr);
 
 #if defined(__EMSCRIPTEN__)
