@@ -20,8 +20,8 @@ steps:
     displayName: "Show Bazel version"
 
   - script: |
-      brew install podman
-    displayName: "Install podman"
+      brew install docker
+    displayName: "Install Docker"
 
   - script: |
       ROOT_DIR=$(pwd)
