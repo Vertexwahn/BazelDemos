@@ -20,6 +20,10 @@ steps:
     displayName: "Show Bazel version"
 
   - script: |
+      brew install podman
+    displayName: "Install podman"
+
+  - script: |
       ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/intermediate/cpp/Blaze
       bazel build --config=gcc11 --enable_bzlmod //...
