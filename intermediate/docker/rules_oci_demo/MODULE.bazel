@@ -11,3 +11,15 @@ oci.toolchains(crane_version = "v0.14.0")
 use_repo(oci, "oci_crane_toolchains", "oci_crane_registry_toolchains", "oci_auth_config")
 
 register_toolchains("@oci_crane_toolchains//:all", "@oci_crane_registry_toolchains//:all")
+
+oci.pull(
+    name = "ubuntu",
+    digest = "sha256:67211c14fa74f070d27cc59d69a7fa9aeff8e28ea118ef3babc295a0428a6d21",
+    image = "ubuntu",
+    platforms = [
+        "linux/arm64/v8",
+        "linux/amd64",
+    ],
+)
+
+use_repo(oci, "ubuntu")

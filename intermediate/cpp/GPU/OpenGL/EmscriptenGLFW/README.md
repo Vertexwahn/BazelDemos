@@ -2,6 +2,28 @@
 
 ## Quick start
 
+### macOS
+
+#### Desktop
+
+```shell
+bazel run --config=macos //:main
+```
+
+![](docs/macOS_desktop.png)
+
+#### Web
+
+```shell
+bazel build --config=macos -- //:index-wasm
+bazel_genfiles=$(bazel info bazel-genfiles)
+sudo cp index.html $bazel_genfiles/index-wasm/index.html # sudo
+cd $bazel_genfiles/index-wasm/
+python3 -m http.server
+```
+
+![View of the EmscriptenGLFW demo in Safari on macOS](docs/macOS_safari.png)
+
 ### Ubuntu 22.04
 
 #### Desktop
@@ -13,8 +35,6 @@ bazel run --config=gcc11 //:main
 #### Web
 
 ```shell
-piper
-cd BazelDemos/intermediate/cpp/GLAndWebGPU/EmscriptenGLFW/
 bazel build --config=gcc11 -- //:index-wasm
 bazel_genfiles=$(bazel info bazel-genfiles)
 sudo cp index.html $bazel_genfiles/index-wasm/index.html # sudo
@@ -43,30 +63,6 @@ python3 -m http.server
 ```
 
 ![Windows Chrome](docs/windows_chrome.png)
-
-### macOS
-
-#### Desktop
-
-```shell
-bazel run --config=macos //:main
-```
-
-![](docs/macOS_desktop.png)
-
-#### Web
-
-```shell
-piper
-cd BazelDemos/intermediate/cpp/GLAndWebGPU/EmscriptenGLFW/
-bazel build --config=macos -- //:index-wasm
-bazel_genfiles=$(bazel info bazel-genfiles)
-sudo cp index.html $bazel_genfiles/index-wasm/index.html # sudo
-cd $bazel_genfiles/index-wasm/
-python3 -m http.server
-```
-
-![](docs/macOS_safari.png)
 
 ## Building & Testing
 

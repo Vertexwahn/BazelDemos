@@ -1,3 +1,8 @@
+"""
+    SPDX-FileCopyrightText: 2023 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 

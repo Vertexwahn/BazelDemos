@@ -97,3 +97,9 @@ steps:
       bazel run //:tarball
       docker run vertexwahn/my_example:v0.0.1
     displayName: 'rules_oci_demo'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd intermediate/GPU/OpenGL/EmscriptenGL
+      bazel build --config=gcc11 -- //:index_wasm
+    displayName: 'EmscriptenGL'

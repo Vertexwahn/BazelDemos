@@ -4,13 +4,11 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # Emscripten
 #-------------------------------------------------------------
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
 http_archive(
     name = "emsdk",
-    sha256 = "cb8cded78f6953283429d724556e89211e51ac4d871fcf38e0b32405ee248e91",
-    strip_prefix = "emsdk-3.1.44/bazel",
-    url = "https://github.com/emscripten-core/emsdk/archive/refs/tags/3.1.44.tar.gz",
+    sha256 = "8b5b3433eb732dcc7643a2707a12fd5cbe793a5dadbbae9a60c24a737a78fe33",
+    strip_prefix = "emsdk-3.1.45/bazel",
+    url = "https://github.com/emscripten-core/emsdk/archive/refs/tags/3.1.45.tar.gz",
 )
 
 load("@emsdk//:deps.bzl", emsdk_deps = "deps")
@@ -19,11 +17,37 @@ emsdk_deps()
 
 load("@emsdk//:emscripten_deps.bzl", emsdk_emscripten_deps = "emscripten_deps")
 
-emsdk_emscripten_deps(emscripten_version = "3.1.44")
+emsdk_emscripten_deps(emscripten_version = "3.1.45")
 
 load("@emsdk//:toolchains.bzl", "register_emscripten_toolchains")
 
 register_emscripten_toolchains()
+
+#-------------------------------------------------------------
+# Python
+#-------------------------------------------------------------
+
+http_archive(
+    name = "rules_python",
+    sha256 = "0a8003b044294d7840ac7d9d73eef05d6ceb682d7516781a4ec62eeb34702578",
+    strip_prefix = "rules_python-0.24.0",
+    url = "https://github.com/bazelbuild/rules_python/releases/download/0.24.0/rules_python-0.24.0.tar.gz",
+)
+
+load("@rules_python//python:pip.bzl", "pip_parse")
+
+# Create a central repo that knows about the dependencies needed from
+# requirements_lock.txt.
+pip_parse(
+    name = "my_deps",
+    requirements_lock = "//:requirements.txt",
+)
+
+# Load the starlark macro which will define your dependencies.
+load("@my_deps//:requirements.bzl", "install_deps")
+
+# Call it to define repos for your requirements.
+install_deps()
 
 #-------------------------------------------------------------
 # GLFW

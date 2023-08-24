@@ -50,3 +50,10 @@ steps:
       cd ${ROOT_DIR}/intermediate/k8s/nginx
       bazel query //...
     displayName: "Bazel query K8s/nginx"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/intermediate/docker/rules_oci_demo
+      bazel run //:tarball
+      docker run vertexwahn/my_example:v0.0.1
+    displayName: 'rules_oci_demo'
