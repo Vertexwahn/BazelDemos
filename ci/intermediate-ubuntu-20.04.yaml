@@ -75,6 +75,6 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd intermediate/GPU/OpenGL/EmscriptenGL
+      cd intermediate/cpp/GPU/OpenGL/EmscriptenGL
       bazel build --config=gcc9 -- //:index_wasm
     displayName: 'EmscriptenGL'

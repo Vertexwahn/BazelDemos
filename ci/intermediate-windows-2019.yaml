@@ -21,10 +21,10 @@ steps:
       bazel test --enable_bzlmod --config=gcc11 //...
     displayName: 'googletest'
 
-  - script: |
-      SET ROOT_DIR=%cd%
-
-      cd %ROOT_DIR%/intermediate/docker/rules_oci_demo
-      bazel run //:tarball
-      docker run vertexwahn/my_example:v0.0.1
-    displayName: 'rules_oci_demo'
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #
+  #    cd %ROOT_DIR%/intermediate/docker/rules_oci_demo
+  #    bazel run //:tarball
+  #    docker run vertexwahn/my_example:v0.0.1
+  #  displayName: 'rules_oci_demo'
