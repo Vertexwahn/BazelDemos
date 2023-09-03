@@ -1,0 +1,1 @@
+bazel_dep(name = "onetbb", version = "2021.10.0")

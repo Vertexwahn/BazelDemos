@@ -2,3 +2,4 @@
 # Copyright Contributors to the OpenEXR Project.
 
 build --symlink_prefix=/ # Out of source build
+common --enable_bzlmod

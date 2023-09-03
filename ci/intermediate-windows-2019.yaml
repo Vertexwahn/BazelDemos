@@ -21,6 +21,13 @@ steps:
       bazel test --enable_bzlmod --config=gcc11 //...
     displayName: 'googletest'
 
+  - script: |
+      SET ROOT_DIR=%cd%
+      cd %ROOT_DIR%/intermediate/cpp/oneTBB
+      bazel build //...
+      bazel test //...
+    displayName: 'oneTBB'
+
   #- script: |
   #    SET ROOT_DIR=%cd%
   #
