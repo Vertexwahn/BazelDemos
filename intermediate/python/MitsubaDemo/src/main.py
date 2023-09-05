@@ -2,7 +2,7 @@ import mitsuba as mi
 
 mi.set_variant('scalar_rgb')
 
-scene = mi.load_file("/Users/q448004/dev/Piper/devertexwahn/okapi/scenes/cornell_box/cornell_box.aov.integrator.spp1.mitsuba.xml")
+scene = mi.load_file("/Users/vertexwahn/dev/Piper/devertexwahn/okapi/scenes/cornell_box/cornell_box.aov.integrator.spp1.mitsuba.xml")
 
 ssp = 1
 

@@ -1,8 +1,10 @@
-#load("@rules_cc//cc:defs.bzl", "cc_binary")
 load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
 
 cc_binary(
-    name = "index",
+    name = "emscripten_main",
     srcs = [
         "linmath.h",
         "main.cpp",
@@ -16,12 +18,13 @@ cc_binary(
         "-s NO_EXIT_RUNTIME=0",
         "-s ASSERTIONS=1",
     ],
+    #data = ["index.html"],
     tags = ["manual"],
 )
 
 wasm_cc_binary(
-    name = "index-wasm",
-    cc_target = ":index",
+    name = "emscripten_main_wasm",
+    cc_target = ":emscripten_main",
 )
 
 cc_binary(
@@ -37,7 +40,40 @@ cc_binary(
         "@platforms//os:linux": ["@system_libs//:x11"],
         "@platforms//os:windows": [],
         "@bazel_tools//src/conditions:darwin": [],
-        #"@rules_qt//:osx_arm64": [],
-        #"@rules_qt//:osx_x86_64": [],
     }),
+)
+
+pkg_tar(
+    name = "app",
+    srcs = [":emscripten_main_wasm", "index.html"],
+)
+
+oci_image(
+    name = "image",
+    base = "@ubuntu",
+    cmd = ["python3 -m http.server"],
+    tars = ["app.tar"],
+)
+
+oci_tarball(
+    name = "tarball",
+    image = ":image",
+    repo_tags = ["vertexwahn/emscripten_glfw:v0.0.1"],
+)
+
+pkg_tar(
+    name = "tar",
+    srcs = [":app2"],
+)
+
+oci_image(
+    name = "image2",
+    architecture = select({
+        "@platforms//cpu:arm64": "arm64",
+        "@platforms//cpu:x86_64": "amd64",
+    }),
+    base = "@distroless_base",
+    tars = [":tar"],
+    entrypoint = ["/app"],
+    os = "linux",
 )

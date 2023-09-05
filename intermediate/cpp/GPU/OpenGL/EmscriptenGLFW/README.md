@@ -15,14 +15,21 @@ bazel run --config=macos //:main
 #### Web
 
 ```shell
-bazel build --config=macos -- //:index-wasm
+bazel build --config=macos -- //:emscripten_main_wasm
 bazel_genfiles=$(bazel info bazel-genfiles)
-sudo cp index.html $bazel_genfiles/index-wasm/index.html # sudo
-cd $bazel_genfiles/index-wasm/
+sudo cp index.html $bazel_genfiles/emscripten_main_wasm/index.html # sudo
+cd $bazel_genfiles/emscripten_main_wasm/
 python3 -m http.server
 ```
 
 ![View of the EmscriptenGLFW demo in Safari on macOS](docs/macOS_safari.png)
+
+```shell
+# Create an image
+bazel run //:tarball
+# Run docker container and delete it on quit
+docker run vertexwahn/emscripten_glfw:v0.0.1
+```
 
 ### Ubuntu 22.04
 
@@ -35,10 +42,10 @@ bazel run --config=gcc11 //:main
 #### Web
 
 ```shell
-bazel build --config=gcc11 -- //:index-wasm
+bazel build --config=gcc11 -- //:emscripten_main_wasm
 bazel_genfiles=$(bazel info bazel-genfiles)
-sudo cp index.html $bazel_genfiles/index-wasm/index.html # sudo
-cd $bazel_genfiles/index-wasm/
+sudo cp index.html $bazel_genfiles/emscripten_main_wasm/index.html # sudo
+cd $bazel_genfiles/emscripten_main_wasm/
 python3 -m http.server
 ```
 
@@ -55,10 +62,10 @@ bazel run --config=vs2022 //:main
 #### Web
 
 ```shell
-bazel build --config=gcc11 -- //:index-wasm
+bazel build --config=gcc11 -- //:emscripten_main_wasm
 $bazel_genfiles = Invoke-Expression "bazel info bazel-genfiles"
-cp -Force index.html $bazel_genfiles/index-wasm/index.html
-cd $bazel_genfiles/index-wasm/
+cp -Force index.html $bazel_genfiles/emscripten_main_wasm/index.html
+cd $bazel_genfiles/emscripten_main_wasm/
 python3 -m http.server
 ```
 

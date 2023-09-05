@@ -1,9 +1,7 @@
-load(
-    "@bazelruby_rules_ruby//ruby:defs.bzl",
-    "ruby_binary",
-)
+load("@bazelruby_rules_ruby//ruby:defs.bzl", "ruby_binary")
 
 ruby_binary(
     name = "hello_world",
     srcs = ["HelloWorld.rb"],
+    main = "HelloWorld.rb",
 )

@@ -103,3 +103,11 @@ steps:
       cd intermediate/cpp/GPU/OpenGL/EmscriptenGL
       bazel build --config=gcc11 -- //:index_wasm
     displayName: 'EmscriptenGL'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
+      # Desktop app
+      bazel build --config=gcc11 //:main
+      bazel build --config=gcc11 -- //:index-wasm
+    displayName: 'EmscriptenGLFW'
