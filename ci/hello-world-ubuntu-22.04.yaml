@@ -83,6 +83,8 @@ steps:
       bazel run //:hello_world
     displayName: "Hello World Groovy"
 
+  # TODO: Add Haskell here
+
   - script: |
       ROOT_DIR=$(pwd)
 
