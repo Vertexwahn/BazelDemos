@@ -1,0 +1,12 @@
+"""
+    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@io_bazel_rules_groovy//groovy:groovy.bzl", "groovy_binary")
+
+groovy_binary(
+    name = "hello_world",
+    srcs = ["HelloWorld.groovy"],
+    main_class = "HelloWorld",
+)

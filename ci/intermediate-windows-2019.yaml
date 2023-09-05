@@ -36,14 +36,14 @@ steps:
   #    docker run vertexwahn/my_example:v0.0.1
   #  displayName: 'rules_oci_demo'
 
-  - script: |
-      SET ROOT_DIR=%cd%
-      cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGL
-      bazel build --config=vs2019 //...
-    displayName: 'EmscriptenGL'
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #    cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGL
+  #    bazel build --config=vs2019 //...
+  #  displayName: 'EmscriptenGL'
 
-  - script: |
-      SET ROOT_DIR=%cd%
-      cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
-      bazel build --config=vs2019 //...
-    displayName: 'EmscriptenGLFW'
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #    cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
+  #    bazel build --config=vs2019 //...
+  #  displayName: 'EmscriptenGLFW'

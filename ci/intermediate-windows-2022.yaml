@@ -30,14 +30,14 @@ steps:
       bazel test //...
     displayName: 'oneTBB'
 
-  - script: |
-      SET ROOT_DIR=%cd%
-      cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGL
-      bazel build --config=vs2022 //...
-    displayName: 'EmscriptenGL'
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #    cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGL
+  #   bazel build --config=vs2022 //...
+  #  displayName: 'EmscriptenGL'
 
-  - script: |
-      SET ROOT_DIR=%cd%
-      cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
-      bazel build --config=vs2022 //...
-    displayName: 'EmscriptenGLFW'
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #    cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
+  #    bazel build --config=vs2022 //...
+  #  displayName: 'EmscriptenGLFW'

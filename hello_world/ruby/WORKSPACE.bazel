@@ -9,8 +9,9 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
     name = "bazelruby_rules_ruby",
+    #branch = "master",
+    commit = "e60d0cd0f2100287a93557334c48117839fe4762",
     remote = "https://github.com/bazelruby/rules_ruby.git",
-    branch = "master"
 )
 
 load(
@@ -27,6 +28,7 @@ rules_ruby_dependencies()
 #———————————————————————————————————————————————————————————————————————
 
 load("@bazel_skylib//:workspace.bzl", "bazel_skylib_workspace")
+
 bazel_skylib_workspace()
 
 rules_ruby_select_sdk(version = "3.0.2")
@@ -42,17 +44,17 @@ load(
 
 ruby_bundle(
     name = "bundle",
+    excludes = {
+        "mini_portile": ["test/**/*"],
+    },
+    gemfile = "//:Gemfile",
+    gemfile_lock = "//:Gemfile.lock",
     # Specify additional paths to be loaded from the gems at runtime, if any.
     # Since spec.require_paths in Gem specifications are auto-included, directory paths
     # in spec.require_paths do not need to be listed in includes hash.
     includes = {
         "grpc": ["etc"],
     },
-    excludes = {
-        "mini_portile": ["test/**/*"],
-    },
-    gemfile = "//:Gemfile",
-    gemfile_lock = "//:Gemfile.lock",
 )
 
 # You can specify more than one bundle in the WORKSPACE file

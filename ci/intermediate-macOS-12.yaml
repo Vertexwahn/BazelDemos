@@ -73,5 +73,5 @@ steps:
       cd intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
       # Desktop app
       bazel build --config=macos //:main
-      bazel build --config=macos -- //:index-wasm
+      bazel build --config=macos -- //:emscripten_main_wasm
     displayName: 'EmscriptenGLFW'

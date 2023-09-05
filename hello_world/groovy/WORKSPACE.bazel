@@ -7,9 +7,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "io_bazel_rules_groovy",
-    sha256 = "3aa52d874e9ceba3261da27fbb7903da21d5806ad207b985a592551136d34dc6",
-    strip_prefix = "rules_groovy-d55a16c68d9ccd7e07bed5e3e46219bd2e55eda6",
-    url = "https://github.com/bazelbuild/rules_groovy/archive/d55a16c68d9ccd7e07bed5e3e46219bd2e55eda6.tar.gz",
+    sha256 = "9d8b0cbcd66f9421885fccf318b76cdf9220d0bd13295cf7ed729ccf756964bf",
+    strip_prefix = "rules_groovy-47adf9ba4d6a4ad5be29d0599436f68bc811bfad",
+    url = "https://github.com/bazelbuild/rules_groovy/archive/47adf9ba4d6a4ad5be29d0599436f68bc811bfad.tar.gz",
 )
 
 load("@io_bazel_rules_groovy//groovy:repositories.bzl", "rules_groovy_dependencies")

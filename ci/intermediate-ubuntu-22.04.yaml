@@ -109,5 +109,5 @@ steps:
       cd intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
       # Desktop app
       bazel build --config=gcc11 //:main
-      bazel build --config=gcc11 -- //:index-wasm
+      bazel build --config=gcc11 -- //:emscripten_main_wasm
     displayName: 'EmscriptenGLFW'
