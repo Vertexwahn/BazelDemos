@@ -120,6 +120,6 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd intermediate/WebdriverDemo
+      cd intermediate/WebdriverDemoMinimal
       bazel test //...
-    displayName: 'WebdriverDemo'
+    displayName: 'WebdriverDemoMinimal'
