@@ -1,7 +1,19 @@
+"""
+    SPDX-FileCopyrightText: 2023 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@container_structure_test//:defs.bzl", "container_structure_test")
 load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
 load("@rules_cc//cc:defs.bzl", "cc_binary")
-load("@rules_oci//oci:defs.bzl", "oci_image", "oci_push", "oci_tarball")
+load("@rules_go//go:def.bzl", "go_binary")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
+load("@rules_pkg//:mappings.bzl", "pkg_files")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+#-------------------------------------------------------------------------------------
+# Emscripten App
+#-------------------------------------------------------------------------------------
 
 cc_binary(
     name = "emscripten_main",
@@ -27,6 +39,10 @@ wasm_cc_binary(
     cc_target = ":emscripten_main",
 )
 
+#-------------------------------------------------------------------------------------
+# Desktop App
+#-------------------------------------------------------------------------------------
+
 cc_binary(
     name = "main",
     srcs = [
@@ -43,16 +59,55 @@ cc_binary(
     }),
 )
 
-pkg_tar(
+#-------------------------------------------------------------------------------------
+# Docker Container
+#-------------------------------------------------------------------------------------
+
+pkg_files(
+    name = "dir_static",
+    srcs = [
+        ":emscripten_main_wasm",
+        "//ui/static",
+    ],
+    prefix = "ui/static",
+)
+
+#config_setting(
+#    name = "osx_arm64",
+#    constraint_values = [
+#        "@platforms//os:osx",
+#        "@platforms//cpu:aarch64",
+#    ],
+#)
+
+go_binary(
     name = "app",
-    srcs = [":emscripten_main_wasm", "index.html"],
+    srcs = ["main.go"],
+    data = [
+        ":dir_static",
+    ],
+    goarch = "amd64",  #"arm64",  # switch to you architecture
+    # Cannot use select for go_binary with goos/goarch set, but {} was a select
+    #goarch = select({
+    #    ":osx_arm64": "arm64",
+    #    "//conditions:default": "amd64",
+    #}),
+    goos = "linux",
+)
+
+pkg_tar(
+    name = "app_layer",
+    srcs = [
+        ":app",
+        ":dir_static",
+    ],
 )
 
 oci_image(
     name = "image",
-    base = "@ubuntu",
-    cmd = ["python3 -m http.server"],
-    tars = ["app.tar"],
+    base = "@distroless_base",
+    entrypoint = ["/app"],
+    tars = [":app_layer"],
 )
 
 oci_tarball(
@@ -61,19 +116,12 @@ oci_tarball(
     repo_tags = ["vertexwahn/emscripten_glfw:v0.0.1"],
 )
 
-pkg_tar(
-    name = "tar",
-    srcs = [":app2"],
-)
+#-------------------------------------------------------------------------------------
+# Container structure test
+#-------------------------------------------------------------------------------------
 
-oci_image(
-    name = "image2",
-    architecture = select({
-        "@platforms//cpu:arm64": "arm64",
-        "@platforms//cpu:x86_64": "amd64",
-    }),
-    base = "@distroless_base",
-    tars = [":tar"],
-    entrypoint = ["/app"],
-    os = "linux",
+container_structure_test(
+    name = "test",
+    configs = ["test.yaml"],
+    image = ":image",
 )

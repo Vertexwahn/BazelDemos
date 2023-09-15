@@ -75,3 +75,15 @@ steps:
       bazel build --config=macos //:main
       bazel build --config=macos -- //:emscripten_main_wasm
     displayName: 'EmscriptenGLFW'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR/bzlmod
+      bazel build //...
+    displayName: 'OpenEXR bzlmod'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR/repo-focused
+      bazel build //...
+    displayName: 'OpenEXR'

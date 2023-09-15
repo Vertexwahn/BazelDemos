@@ -87,16 +87,22 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR
+      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR/bzlmod
+      bazel build //...
+    displayName: 'OpenEXR bzlmod'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR/repo-focused
       bazel build //...
     displayName: 'OpenEXR'
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/docker/rules_oci_demo
+      cd ${ROOT_DIR}/intermediate/docker/rules_oci_bash
       bazel run //:tarball
       docker run vertexwahn/my_example:v0.0.1
-    displayName: 'rules_oci_demo'
+    displayName: 'rules_oci_bash'
 
   - script: |
       ROOT_DIR=$(pwd)
@@ -111,3 +117,9 @@ steps:
       bazel build --config=gcc11 //:main
       bazel build --config=gcc11 -- //:emscripten_main_wasm
     displayName: 'EmscriptenGLFW'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd intermediate/WebdriverDemo
+      bazel test //...
+    displayName: 'WebdriverDemo'

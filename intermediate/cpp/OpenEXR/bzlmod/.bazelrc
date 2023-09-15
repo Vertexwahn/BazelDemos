@@ -1,0 +1,5 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright Contributors to the OpenEXR Project.
+
+common --enable_bzlmod
+build --symlink_prefix=/ # Out of source build

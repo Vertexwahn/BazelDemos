@@ -1,0 +1,34 @@
+"""
+    SPDX-FileCopyrightText: 2023 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@rules_go//go:def.bzl", "go_binary")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
+
+go_binary(
+    name = "app",
+    srcs = ["main.go"],
+    goarch = "arm64", # switch to amd64 if you are on a amd64 system
+    goos = "linux",
+)
+
+pkg_tar(
+    name = "app_layer",
+    srcs = [":app"],
+    include_runfiles = True,
+)
+
+oci_image(
+    name = "image",
+    base = "@distroless_base",
+    entrypoint = ["/app"],
+    tars = [":app_layer"],
+)
+
+oci_tarball(
+    name = "tarball",
+    image = ":image",
+    repo_tags = ["vertexwahn/rules_oci_go_demo:v0.0.5"],
+)

@@ -7,9 +7,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_dotnet",
-    sha256 = "a6e8687fd9d91c1cb41df51cdafaffe9be386ad99d63d8e2ae77c64f1165c573",
-    strip_prefix = "rules_dotnet-0.10.0",
-    url = "https://github.com/bazelbuild/rules_dotnet/releases/download/v0.10.0/rules_dotnet-v0.10.0.tar.gz",
+    sha256 = "4477b62a79a1ea131532fea77c460982f878786b186b9890fdccd1ea294556c9",
+    strip_prefix = "rules_dotnet-0.10.8",
+    url = "https://github.com/bazelbuild/rules_dotnet/releases/download/v0.10.8/rules_dotnet-v0.10.8.tar.gz",
 )
 
 load(

@@ -41,3 +41,15 @@ steps:
   #    cd %ROOT_DIR%/intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
   #    bazel build --config=vs2022 //...
   #  displayName: 'EmscriptenGLFW'
+
+  - script: |
+      SET ROOT_DIR=%cd%
+      cd %ROOT_DIR%/intermediate/cpp/OpenEXR/bzlmod
+      bazel build //...
+    displayName: 'OpenEXR bzlmod'
+
+  - script: |
+      SET ROOT_DIR=%cd%
+      cd %ROOT_DIR%/intermediate/cpp/OpenEXR/repo-focused
+      bazel build //...
+    displayName: 'OpenEXR'

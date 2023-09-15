@@ -12,6 +12,8 @@ bazel build //... fails currently on macOS (tested on M1) - not sure why...
 bazel test //...
 ```
 
+-> Passes
+
 ## References
 
 - [Bazel Web Testing Rules](https://docs-legacy.aspect.build/bazelbuild/rules_webtesting/0.3.5/readme)

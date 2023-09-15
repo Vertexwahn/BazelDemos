@@ -29,14 +29,14 @@ go_deps.from_file(go_mod = "//:go.mod")
 #-------------------------------------------------------------------------------------
 
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
-oci.toolchains(crane_version = "v0.14.0")
+oci.toolchains(crane_version = "v0.15.2")
 use_repo(oci, "oci_auth_config", "oci_crane_registry_toolchains", "oci_crane_toolchains")
 
 register_toolchains("@oci_crane_toolchains//:all", "@oci_crane_registry_toolchains//:all")
 
 oci.pull(
     name = "distroless_base",
-    digest = "sha256:ccaef5ee2f1850270d453fdf700a5392534f8d1a8ca2acda391fbb6a06b81c86",
+    digest = "sha256:ccaef5ee2f1850270d453fdf700a5392534f8d1a8ca2acda391fbb6a06b81c86", # TODO: Find out how to bump this version
     image = "gcr.io/distroless/base",
     platforms = [
         "linux/amd64",
@@ -44,3 +44,14 @@ oci.pull(
     ],
 )
 use_repo(oci, "distroless_base")
+
+#oci.pull(
+#    name = "ubuntu",
+#    digest = "sha256:67211c14fa74f070d27cc59d69a7fa9aeff8e28ea118ef3babc295a0428a6d21",
+#    image = "ubuntu",
+#    platforms = [
+#        "linux/arm64/v8",
+#        "linux/amd64",
+#    ],
+#)
+#use_repo(oci, "ubuntu")

@@ -5,17 +5,32 @@
 
 load("@rules_go//go:def.bzl", "go_binary")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
+load("@rules_pkg//:mappings.bzl", "pkg_files")
 load("@rules_pkg//:pkg.bzl", "pkg_tar")
 
 go_binary(
     name = "app",
     srcs = ["main.go"],
+    data = [
+        "//ui/static",
+    ],
+    goarch = "arm64",  # "amd64" # choose what your system supports
+    goos = "linux",  # distorless_base image is linux based
+)
+
+pkg_files(
+    name = "dir_static",
+    srcs = ["//ui/static"],
+    prefix = "ui/static",
 )
 
 pkg_tar(
     name = "app_layer",
-    srcs = [":app"],
-    include_runfiles = True,
+    srcs = [
+        ":app",
+        ":dir_static",
+    ],
+    #include_runfiles = True,
 )
 
 oci_image(
