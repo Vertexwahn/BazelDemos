@@ -40,13 +40,15 @@ steps:
       bazel run //:hello_world
     displayName: "Hello World C#"
 
-  - script: |
-      SET ROOT_DIR=%cd%
-
-      cd %ROOT_DIR%/hello_world/d
-      bazel build //...
-      bazel run //:hello_world
-    displayName: "Hello World D"
+  # Fails with compilation error:
+  # Details here: https://github.com/bazelbuild/rules_d/issues/58
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #
+  #    cd %ROOT_DIR%/hello_world/d
+  #    bazel build //...
+  #    bazel run //:hello_world
+  #  displayName: "Hello World D"
 
   #- script: |
   #    SET ROOT_DIR=%cd%
