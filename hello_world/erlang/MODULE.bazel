@@ -3,4 +3,4 @@
     SPDX-License-Identifier: Apache-2.0
 """
 
-bazel_dep(name = "rules_erlang", version = "3.11.4")
+bazel_dep(name = "rules_erlang", version = "3.12.0")
