@@ -26,6 +26,16 @@ This repository is mainly organized into three parts:
 
 Furthermore, the [ci](/ci) directory contains build jobs to ensure that specific demos work accross different operating systems.
 
+## Hello World
+
+Under [hello_world](/hello_world) you can find Hello World examples in misc programming languages using Bazel.
+The following table shows on what OS configuration the examples were successfully tested. 
+
+| Language support on  | macOS   | Ubuntu |  Windows |
+| -------------------- | ------- | ------ |  ------- |
+| C++                  | yes     | yes    |  yes     |
+| C#                   | yes     | yes    |  yes     |
+| D                    | no      | yes    |  no      |
 
 ## Similar projects
 
@@ -41,7 +51,7 @@ Here you can find a list of other repositories with Bazel demos:
 
 If you have a Bazel demo you want to share feel free to open a pull request.
 I am always happy about seeing new programming languages supported by Bazel or interesting usage of tools or third-party dependencies.
-Also, improvements are welcomed.
+Of course improvements are also welcomed.
 
 ## License
 
