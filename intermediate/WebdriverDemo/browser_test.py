@@ -43,7 +43,6 @@ class BrowserTest(unittest.TestCase):
     png1 = Image.open("ref_screenshot.png")
     png2 = Image.open("screenshot.png")
     self.assertEqual(compare_pixels(png1,png2), 1)
-    
 
   #def testScreenshot2(self):
   #  self.driver.set_window_size(1920, 1080)
