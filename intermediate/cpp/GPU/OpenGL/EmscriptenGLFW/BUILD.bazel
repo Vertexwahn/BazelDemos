@@ -30,7 +30,6 @@ cc_binary(
         "-s NO_EXIT_RUNTIME=0",
         "-s ASSERTIONS=1",
     ],
-    #data = ["index.html"],
     tags = ["manual"],
 )
 

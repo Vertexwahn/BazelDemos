@@ -4,6 +4,8 @@
 #
 
 #build --symlink_prefix=/ # Out of source build
+
+# Bzlmod
 common --enable_bzlmod # default in Bazel 7.0
 
 # GCC 9.3

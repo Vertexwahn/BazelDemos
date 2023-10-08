@@ -1,8 +1,12 @@
-#load("@rules_cc//cc:defs.bzl", "cc_binary")
 load("@emsdk//emscripten_toolchain:wasm_rules.bzl", "wasm_cc_binary")
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@rules_go//go:def.bzl", "go_binary")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_tarball")
+load("@rules_pkg//:mappings.bzl", "pkg_files")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
 
 cc_binary(
-    name = "index",
+    name = "emscripten_main",
     srcs = [
         "main.cpp",
     ],
@@ -19,9 +23,13 @@ cc_binary(
 )
 
 wasm_cc_binary(
-    name = "index-wasm",
-    cc_target = ":index",
+    name = "emscripten_main_wasm",
+    cc_target = ":emscripten_main",
 )
+
+#-------------------------------------------------------------------------------------
+# Desktop App
+#-------------------------------------------------------------------------------------
 
 cc_binary(
     name = "main",
@@ -37,4 +45,61 @@ cc_binary(
         "@platforms//os:windows": [],
         "@bazel_tools//src/conditions:darwin": [],
     }),
+)
+
+#-------------------------------------------------------------------------------------
+# Docker Container
+#-------------------------------------------------------------------------------------
+
+pkg_files(
+    name = "dir_static",
+    srcs = [
+        ":emscripten_main_wasm",
+        "//ui/static",
+    ],
+    prefix = "ui/static",
+)
+
+#config_setting(
+#    name = "osx_arm64",
+#    constraint_values = [
+#        "@platforms//os:osx",
+#        "@platforms//cpu:aarch64",
+#    ],
+#)
+
+go_binary(
+    name = "app",
+    srcs = ["main.go"],
+    data = [
+        ":dir_static",
+    ],
+    goarch = "amd64",  #"arm64",  # switch to you architecture
+    # Cannot use select for go_binary with goos/goarch set, but {} was a select
+    #goarch = select({
+    #    ":osx_arm64": "arm64",
+    #    "//conditions:default": "amd64",
+    #}),
+    goos = "linux",
+)
+
+pkg_tar(
+    name = "app_layer",
+    srcs = [
+        ":app",
+        ":dir_static",
+    ],
+)
+
+oci_image(
+    name = "image",
+    base = "@distroless_base",
+    entrypoint = ["/app"],
+    tars = [":app_layer"],
+)
+
+oci_tarball(
+    name = "tarball",
+    image = ":image",
+    repo_tags = ["vertexwahn/emscripten_webgpu:v0.0.1"],
 )

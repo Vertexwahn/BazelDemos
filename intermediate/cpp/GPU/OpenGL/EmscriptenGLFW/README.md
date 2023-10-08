@@ -61,7 +61,6 @@ Visit http://localhost:8000/index.html
 
 #### Docker
 
-
 ```shell
 # Create an image
 bazel run //:tarball

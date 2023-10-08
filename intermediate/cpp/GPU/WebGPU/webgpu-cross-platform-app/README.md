@@ -3,6 +3,29 @@
 https://developer.chrome.com/blog/webgpu-cross-platform/
 https://github.com/beaufortfrancois/webgpu-cross-platform-app
 
+## macOS
+
+```shell
+# Create an image
+bazel run //:tarball
+# Run docker container and delete it on quit
+docker run  -p 4059:4000 vertexwahn/emscripten_webgpu:v0.0.1
+```
+
+Visit http://localhost:4059/static/index2.html
+
+## Ubuntu 22.04
+
+#### Docker
+
+```shell
+# Create an image
+bazel run //:tarball
+# Run docker container and delete it on quit
+docker run  -p 4059:4000 vertexwahn/emscripten_webgpu:v0.0.1
+```
+
+Visit http://localhost:4059/static/index2.html
 
 ### Web
 
@@ -13,7 +36,6 @@ sudo cp index.html $bazel_genfiles/index-wasm/index.html
 cd $bazel_genfiles/index-wasm/
 python3 -m http.server
 ```
-
 
 1. Goal:
 
