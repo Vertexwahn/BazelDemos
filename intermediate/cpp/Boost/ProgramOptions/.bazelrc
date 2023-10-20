@@ -1,0 +1,9 @@
+#
+#   SPDX-FileCopyrightText: 2023 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
+
+common --enable_bzlmod # default in Bazel 7.0
+
+common --registry=https://raw.githubusercontent.com/bazelboost/registry/main
+common --registry=https://bcr.bazel.build
