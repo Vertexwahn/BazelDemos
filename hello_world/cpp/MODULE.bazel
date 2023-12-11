@@ -6,7 +6,3 @@
 module(
     name = "de_vertexwahn_hello_world_cpp",
 )
-
-bazel_dep(name = "platforms", version = "0.0.7")
-bazel_dep(name = "rules_cc", version = "0.0.8")
-bazel_dep(name = "rules_license", version = "0.0.7")
