@@ -13,7 +13,15 @@ Installing the following packages
 sudo apt-get install build-essential libffi-dev libgmp-dev libtinfo5 libtinfo-dev python python3
 ```
 
-Otherwise, the haskell rules will not work.
+Otherwise, the Haskell rules will not work.
+
+## Ubuntu 22.04
+
+Installing the following packages
+
+```shell
+sudo apt-get install build-essential libffi-dev libgmp-dev libtinfo5 libtinfo-dev python python3
+```
 
 ## Windows 10
 
