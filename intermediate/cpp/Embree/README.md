@@ -2,4 +2,7 @@
 
 How to run?
 
-    bazel run //:EmbreeDemo
+
+```cpp
+bazel run //:EmbreeDemo
+```
