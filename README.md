@@ -24,7 +24,7 @@ This repository is mainly organized into three parts:
 - [hello_world](/hello_world): Plain Hello World demos in different programming languages supported by the Bazel build system
 - [intermediate](/intermediate): Usage of different third-party dependencies and tools
 
-Furthermore, the [ci](/ci) directory contains build jobs to ensure that specific demos work accross different operating systems.
+Furthermore, the [ci](/ci) directory contains build jobs to ensure that specific demos work across different operating systems.
 
 ## Hello World
 
@@ -45,13 +45,14 @@ Here you can find a list of other repositories with Bazel demos:
 - [bazelbuild/examples](https://github.com/bazelbuild/examples)
 - [FaBrand/bazel-learning](https://github.com/FaBrand/bazel-learning)
 - [kriscfoster/multi-language-bazel-monorepo](https://github.com/kriscfoster/multi-language-bazel-monorepo)
+- [limdor/bazel-examples](https://github.com/limdor/bazel-examples)
 - [salesforce/bazel-demo](https://github.com/salesforce/bazel-demo)
 
 ## Contributions welcome
 
 If you have a Bazel demo you want to share feel free to open a pull request.
 I am always happy about seeing new programming languages supported by Bazel or interesting usage of tools or third-party dependencies.
-Of course improvements are also welcomed.
+Of course, improvements are also welcomed.
 
 ## License
 
