@@ -1,0 +1,18 @@
+load("@my_deps//:requirements.bzl", "requirement")
+
+package(default_visibility = ["//visibility:public"])
+
+py_binary(
+    name = "main",
+    srcs = ["src/main.py"],
+    data = ["//data"],
+    main = "src/main.py",
+    deps = [
+        requirement("opencv-python"),
+        requirement("numpy"),
+        #requirement("matplotlib"),
+        #requirement("pyparsing"),
+        #requirement("cycler"),
+        #requirement("dateutil"),
+    ],
+)

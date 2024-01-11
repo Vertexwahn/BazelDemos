@@ -1,0 +1,1 @@
+build:windows10_x64 --enable_runfiles # https://github.com/bazelbuild/bazel/issues/8843
