@@ -1,0 +1,5 @@
+cc_binary(
+    name = "glm_demo",
+    srcs = ["main.cpp"],
+    deps = ["@glm"],
+)
