@@ -1,0 +1,15 @@
+workspace(name = "OpenCVDemo")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# OpenCV
+http_archive(
+    name = "opencv",
+    build_file = "//third_party:opencv.BUILD",
+    strip_prefix = "opencv/build",
+    # Debug
+    #url = "http://vertexwahn.de/artifacts/opencv-4.3.0-dldt-2020.2-vc16-avx2-debug.zip",
+    #sha256 = "9bcd2dda258e67ad2ddef7768f1c9b2afcc68cd4b9d9f5c9b841ea3ee47f9d4c",
+    # Release
+    url = "https://github.com/opencv/opencv/releases/download/4.3.0/opencv-4.3.0-dldt-2020.2-vc16-avx2.zip",
+)
