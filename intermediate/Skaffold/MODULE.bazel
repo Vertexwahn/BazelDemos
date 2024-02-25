@@ -1,0 +1,44 @@
+"""
+    Skaffold demo
+"""
+
+module(
+    name = "skaffold_demo",
+    version = "head",
+    compatibility_level = 1,
+)
+
+bazel_dep(name = "rules_oci", version = "1.6.0")
+bazel_dep(name = "rules_go", version = "0.45.1")
+bazel_dep(name = "rules_pkg", version = "0.9.1")
+
+#-------------------------------------------------------------------------------------
+# rules_go
+#-------------------------------------------------------------------------------------
+
+go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
+go_sdk.download(
+    name = "go_sdk",
+    version = "1.21.6",
+)
+use_repo(go_sdk, "go_sdk")
+
+register_toolchains("@go_sdk//:all")
+
+#-------------------------------------------------------------------------------------
+# rules_oci
+#-------------------------------------------------------------------------------------
+
+oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
+oci.toolchains(crane_version = "v0.17.0")
+use_repo(oci, "oci_auth_config", "oci_crane_registry_toolchains", "oci_crane_toolchains")
+
+register_toolchains("@oci_crane_toolchains//:all", "@oci_crane_registry_toolchains//:all")
+
+oci.pull(
+    name = "distroless_base",
+    digest = "sha256:ccaef5ee2f1850270d453fdf700a5392534f8d1a8ca2acda391fbb6a06b81c86",
+    image = "gcr.io/distroless/base",
+    platforms = ["linux/amd64","linux/arm64"],
+)
+use_repo(oci, "distroless_base")

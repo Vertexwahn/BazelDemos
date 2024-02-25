@@ -1,0 +1,36 @@
+module(name = "my_module")
+
+bazel_dep(name = "toolchains_llvm", version = "0.10.3")
+git_override(
+    module_name = "toolchains_llvm",
+    commit = "1ca11e2755544e5305d442d72018234eca914604",
+    remote = "https://github.com/bazel-contrib/toolchains_llvm.git",
+)
+
+bazel_dep(name = "rules_foreign_cc", version = "0.9.0")
+git_override(
+    module_name = "rules_foreign_cc",
+    commit = "60813d57a0e99be1a009c1a0e9627cdbe81fcd19",
+    remote = "https://github.com/bazelbuild/rules_foreign_cc.git",
+)
+
+llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm")
+
+# When updating this version, also update the versions associated with
+# llvm_toolchain below, sys_paths_test in the workflows file, and xcompile_test
+# through the `llvm_toolchain_with_sysroot` toolchain.
+LLVM_VERSION = "15.0.6"
+
+LLVM_VERSIONS = {
+    "": "16.0.0",
+    "darwin-aarch64": "16.0.5",
+    "darwin-x86_64": "15.0.7",
+}
+
+llvm.toolchain(
+    name = "llvm_toolchain",
+    llvm_versions = LLVM_VERSIONS,
+)
+use_repo(llvm, "llvm_toolchain", "llvm_toolchain_llvm")
+
+register_toolchains("@llvm_toolchain//:all")

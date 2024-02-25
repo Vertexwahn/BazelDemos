@@ -4,4 +4,3 @@
 #
 
 build --symlink_prefix=/ # Out of source build
-common --enable_bzlmod # default in Bazel 7.0

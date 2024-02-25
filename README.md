@@ -42,7 +42,9 @@ The following table shows on what OS configuration the examples were successfull
 Here you can find a list of other repositories with Bazel demos:
 
 - [aspect-build/bazel-examples](https://github.com/aspect-build/bazel-examples)
+- [bazelbuild/codelabs](https://github.com/bazelbuild/codelabs)
 - [bazelbuild/examples](https://github.com/bazelbuild/examples)
+- [clchiou/bazel-examples](https://github.com/clchiou/bazel-examples)
 - [FaBrand/bazel-learning](https://github.com/FaBrand/bazel-learning)
 - [kriscfoster/multi-language-bazel-monorepo](https://github.com/kriscfoster/multi-language-bazel-monorepo)
 - [limdor/bazel-examples](https://github.com/limdor/bazel-examples)

@@ -1,9 +1,0 @@
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-http_archive(
-    name = "fmt",
-    build_file = "//:fmt.BUILD",
-    sha256 = "4943cb165f3f587f26da834d3056ee8733c397e024145ca7d2a8a96bb71ac281",
-    strip_prefix = "fmt-10.0.0",
-    url = "https://github.com/fmtlib/fmt/releases/download/10.0.0/fmt-10.0.0.zip",
-)
