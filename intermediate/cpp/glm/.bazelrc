@@ -1,0 +1,2 @@
+common --registry=https://raw.githubusercontent.com/Vertexwahn/bazel-registry/main
+common --registry=https://bcr.bazel.build
