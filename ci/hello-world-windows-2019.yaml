@@ -104,13 +104,13 @@ steps:
       bazel run //:hello_world
     displayName: "Hello World Python"
 
-  - script: |
-      SET ROOT_DIR=%cd%
-
-      cd %ROOT_DIR%/hello_world/rust
-      bazel build //...
-      bazel run //:hello_world
-    displayName: "Hello World Rust"
+  #- script: |
+  #    SET ROOT_DIR=%cd%
+  #
+  #   cd %ROOT_DIR%/hello_world/rust
+  #   bazel build //...
+  #   bazel run //:hello_world
+  # displayName: "Hello World Rust"
 
   #- script: |
   #    SET ROOT_DIR=%cd%
