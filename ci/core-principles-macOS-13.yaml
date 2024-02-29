@@ -28,12 +28,6 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/core_principles/bzlmod
-      bazel build //...
-    displayName: "bzlmod"
-
-  - script: |
-      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/core_principles/genrule
       bazel build //...
       bazel run //:Demo
