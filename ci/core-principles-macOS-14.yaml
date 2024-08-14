@@ -1,0 +1,41 @@
+#
+#   SPDX-FileCopyrightText: 2024 Julian Amann <dev@vertexwahn.de>
+#   SPDX-License-Identifier: Apache-2.0
+#
+
+steps:
+  - checkout: self
+    clean: true
+    fetchDepth: 1
+    lfs: false
+    submodules: false
+
+  - script: |
+      bazel version
+    displayName: 'Show Bazel version'
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/core_principles/bazel_ignore
+      bazel build //...
+    displayName: "ignore"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/core_principles/bazel_version
+      bazel build
+    displayName: "version"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/core_principles/genrule
+      bazel build //...
+      bazel run //:Demo
+    displayName: "genrule"
+
+  - script: |
+      ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/core_principles/select
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "select"

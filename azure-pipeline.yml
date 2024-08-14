@@ -5,13 +5,6 @@
 
 
 jobs:
-  - job: CorePrinciplesMacOS11
-    displayName: 'Core Principles: macOS 11 (Big Sur)'
-    pool:
-      vmImage: macOS-11
-    steps:
-      - template: ci/core-principles-macOS-12.yaml
-
   - job: CorePrinciplesMacOS12
     displayName: 'Core Principles: macOS 12 (Monterey)'
     pool:
@@ -25,6 +18,13 @@ jobs:
       vmImage: macOS-13
     steps:
       - template: ci/core-principles-macOS-12.yaml
+
+  - job: CorePrinciplesMacOS14
+    displayName: 'Core Principles: macOS 14 (Sonoma)'
+    pool:
+      vmImage: macOS-14
+    steps:
+      - template: ci/core-principles-macOS-14.yaml
 
   - job: CorePrinciplesUbuntu20
     displayName: 'Core Principles: Ubuntu 20.04'
@@ -54,13 +54,6 @@ jobs:
     steps:
       - template: ci/core-principles-windows-2022.yaml
 
-  - job: HelloWorldMacOS11
-    displayName: 'Hello World: macOS 11 (Monterey)'
-    pool:
-      vmImage: macOS-11
-    steps:
-      - template: ci/hello-world-macOS-11.yaml
-
   - job: HelloWorldMacOS12
     displayName: 'Hello World: macOS 12 (Monterey)'
     pool:
@@ -74,6 +67,13 @@ jobs:
       vmImage: macOS-13
     steps:
       - template: ci/hello-world-macOS-13.yaml
+
+  - job: HelloWorldMacOS14
+    displayName: 'Hello World: macOS 14 (Sonoma)'
+    pool:
+      vmImage: macOS-14
+    steps:
+      - template: ci/hello-world-macOS-14.yaml
 
   - job: HelloWorldUbuntu20
     displayName: 'Hello World: Ubuntu 20.04'
@@ -103,13 +103,6 @@ jobs:
     steps:
       - template: ci/hello-world-windows-2022.yaml
 
-  - job: IntermediateMacOS11
-    displayName: 'Intermediate: macOS 11 (Big Sur)'
-    pool:
-      vmImage: macOS-11
-    steps:
-      - template: ci/intermediate-macOS-12.yaml
-
   - job: IntermediateMacOS12
     displayName: 'Intermediate: macOS 12 (Monterey)'
     pool:
@@ -123,6 +116,13 @@ jobs:
       vmImage: macOS-13
     steps:
       - template: ci/intermediate-macOS-12.yaml
+
+  - job: IntermediateMacOS14
+    displayName: 'Intermediate: macOS 14 (Sonoma)'
+    pool:
+      vmImage: macOS-14
+    steps:
+      - template: ci/intermediate-macOS-14.yaml
 
   - job: IntermediateUbuntu20
     displayName: 'Intermediate: Ubuntu 20.04'
