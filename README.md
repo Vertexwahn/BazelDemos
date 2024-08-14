@@ -29,7 +29,7 @@ Furthermore, the [ci](/ci) directory contains build jobs to ensure that specific
 ## Hello World
 
 Under [hello_world](/hello_world) you can find Hello World examples in misc programming languages using Bazel.
-The following table shows on what OS configuration the examples were successfully tested. 
+The following table shows on which OS configurations the examples were successfully tested. 
 
 | Language support on  | macOS   | Ubuntu |  Windows |
 | -------------------- | ------- | ------ |  ------- |
