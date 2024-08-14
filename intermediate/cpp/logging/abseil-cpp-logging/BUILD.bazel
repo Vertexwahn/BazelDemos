@@ -1,0 +1,8 @@
+cc_binary(
+    name = "main",
+    srcs = ["main.cpp"],
+    deps = [
+        "@abseil-cpp//absl/log:initialize",
+        "@abseil-cpp//absl/log:log",
+    ],
+)

@@ -1,0 +1,2 @@
+bazel_dep(name = "abseil-cpp", version = "20240116.2")
+bazel_dep(name = "rules_cc", version = "0.0.9")

@@ -1,0 +1,11 @@
+load("@rules_foo//:foo.bzl", "foo_cc_library")
+
+cc_binary(
+    name = "hello_world",
+    srcs = ["main.cpp"],
+    deps = [":foolib"],
+)
+
+foo_cc_library(
+    name = "foolib",
+)

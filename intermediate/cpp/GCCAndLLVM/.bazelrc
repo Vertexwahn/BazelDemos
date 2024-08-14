@@ -1,0 +1,7 @@
+# Not needed after https://github.com/bazelbuild/bazel/issues/7260 is closed
+#build --incompatible_enable_cc_toolchain_resolution
+
+
+build:gcc --noincompatible_enable_cc_toolchain_resolution # disable LLVM toolchain
+
+# build:clang16

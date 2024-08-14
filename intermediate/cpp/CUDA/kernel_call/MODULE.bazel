@@ -1,0 +1,16 @@
+bazel_dep(name = "rules_cuda", version = "0.2.1")
+
+# pick a specific version (this is optional an can be skipped)
+archive_override(
+    module_name = "rules_cuda",
+    integrity = "sha256-sjOk7TddjzFer8tqbkWEZEJV+oZTXvQBTop37b6i8pE=",
+    strip_prefix = "rules_cuda-1f8d4a0733226b246e799f3b17e0c76875a7997b",
+    urls = "https://github.com/bazel-contrib/rules_cuda/archive/1f8d4a0733226b246e799f3b17e0c76875a7997b.tar.gz",
+)
+
+cuda = use_extension("@rules_cuda//cuda:extensions.bzl", "toolchain")
+cuda.local_toolchain(
+    name = "local_cuda",
+    toolkit_path = "",
+)
+use_repo(cuda, "local_cuda")

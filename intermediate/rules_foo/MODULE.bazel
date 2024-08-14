@@ -1,0 +1,13 @@
+module(
+    name = "rules_foo",
+    version = "0.0.1",
+)
+
+bazel_dep(name = "rules_cc", version = "0.0.9")
+bazel_dep(name = "platforms", version = "0.0.9")
+
+
+register_toolchains(
+    "//:foo_linux_toolchain",
+    "//:foo_osx_toolchain",
+)

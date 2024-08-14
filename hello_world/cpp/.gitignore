@@ -1,1 +1,3 @@
 bazel-*
+.vs
+hello_world/x64

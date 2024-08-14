@@ -1,0 +1,8 @@
+bazel_dep(name = "glog")
+
+archive_override(
+    module_name = "glog",
+    urls = "https://github.com/google/glog/archive/cc0de6c200375b33d907ee7632eee2f173b33a09.tar.gz",
+    strip_prefix = "glog-cc0de6c200375b33d907ee7632eee2f173b33a09",  # Latest commit as of 2024-06-08.
+    integrity = "sha256-rUrv4EBkdc+4Wbhfxp+KoRstlj2Iw842/OpLfDq0ivg=",
+)
