@@ -1,0 +1,26 @@
+"""
+    SPDX-FileCopyrightText: Copyright 2024 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+bazel_dep(name = "contrib_rules_jvm", version = "0.27.0")
+bazel_dep(name = "rules_java", version = "7.11.1")
+bazel_dep(name = "rules_jvm_external", version = "6.2")
+
+#-------------------------------------------------------------------------------------
+# rules_jvm
+#-------------------------------------------------------------------------------------
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "org.junit.jupiter:junit-jupiter-api:5.11.0",
+        "org.junit.jupiter:junit-jupiter-api:5.11.0",
+        "org.junit.platform:junit-platform-reporting:1.11.0",
+        "org.junit.platform:junit-platform-launcher:1.11.0",
+        "org.junit.jupiter:junit-jupiter-engine:5.11.0",
+    ],
+    #fail_if_repin_required = True,
+    #lock_file = "//:maven_install.json",  # once this is uncommented the above artifacts list is ignored
+)
+use_repo(maven, "maven")

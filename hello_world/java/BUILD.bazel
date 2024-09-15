@@ -3,6 +3,8 @@
     SPDX-License-Identifier: Apache-2.0
 """
 
+
+
 java_binary(
     name = "hello_world",
     srcs = ["HelloWorld.java"],
