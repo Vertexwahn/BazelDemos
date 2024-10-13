@@ -1,4 +1,4 @@
-package de.vertexwahn.example;
+package org.vertexwahn.example;
 
 import org.junit.jupiter.api.Test;
 

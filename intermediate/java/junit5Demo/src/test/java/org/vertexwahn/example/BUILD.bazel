@@ -1,8 +1,13 @@
-load("@contrib_rules_jvm//java:defs.bzl", "checkstyle_test", "java_junit5_test")
+"""
+    SPDX-FileCopyrightText: Copyright 2024 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 load("@rules_jvm_external//:defs.bzl", "artifact")
 
 java_junit5_test(
-    name = "example_test",
+    name = "ExampleTest",
     srcs = ["ExampleTest.java"],
     runtime_deps = [
         artifact("org.junit.jupiter:junit-jupiter-engine"),
