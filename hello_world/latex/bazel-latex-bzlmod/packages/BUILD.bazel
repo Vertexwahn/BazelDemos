@@ -1,0 +1,1513 @@
+load(":packages.bzl", "latex_package")
+
+# Externally usable library targets.
+
+latex_package(
+    name = "adjustbox",
+    srcs = [
+        ":collectbox",
+        ":epstopdf-base",
+        ":graphicx",
+        ":pgf",
+        ":xkeyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__adjustbox",
+    ],
+    tests = ["adjustbox_test.tex"],
+)
+
+latex_package(
+    name = "algorithm2e",
+    srcs = [
+        ":float",
+        ":ifoddpage",
+        ":ifthen",
+        ":relsize",
+        ":xspace",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__algorithm2e",
+    ],
+    tests = ["algorithm2e_test.tex"],
+)
+
+latex_package(
+    name = "amsgen",
+    srcs = [":amsmath"],
+    tests = ["amsgen_test.tex"],
+)
+
+latex_package(
+    name = "amsmath",
+    srcs = [
+        ":amsfonts",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__amsmath",
+    ],
+    tests = ["amsmath_test.tex"],
+)
+
+latex_package(
+    name = "amstext",
+    srcs = [":amsmath"],
+    tests = ["amstext_test.tex"],
+)
+
+latex_package(
+    name = "amssymb",
+    srcs = [
+        ":amsfonts",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__amsfonts__symbols",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__public__amsfonts__symbols",
+    ],
+    tests = ["amssymb_test.tex"],
+)
+
+latex_package(
+    name = "amsthm",
+    srcs = [":amscls"],
+    tests = ["amsthm_test.tex"],
+)
+
+latex_package(
+    name = "array",
+    srcs = [":tools"],
+    tests = ["array_test.tex"],
+)
+
+latex_package(
+    name = "auxhook",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__auxhook"],
+    tests = ["auxhook_test.tex"],
+)
+
+latex_package(
+    name = "babel_dutch",
+    srcs = [
+        ":babel",
+        ":hyph_utf8",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__babel-dutch",
+    ],
+    tests = ["babel_dutch_test.tex"],
+)
+
+latex_package(
+    name = "babel_english",
+    srcs = [
+        ":babel",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__babel-english",
+    ],
+    tests = ["babel_english_test.tex"],
+)
+
+latex_package(
+    name = "beamer",
+    srcs = [
+        ":amsmath",
+        ":amssymb",
+        ":amsthm",
+        ":enumerate",
+        ":etoolbox",
+        ":geometry",
+        ":hyperref",
+        ":ifpdf",
+        ":pgfcore",
+        ":translator",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__beamer",
+    ],
+    tests = [
+        "beamer_themedefault_test.tex",
+        "beamer_themesplit_test.tex",
+    ],
+)
+
+latex_package(
+    name = "beamertheme-metropolis",
+    srcs = [
+        ":beamer",
+        ":fontspec",
+        ":grfext",
+        ":pgfopts",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__beamertheme-metropolis",
+    ],
+    tests = [
+        "beamertheme-metropolis_test.tex",
+    ],
+)
+
+# Package is tested in example PDF
+latex_package(
+    name = "biblatex",
+    srcs = [
+        ":iftex",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__oberdiek",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__biblatex",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__etoolbox",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__graphics",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__hyperref",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__logreq",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__oberdiek",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__url",
+    ],
+)
+
+latex_package(
+    name = "booktabs",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__booktabs"],
+    tests = ["booktabs_test.tex"],
+)
+
+latex_package(
+    name = "calc",
+    srcs = [":tools"],
+    tests = ["calc_test.tex"],
+)
+
+latex_package(
+    name = "capt-of",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__capt-of"],
+    tests = ["capt-of_test.tex"],
+)
+
+latex_package(
+    name = "caption",
+    srcs = [
+        ":keyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__caption",
+    ],
+    tests = ["caption_test.tex"],
+)
+
+latex_package(
+    name = "changepage",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__changepage",
+    ],
+    tests = ["changepage_test.tex"],
+)
+
+latex_package(
+    name = "cleveref",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__cleveref"],
+    tests = ["cleveref_test.tex"],
+)
+
+latex_package(
+    name = "collectbox",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__collectbox"],
+    tests = ["collectbox_test.tex"],
+)
+
+latex_package(
+    name = "color",
+    srcs = [":graphics_oberdiek"],
+    tests = ["color_test.tex"],
+)
+
+latex_package(
+    name = "colortbl",
+    srcs = [
+        ":array",
+        ":color",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__colortbl",
+    ],
+    tests = ["colortbl_test.tex"],
+)
+
+latex_package(
+    name = "contour",
+    srcs = [
+        ":color",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__contour",
+    ],
+    tests = ["contour_test.tex"],
+)
+
+latex_package(
+    name = "cooking-units",
+    srcs = [
+        ":expl3",
+        ":fmtcount",
+        ":l3keys2e",
+        ":translations",
+        ":xfrac",
+        ":xparse",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__cooking-units",
+    ],
+    tests = ["cooking-units_test.tex"],
+)
+
+latex_package(
+    name = "csquotes",
+    srcs = [
+        ":etoolbox",
+        ":keyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__csquotes",
+    ],
+    tests = ["csquotes_test.tex"],
+)
+
+latex_package(
+    name = "currfile",
+    srcs = [
+        ":filehook",
+        ":kvoptions",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__currfile",
+    ],
+    tests = ["currfile_test.tex"],
+)
+
+latex_package(
+    name = "datatool",
+    srcs = [
+        ":amsmath",
+        ":etoolbox",
+        ":fp",
+        ":pgf",
+        ":substr",
+        ":xfor",
+        ":xkeyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__datatool",
+    ],
+    tests = [
+        "datatool_fp_test.tex",
+        "datatool_pgfmath_test.tex",
+    ],
+)
+
+latex_package(
+    name = "datenumber",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__datenumber"],
+    tests = ["datenumber_test.tex"],
+)
+
+latex_package(
+    name = "datetime",
+    srcs = [
+        ":etoolbox",
+        ":fmtcount",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__datetime",
+    ],
+    tests = ["datetime_test.tex"],
+)
+
+latex_package(
+    name = "datetime2",
+    srcs = [
+        ":tracklang",
+        ":xkeyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__datetime2",
+    ],
+    tests = ["datetime2_test.tex"],
+)
+
+latex_package(
+    name = "datetime2_english",
+    srcs = [
+        ":datetime2",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__datetime2-english",
+    ],
+    tests = ["datetime2_english_test.tex"],
+)
+
+latex_package(
+    name = "drawstack",
+    srcs = [
+        ":tikz",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__drawstack",
+    ],
+    tests = ["drawstack_test.tex"],
+)
+
+latex_package(
+    name = "enumerate",
+    srcs = [":tools"],
+    tests = ["enumerate_test.tex"],
+)
+
+latex_package(
+    name = "enumitem",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__enumitem"],
+    tests = ["enumitem_test.tex"],
+)
+
+latex_package(
+    name = "environ",
+    srcs = [
+        ":trimspaces",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__environ",
+    ],
+    tests = ["environ_test.tex"],
+)
+
+latex_package(
+    name = "epstopdf-base",
+    srcs = [":graphics_oberdiek"],
+    tests = ["epstopdf-base_test.tex"],
+)
+
+latex_package(
+    name = "etoolbox",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__etoolbox"],
+    tests = ["etoolbox_test.tex"],
+)
+
+latex_package(
+    name = "eufrak",
+    srcs = [
+        ":amsfonts",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__amsfonts__euler",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__public__amsfonts__euler",
+    ],
+    tests = ["eufrak_test.tex"],
+)
+
+latex_package(
+    name = "everyshi",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__everyshi"],
+    tests = ["everyshi_test.tex"],
+)
+
+latex_package(
+    name = "exam",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__exam"],
+    tests = ["exam_test.tex"],
+)
+
+latex_package(
+    name = "expl3",
+    srcs = [":l3kernel"],
+    tests = ["expl3_test.tex"],
+)
+
+latex_package(
+    name = "fancyhdr",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__fancyhdr"],
+    tests = ["fancyhdr_test.tex"],
+)
+
+latex_package(
+    name = "filehook",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__filehook"],
+    tests = ["filehook_test.tex"],
+)
+
+latex_package(
+    name = "filemod",
+    srcs = [
+        ":iftex",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__filemod",
+    ],
+    tests = ["filemod_test.tex"],
+)
+
+latex_package(
+    name = "float",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__float"],
+    tests = ["float_test.tex"],
+)
+
+latex_package(
+    name = "fmtcount",
+    srcs = [
+        ":amsgen",
+        ":etoolbox",
+        ":xkeyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__fmtcount",
+    ],
+    tests = ["fmtcount_test.tex"],
+)
+
+latex_package(
+    name = "fontawesome",
+    srcs = [
+        ":fontspec",
+        ":iftex",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__opentype__public__fontawesome",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__fontawesome",
+    ],
+    tests = ["fontawesome_test.tex"],
+)
+
+latex_package(
+    name = "fontawesome5",
+    srcs = [
+        ":fontspec",
+        ":iftex",
+        ":l3keys2e",
+        ":luatexbase",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__enc__dvips__fontawesome5",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__map__dvips__fontawesome5",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__opentype__public__fontawesome5",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__fontawesome5",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__public__fontawesome5",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__fontawesome5",
+    ],
+    tests = ["fontawesome5_test.tex"],
+)
+
+latex_package(
+    name = "fontspec",
+    srcs = [
+        ":xparse",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__fontspec",
+    ],
+    tests = ["fontspec_test.tex"],
+)
+
+latex_package(
+    name = "fp",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__fp"],
+    tests = ["fp_test.tex"],
+)
+
+latex_package(
+    name = "framed",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__framed"],
+    tests = ["framed_test.tex"],
+)
+
+latex_package(
+    name = "fullpage",
+    srcs = [":preprint"],
+    tests = ["fullpage_test.tex"],
+)
+
+latex_package(
+    name = "gensymb",
+    srcs = [":was"],
+    tests = ["gensymb_test.tex"],
+)
+
+latex_package(
+    name = "geometry",
+    srcs = [
+        ":ifpdf",
+        ":iftex",
+        ":keyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__geometry",
+    ],
+    tests = ["geometry_test.tex"],
+)
+
+latex_package(
+    name = "gincltex",
+    srcs = [
+        ":adjustbox",
+        ":svn-prov",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__gincltex",
+    ],
+    tests = ["gincltex_test.tex"],
+)
+
+latex_package(
+    name = "glossaries",
+    srcs = [
+        ":datatool",
+        ":longtable",
+        ":mfirstuc",
+        ":textcase",
+        ":xfor",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__glossaries__base",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__glossaries__styles",
+    ],
+    tests = ["glossaries_test.tex"],
+)
+
+latex_package(
+    name = "glossaries-extra",
+    srcs = [
+        ":etoolbox",
+        ":glossaries",
+        ":xkeyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__glossaries-extra",
+    ],
+    tests = ["glossaries-extra_test.tex"],
+)
+
+latex_package(
+    name = "gnuplottex",
+    srcs = [
+        ":graphicx",
+        ":verbatim",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__catchfile",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__etexcmds",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__gnuplottex",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__moreverb",
+    ],
+    tests = ["gnuplottex_test.tex"],
+)
+
+latex_package(
+    name = "graphicx",
+    srcs = [":graphics_oberdiek"],
+    tests = ["graphicx_test.tex"],
+)
+
+latex_package(
+    name = "grfext",
+    srcs = [
+        ":kvdefinekeys",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__grfext",
+    ],
+    tests = ["grfext_test.tex"],
+)
+
+latex_package(
+    name = "hanging",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__hanging"],
+    tests = ["hanging_test.tex"],
+)
+
+latex_package(
+    name = "helvet",
+    srcs = [
+        ":psnfss",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__adobe__helvetic",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__urw__helvetic",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__vf__adobe__helvetic",
+    ],
+    tests = ["helvet_test.tex"],
+)
+
+latex_package(
+    name = "hyperref",
+    srcs = [
+        ":auxhook",
+        ":iftex",
+        ":keyval",
+        ":ltxcmds",
+        ":url",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__bigintcalc",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__bitset",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__etexcmds",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__gettitlestring",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__intcalc",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__kvdefinekeys",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__pdfescape",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__stringenc",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__uniquecounter",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__hycolor",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__hyperref",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__letltxmacro",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__refcount",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__rerunfilecheck",
+    ],
+    tests = ["hyperref_test.tex"],
+)
+
+latex_package(
+    name = "hyph_utf8",
+    srcs = [
+        ":graphics_oberdiek",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__hyph-utf8__loadhyph",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__hyph-utf8__patterns__tex",
+    ],
+    tests = ["hyph_utf8_test.tex"],
+)
+
+latex_package(
+    name = "hyphenat",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__hyphenat"],
+    tests = ["hyphenat_test.tex"],
+)
+
+latex_package(
+    name = "ieeetran",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__ieeetran"],
+    tests = ["ieeetran_test.tex"],
+)
+
+latex_package(
+    name = "ifmtarg",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__ifmtarg"],
+    tests = ["ifmtarg_test.tex"],
+)
+
+latex_package(
+    name = "ifluatex",
+    srcs = [":iftex"],
+    tests = ["ifluatex_test.tex"],
+)
+
+latex_package(
+    name = "ifoddpage",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__ifoddpage"],
+    tests = ["ifoddpage_test.tex"],
+)
+
+latex_package(
+    name = "ifpdf",
+    srcs = [":iftex"],
+    tests = ["ifpdf_test.tex"],
+)
+
+latex_package(
+    name = "ifthen",
+    tests = ["ifthen_test.tex"],
+)
+
+latex_package(
+    name = "iftex",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__iftex"],
+    tests = ["iftex_test.tex"],
+)
+
+# iftex used to be called ifxetex in TeXLive 2019, keeping an alias.
+alias(
+    name = "ifxetex",
+    actual = ":iftex",
+)
+
+latex_package(
+    name = "import",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__import"],
+    tests = ["import_test.tex"],
+)
+
+latex_package(
+    name = "keyval",
+    srcs = [":graphics_oberdiek"],
+    tests = ["keyval_test.tex"],
+)
+
+latex_package(
+    name = "koma_script",
+    srcs = [
+        ":keyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__koma-script",
+    ],
+    tests = ["koma_script_test.tex"],
+)
+
+latex_package(
+    name = "kvdefinekeys",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__kvdefinekeys"],
+    tests = ["kvdefinekeys_test.tex"],
+)
+
+latex_package(
+    name = "kvoptions",
+    srcs = [":graphics_oberdiek"],
+    tests = ["kvoptions_test.tex"],
+)
+
+latex_package(
+    name = "lastpage",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__lastpage"],
+    tests = ["lastpage_test.tex"],
+)
+
+latex_package(
+    name = "lettrine",
+    srcs = [
+        ":keyval",
+        ":minifp",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__lettrine",
+    ],
+    tests = ["lettrine_test.tex"],
+)
+
+latex_package(
+    name = "lineno",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__lineno"],
+    tests = ["lineno_test.tex"],
+)
+
+latex_package(
+    name = "l3keys2e",
+    srcs = [
+        ":expl3",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__l3packages__l3keys2e",
+    ],
+    tests = ["l3keys2e_test.tex"],
+)
+
+latex_package(
+    name = "listings",
+    srcs = [
+        ":keyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__listings",
+    ],
+    tests = ["listings_test.tex"],
+)
+
+latex_package(
+    name = "lm",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__afm__public__lm",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__enc__dvips__lm",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__map__dvips__lm",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__opentype__public__lm",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__lm",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__public__lm",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__lm",
+    ],
+    tests = ["lm_test.tex"],
+)
+
+latex_package(
+    name = "longtable",
+    srcs = [":tools"],
+    tests = ["longtable_test.tex"],
+)
+
+latex_package(
+    name = "lstautogobble",
+    srcs = [
+        ":listings",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__lstaddons",
+    ],
+    tests = ["lstautogobble_test.tex"],
+)
+
+latex_package(
+    name = "ltxcmds",
+    srcs = [":graphics_oberdiek"],
+    tests = ["ltxcmds_test.tex"],
+)
+
+latex_package(
+    name = "luacode",
+    srcs = [
+        ":ifluatex",
+        ":luatexbase",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__lualatex__luacode",
+    ],
+    tests = ["luacode_test.tex"],
+)
+
+latex_package(
+    name = "luatex85",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__luatex85"],
+    tests = ["luatex85_test.tex"],
+)
+
+latex_package(
+    name = "makecell",
+    srcs = [
+        ":array",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__makecell",
+    ],
+    tests = ["makecell_test.tex"],
+)
+
+latex_package(
+    name = "marginfix",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__marginfix"],
+    tests = ["marginfix_test.tex"],
+)
+
+latex_package(
+    name = "marginnote",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__marginnote"],
+    tests = ["marginnote_test.tex"],
+)
+
+latex_package(
+    name = "marvosym",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__marvosym",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__public__marvosym",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__marvosym",
+    ],
+    tests = ["marvosym_test.tex"],
+)
+
+latex_package(
+    name = "mathastext",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__mathastext",
+    ],
+    tests = ["mathastext_test.tex"],
+)
+
+latex_package(
+    name = "mdframed",
+    srcs = [
+        ":etoolbox",
+        ":ifluatex",
+        ":luatexbase",
+        ":needspace",
+        ":tikz",
+        ":xparse",
+        ":zref-savepos",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__mdframed",
+    ],
+    tests = ["mdframed_test.tex"],
+)
+
+latex_package(
+    name = "mfirstuc",
+    srcs = [
+        ":etoolbox",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__mfirstuc",
+    ],
+    tests = ["mfirstuc_test.tex"],
+)
+
+latex_package(
+    name = "mflogo",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__afm__hoekwater__mflogo-font",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__mflogo",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__hoekwater__mflogo-font",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__mflogo",
+    ],
+    tests = ["mflogo_test.tex"],
+)
+
+latex_package(
+    name = "microtype",
+    srcs = [
+        ":etoolbox",
+        ":keyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__microtype",
+    ],
+    tests = ["microtype_test.tex"],
+)
+
+latex_package(
+    name = "minifp",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__minifp",
+    ],
+    tests = ["minifp_test.tex"],
+)
+
+latex_package(
+    name = "mnsymbol",
+    srcs = [
+        ":amsmath",
+        ":eufrak",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__enc__dvips__mnsymbol",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__mnsymbol",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__public__mnsymbol",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__mnsymbol",
+    ],
+    tests = ["mnsymbol_test.tex"],
+)
+
+latex_package(
+    name = "moderncv",
+    srcs = [
+        ":etoolbox",
+        ":fancyhdr",
+        ":fontawesome5",
+        ":hyperref",
+        ":iftex",
+        ":microtype",
+        ":tikz",
+        ":url",
+        ":xcolor",
+        ":xparse",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__academicons",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__arydshln",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__moderncv",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__multirow",
+    ],
+    tests = [
+        "moderncv_casual_test.tex",
+        "moderncv_classic_test.tex",
+    ],
+)
+
+latex_package(
+    name = "multicol",
+    srcs = [":tools"],
+    tests = ["multicol_test.tex"],
+)
+
+latex_package(
+    name = "needspace",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__needspace",
+    ],
+    tests = ["needspace_test.tex"],
+)
+
+latex_package(
+    name = "nth",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__nth"],
+    tests = ["nth_test.tex"],
+)
+
+latex_package(
+    name = "parskip",
+    srcs = [
+        ":etoolbox",
+        ":kvoptions",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__parskip",
+    ],
+    tests = ["parskip_test.tex"],
+)
+
+latex_package(
+    name = "pdfcomment",
+    srcs = [
+        ":calc",
+        ":datetime2",
+        ":etoolbox",
+        ":hyperref",
+        ":luatex85",
+        ":marginnote",
+        ":soulpos",
+        ":xkeyval",
+        ":zref-savepos",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pdfcomment",
+    ],
+    tests = ["pdfcomment_test.tex"],
+)
+
+latex_package(
+    name = "pgfcore",
+    srcs = [
+        ":epstopdf-base",
+        ":pgf",
+    ],
+    tests = ["pgfcore_test.tex"],
+)
+
+latex_package(
+    name = "pgfopts",
+    srcs = [
+        ":pgf",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pgfopts",
+    ],
+    tests = ["pgfopts_test.tex"],
+)
+
+latex_package(
+    name = "pgfplots",
+    srcs = [
+        ":pgf",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__pgfplots",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pgfplots",
+    ],
+    tests = ["pgfplots_test.tex"],
+)
+
+latex_package(
+    name = "placeat",
+    srcs = [
+        ":luacode",
+        ":luatexbase",
+        ":xparse",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__scripts__placeat",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__lualatex__placeat",
+    ],
+    tests = ["placeat_test.tex"],
+)
+
+latex_package(
+    name = "placeins",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__placeins"],
+    tests = ["placeins_test.tex"],
+)
+
+latex_package(
+    name = "ragged2e",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__ragged2e"],
+    tests = ["ragged2e_test.tex"],
+)
+
+latex_package(
+    name = "relsize",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__relsize"],
+    tests = ["relsize_test.tex"],
+)
+
+latex_package(
+    name = "silence",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__silence"],
+    tests = ["silence_test.tex"],
+)
+
+latex_package(
+    name = "siunitx",
+    srcs = [
+        ":amstext",
+        ":array",
+        ":color",
+        ":expl3",
+        ":l3keys2e",
+        ":xparse",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__siunitx",
+    ],
+    tests = ["siunitx_test.tex"],
+)
+
+latex_package(
+    name = "soul",
+    srcs = [
+        ":ec",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__soul",
+    ],
+    tests = ["soul_test.tex"],
+)
+
+latex_package(
+    name = "soulutf8",
+    srcs = [
+        ":soul",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__etexcmds",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__soulutf8",
+    ],
+    tests = ["soulutf8_test.tex"],
+)
+
+latex_package(
+    name = "soulpos",
+    srcs = [
+        ":keyval",
+        ":soulutf8",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__soulpos",
+    ],
+    tests = ["soulpos_test.tex"],
+)
+
+latex_package(
+    name = "standalone",
+    srcs = [
+        ":currfile",
+        ":filemod",
+        ":gincltex",
+        ":graphics_oberdiek",
+        ":luatex85",
+        ":xkeyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__standalone",
+    ],
+    tests = [
+        "standalone_documentclass_test.tex",
+        "standalone_package_test.tex",
+    ],
+)
+
+latex_package(
+    name = "subcaption",
+    srcs = [":caption"],
+    tests = ["subcaption_test.tex"],
+)
+
+latex_package(
+    name = "substr",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__substr"],
+    tests = ["substr_test.tex"],
+)
+
+latex_package(
+    name = "svn-prov",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__svn-prov"],
+    tests = ["svn-prov_test.tex"],
+)
+
+latex_package(
+    name = "tabularx",
+    srcs = [":tools"],
+    tests = ["tabularx_test.tex"],
+)
+
+latex_package(
+    name = "tabulary",
+    srcs = [
+        ":array",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__tabulary",
+    ],
+    tests = ["tabulary_test.tex"],
+)
+
+latex_package(
+    name = "tcolorbox",
+    srcs = [
+        ":environ",
+        ":etoolbox",
+        ":pgf",
+        ":verbatim",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__tcolorbox",
+    ],
+    tests = ["tcolorbox_test.tex"],
+)
+
+latex_package(
+    name = "textcase",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__textcase"],
+    tests = ["textcase_test.tex"],
+)
+
+latex_package(
+    name = "tgheros",
+    srcs = [
+        ":kvoptions",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__opentype__public__tex-gyre",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__tex-gyre",
+    ],
+    tests = ["tgheros_test.tex"],
+)
+
+latex_package(
+    name = "tikz",
+    srcs = [":pgf"],
+    tests = ["tikz_test.tex"],
+)
+
+latex_package(
+    name = "tikz-qtree",
+    srcs = [
+        ":pgf",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__tikz-qtree",
+    ],
+    tests = ["tikz-qtree_test.tex"],
+)
+
+latex_package(
+    name = "titlesec",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__titlesec"],
+    tests = ["titlesec_test.tex"],
+)
+
+latex_package(
+    name = "titling",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__titling"],
+    tests = ["titling_test.tex"],
+)
+
+latex_package(
+    name = "tocloft",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__tocloft"],
+    tests = ["tocloft_test.tex"],
+)
+
+latex_package(
+    name = "tracklang",
+    srcs = [
+        ":etoolbox",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__tracklang",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__tracklang",
+    ],
+    tests = ["tracklang_test.tex"],
+)
+
+latex_package(
+    name = "translations",
+    srcs = [
+        ":babel",
+        ":etoolbox",
+        ":koma_script",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__translations",
+    ],
+    tests = ["translations_test.tex"],
+    tests_deps = [
+        ":babel_dutch",
+        ":babel_english",
+    ],
+)
+
+latex_package(
+    name = "translator",
+    srcs = [
+        ":babel",
+        ":keyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__translator",
+    ],
+    tests = ["translator_test.tex"],
+)
+
+latex_package(
+    name = "trimspaces",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__trimspaces"],
+    tests = ["trimspaces_test.tex"],
+)
+
+latex_package(
+    name = "ulem",
+    srcs = [
+        ":latxfont",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__ulem",
+    ],
+    tests = ["ulem_test.tex"],
+)
+
+latex_package(
+    name = "unicode-math",
+    srcs = [
+        ":amsmath",
+        ":fontspec",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__opentype__public__lm-math",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__etoolbox",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__filehook",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__l3packages__l3keys2e",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__unicode-math",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__lualatex__lualatex-math",
+    ],
+    tests = ["unicode-math_test.tex"],
+)
+
+latex_package(
+    name = "units",
+    srcs = [
+        ":ifthen",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__units",
+    ],
+    tests = ["units_test.tex"],
+)
+
+latex_package(
+    name = "upquote",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__upquote"],
+    tests = ["upquote_test.tex"],
+)
+
+latex_package(
+    name = "url",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__url"],
+    tests = ["url_test.tex"],
+)
+
+latex_package(
+    name = "verbatim",
+    srcs = [":tools"],
+    tests = ["verbatim_test.tex"],
+)
+
+latex_package(
+    name = "xcharter",
+    srcs = [
+        ":cyrillic",
+        ":etoolbox",
+        ":fontspec",
+        ":iftex",
+        ":ly1",
+        ":psnfss",
+        ":times",
+        ":xkeyval",
+        ":xstring",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__afm__public__xcharter",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__enc__dvips__xcharter",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__map__dvips__xcharter",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__opentype__public__xcharter",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__xcharter",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__public__xcharter",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__vf__public__xcharter",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__carlisle",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__xcharter",
+    ],
+    tests = ["xcharter_test.tex"],
+)
+
+latex_package(
+    name = "xcolor",
+    srcs = [
+        ":colortbl",
+        ":graphics_oberdiek",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__xcolor",
+    ],
+    tests = ["xcolor_test.tex"],
+)
+
+latex_package(
+    name = "xfor",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__xfor"],
+    tests = ["xfor_test.tex"],
+)
+
+latex_package(
+    name = "xfrac",
+    srcs = [
+        ":amstext",
+        ":graphicx",
+        ":l3keys2e",
+        ":xparse",
+        ":xtemplate",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__l3packages__xfrac",
+    ],
+    tests = ["xfrac_test.tex"],
+)
+
+latex_package(
+    name = "xifthen",
+    srcs = [
+        ":calc",
+        ":ifmtarg",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__xifthen",
+    ],
+    tests = ["xifthen_test.tex"],
+)
+
+latex_package(
+    name = "xkeyval",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__xkeyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__xkeyval",
+    ],
+    tests = ["xkeyval_test.tex"],
+)
+
+latex_package(
+    name = "xparse",
+    srcs = [
+        ":expl3",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__l3packages__xparse",
+    ],
+    tests = ["xparse_test.tex"],
+)
+
+latex_package(
+    name = "xspace",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__tools"],
+    tests = ["xspace_test.tex"],
+)
+
+latex_package(
+    name = "xstring",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__xstring"],
+    tests = ["xstring_test.tex"],
+)
+
+latex_package(
+    name = "xtemplate",
+    srcs = [
+        ":amstext",
+        ":expl3",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__l3packages__xtemplate",
+    ],
+    tests = ["xtemplate_test.tex"],
+    tests_deps = [
+        ":csquotes",
+        ":fontspec",
+        ":xcolor",
+        ":xparse",
+        ":xspace",
+    ],
+)
+
+latex_package(
+    name = "zref-savepos",
+    srcs = [
+        ":auxhook",
+        ":iftex",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__etexcmds",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__kvdefinekeys",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__zref",
+    ],
+    tests = ["zref-savepos_test.tex"],
+)
+
+# Internal library targets.
+
+filegroup(
+    name = "amscls",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__amscls"],
+)
+
+filegroup(
+    name = "amsfonts",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__public__amsfonts__cmextra",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__amsfonts",
+    ],
+)
+
+filegroup(
+    name = "babel",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__babel"],
+)
+
+filegroup(
+    name = "ctablestack",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__luatex__ctablestack"],
+)
+
+filegroup(
+    name = "cyrillic",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__cyrillic"],
+)
+
+filegroup(
+    name = "ec",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__jknappen__ec"],
+)
+
+# These packages have a cyclic dependency on each other.
+filegroup(
+    name = "graphics_oberdiek",
+    srcs = [
+        ":soul",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__oberdiek",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__epstopdf-pkg",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__graphics",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__graphics-cfg",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__graphics-def",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__oberdiek",
+    ],
+)
+
+filegroup(
+    name = "l3kernel",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__l3kernel"],
+)
+
+filegroup(
+    name = "latxfont",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__type1__public__amsfonts__latxfont"],
+)
+
+filegroup(
+    name = "luatexbase",
+    srcs = [
+        ":ctablestack",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__luatex__luatexbase",
+    ],
+)
+
+filegroup(
+    name = "ly1",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__ly1"],
+)
+
+filegroup(
+    name = "ms",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__ms"],
+)
+
+filegroup(
+    name = "pgf",
+    srcs = [
+        ":everyshi",
+        ":graphicx",
+        ":xcolor",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__generic__pgf",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pgf__basiclayer",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pgf__compatibility",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pgf__frontendlayer",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pgf__math",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pgf__systemlayer",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__pgf__utilities",
+    ],
+)
+
+filegroup(
+    name = "preprint",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__preprint"],
+)
+
+filegroup(
+    name = "psnfss",
+    srcs = [
+        ":keyval",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__psnfss",
+    ],
+)
+
+filegroup(
+    name = "times",
+    srcs = [
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__tfm__adobe__times",
+        "@bazel_latex_texlive//:texlive_texmf__texmf-dist__fonts__vf__adobe__times",
+    ],
+)
+
+filegroup(
+    name = "tools",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__tools"],
+)
+
+filegroup(
+    name = "was",
+    srcs = ["@bazel_latex_texlive//:texlive_texmf__texmf-dist__tex__latex__was"],
+)
