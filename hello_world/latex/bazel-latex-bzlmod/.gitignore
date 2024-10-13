@@ -1,5 +1,0 @@
-.*.swp
-.ijwb
-.nfs*
-/bazel-*
-/MODULE.bazel.lock

@@ -1,6 +1,7 @@
 bazel_dep(name = "bazel_latex")
 
-local_path_override(
-    module_name = "bazel_latex",
-    path = "bazel-latex-bzlmod",
+git_override(
+    module_name = "bazel_latex", 
+    remote = "https://github.com/ProdriveTechnologies/bazel-latex.git",
+    commit = "227b02f346c1dd0098d32b5bcb1ef874dd367e2a",
 )
