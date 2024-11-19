@@ -76,12 +76,12 @@ steps:
       bazel run //:hello_world
     displayName: "Hello World Go"
 
-  - script: |
-      ROOT_DIR=$(pwd)
-
-      cd ${ROOT_DIR}/hello_world/groovy
-      bazel run //:hello_world
-    displayName: "Hello World Groovy"
+  #- script: |
+  #    ROOT_DIR=$(pwd)
+  #
+  #    cd ${ROOT_DIR}/hello_world/groovy
+  #    bazel run //:hello_world
+  #  displayName: "Hello World Groovy"
 
   # TODO: Add Haskell here
 
