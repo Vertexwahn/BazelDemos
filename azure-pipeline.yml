@@ -75,6 +75,13 @@ jobs:
     steps:
       - template: ci/hello-world-ubuntu-22.04.yaml
 
+  - job: HelloWorldUbuntu24
+    displayName: 'Hello World: Ubuntu 24.04'
+    pool:
+      vmImage: ubuntu-24.04
+    steps:
+      - template: ci/hello-world-ubuntu-24.04.yaml
+
   - job: HelloWorldWindows2019
     displayName: "Hello World: Windows Server 2019"
     pool:
