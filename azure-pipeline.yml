@@ -10,7 +10,7 @@ jobs:
     pool:
       vmImage: macOS-13
     steps:
-      - template: ci/core-principles-macOS-12.yaml
+      - template: ci/core-principles-macOS-13.yaml
 
   - job: CorePrinciplesMacOS14
     displayName: 'Core Principles: macOS 14 (Sonoma)'
@@ -101,7 +101,7 @@ jobs:
     pool:
       vmImage: macOS-13
     steps:
-      - template: ci/intermediate-macOS-12.yaml
+      - template: ci/intermediate-macOS-13.yaml
 
   - job: IntermediateMacOS14
     displayName: 'Intermediate: macOS 14 (Sonoma)'
