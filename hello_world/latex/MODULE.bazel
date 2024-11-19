@@ -1,7 +1,12 @@
+"""
+    SPDX-FileCopyrightText: 2024 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
 bazel_dep(name = "bazel_latex")
 
 git_override(
     module_name = "bazel_latex", 
     remote = "https://github.com/ProdriveTechnologies/bazel-latex.git",
-    commit = "227b02f346c1dd0098d32b5bcb1ef874dd367e2a",
+    commit = "c552d5bd09e4e9e49040ede60dd97720acb1cbb7",
 )
