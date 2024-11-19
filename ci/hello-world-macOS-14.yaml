@@ -113,6 +113,14 @@ steps:
     displayName: "Hello World Python"
 
   - script: |
+      ROOT_DIR=$(pwd)
+      
+      cd ${ROOT_DIR}/hello_world/rust
+      bazel build //...
+      bazel run //:hello_world
+    displayName: "Hello World Rust"
+
+  #- script: |
   #    ROOT_DIR=$(pwd)
   #
   #   cd ${ROOT_DIR}/hello_world/ruby
