@@ -36,6 +36,7 @@ The following table shows on which OS configurations the examples were successfu
 | C++                  | yes     | yes    |  yes     |
 | C#                   | yes     | yes    |  yes     |
 | D                    | no      | yes    |  no      |
+| Rust                 |         | yes    |          |
 
 ## Similar projects
 
