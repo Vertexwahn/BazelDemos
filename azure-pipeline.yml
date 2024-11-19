@@ -5,13 +5,6 @@
 
 
 jobs:
-  - job: CorePrinciplesMacOS12
-    displayName: 'Core Principles: macOS 12 (Monterey)'
-    pool:
-      vmImage: macOS-12
-    steps:
-      - template: ci/core-principles-macOS-12.yaml
-
   - job: CorePrinciplesMacOS13
     displayName: 'Core Principles: macOS 13 (Monterey)'
     pool:
@@ -54,13 +47,6 @@ jobs:
     steps:
       - template: ci/core-principles-windows-2022.yaml
 
-  - job: HelloWorldMacOS12
-    displayName: 'Hello World: macOS 12 (Monterey)'
-    pool:
-      vmImage: macOS-12
-    steps:
-      - template: ci/hello-world-macOS-12.yaml
-
   - job: HelloWorldMacOS13
     displayName: 'Hello World: macOS 13 (Ventura)'
     pool:
@@ -102,13 +88,6 @@ jobs:
       vmImage: windows-2022
     steps:
       - template: ci/hello-world-windows-2022.yaml
-
-  - job: IntermediateMacOS12
-    displayName: 'Intermediate: macOS 12 (Monterey)'
-    pool:
-      vmImage: macOS-12
-    steps:
-      - template: ci/intermediate-macOS-12.yaml
 
   - job: IntermediateMacOS13
     displayName: 'Intermediate: macOS 13 (Ventura)'
