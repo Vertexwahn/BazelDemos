@@ -6,7 +6,6 @@
 #include <iostream>
 
 int main() {
-	std::string hello_world{ "Hello World!" };
-	std::cout << hello_world << std::endl;
-	//std::cin.get();
+	std::cout << "Hello World!" << std::endl;
+    return 0;
 }

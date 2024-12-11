@@ -75,7 +75,7 @@ steps:
   - script: |
       SET ROOT_DIR=%cd%
 
-      cd %ROOT_DIR%/hello_world/java_script
+      cd %ROOT_DIR%/hello_world/javascript
       bazel build --enable_runfiles //...
       bazel run --enable_runfiles //:hello_world
     displayName: "Hello World Java Script"

@@ -86,7 +86,7 @@ steps:
   - script: |
       ROOT_DIR=$(pwd)
 
-      cd ${ROOT_DIR}/hello_world/java_script
+      cd ${ROOT_DIR}/hello_world/javascript
       bazel build //...
       bazel run //:hello_world
     displayName: "Hello World Java Script"

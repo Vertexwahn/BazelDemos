@@ -3,7 +3,7 @@
     SPDX-License-Identifier: Apache-2.0
 """
 
-bazel_dep(name = "rules_python", version = "0.36.0")
+bazel_dep(name = "rules_python", version = "1.0.0")
 
 python = use_extension("@rules_python//python/extensions:python.bzl", "python")
 

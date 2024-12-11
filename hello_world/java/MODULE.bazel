@@ -1,1 +1,6 @@
-bazel_dep(name = "rules_java", version = "7.11.1")
+"""
+    SPDX-FileCopyrightText: 2023 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+bazel_dep(name = "rules_java", version = "8.6.2")

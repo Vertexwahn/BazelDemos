@@ -2,7 +2,3 @@
     SPDX-FileCopyrightText: 2023 Julian Amann <dev@vertexwahn.de>
     SPDX-License-Identifier: Apache-2.0
 """
-
-module(
-    name = "de_vertexwahn_hello_world_cpp",
-)
