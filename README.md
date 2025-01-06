@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+SPDX-FileCopyrightText: 2022-2025 Julian Amann <dev@vertexwahn.de>
 SPDX-License-Identifier: Apache-2.0
 -->
 
@@ -14,7 +14,8 @@ I store some demos, experiments,
 and playgrounds that show how to use Bazel with different programming languages, 
 libraries, and tools.
 Besides this, 
-you can find here misc experiments related to Bazel.
+you can find misc experiments related to Bazel here.
+Most of the things you find here are not production-ready but can serve as a starting point for your own developments.
 
 ## Organization of this repo
 
@@ -53,9 +54,9 @@ Here you can find a list of other repositories with Bazel demos:
 
 ## Contributions welcome
 
-If you have a Bazel demo you want to share feel free to open a pull request.
-I am always happy about seeing new programming languages supported by Bazel or interesting usage of tools or third-party dependencies.
-Of course, improvements are also welcomed.
+If you have a Bazel demo you want to share, feel free to open a pull request.
+I am always happy about seeing new programming languages supported by Bazel or interesting usage of tools or third-party dependencies. 
+Of course, improvements are also welcome.
 
 ## License
 
@@ -63,4 +64,4 @@ If not stated otherwise the license of the source files in this repository (Baze
 
 ## Credits
 
-A big thanks goes to all the providers, developers, and maintainers of the Bazel universe.
+A big thanks goes to all the providers, developers, and maintainers of the Bazel universe! :heart:
