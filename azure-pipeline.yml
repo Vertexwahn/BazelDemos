@@ -124,6 +124,13 @@ jobs:
     steps:
       - template: ci/intermediate-ubuntu-22.04.yaml
 
+  - job: IntermediateUbuntu24
+    displayName: 'Intermediate: Ubuntu 24.04'
+    pool:
+      vmImage: ubuntu-24.04
+    steps:
+      - template: ci/intermediate-ubuntu-24.04.yaml
+
   - job: IntermediateWindows2019
     displayName: 'Intermediate: Windows 2019'
     pool:
