@@ -120,10 +120,10 @@ steps:
   #   bazel run //:hello_world
   # displayName: "Hello World Ruby"
 
-  - script: |
-      SET ROOT_DIR=%cd%
-
-      cd %ROOT_DIR%/hello_world/shell
-      bazel build //...
-      bazel run //:hello_world
-    displayName: "Hello World Shell"
+  #- script: |
+  #    SET ROOT_DIR=%cd%#
+  #
+  #    cd %ROOT_DIR%/hello_world/shell
+  #    bazel build //...
+  #    bazel run //:hello_world
+  #  displayName: "Hello World Shell"

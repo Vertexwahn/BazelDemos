@@ -26,6 +26,7 @@ This repository is mainly organized into three parts:
 - [intermediate](/intermediate): Usage of different third-party dependencies and tools
 
 Furthermore, the [ci](/ci) directory contains build jobs to ensure that specific demos work across different operating systems.
+Not all demos that can be found here are also covered by CI.
 
 ## Hello World
 
