@@ -1,0 +1,19 @@
+bazel_dep(name = "nlohmann_json", version = "3.11.3.bcr.1")
+bazel_dep(name = "platforms", version = "0.0.11")
+bazel_dep(name = "rules_cc", version = "0.1.1")
+
+bazel_dep(name = "googletest", version = "1.16.0", dev_dependency = True)
+
+new_local_repository = use_repo_rule("@bazel_tools//tools/build_defs/repo:local.bzl", "new_local_repository")
+
+#new_local_repository(
+#    name = "jt_open_toolkit_windows_x86_64",
+#    build_file = "//bazel:jt_open_toolkit_windows_x86_64.BUILD",
+#    path = "C:/Program Files/Siemens/JTOpenToolkit/11_6/dev",
+#)
+
+new_local_repository(
+    name = "jt_open_toolkit_linux_x86_64",
+    build_file = "//bazel:jt_open_toolkit_linux_x86_64.BUILD",
+    path = "/home/vertexwahn/Siemens/JTOpenToolkit/11_6/dev",
+)
