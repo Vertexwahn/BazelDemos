@@ -1,9 +1,13 @@
-cc_library(
-    name = "lib",
-    hdrs = ["lib.hpp"],
+# In a BUILD file, e.g. my_project/BUILD
+load("@nanobind_bazel//:build_defs.bzl", "nanobind_extension")
+
+nanobind_extension(
+    name = "my_ext",
     srcs = ["lib.cpp"],
-    visibility = ["//visibility:public"],
-    deps = [
-        "@nanobind",
-    ],
+)
+
+py_binary(
+    name = "my_bin",
+    srcs = ["my_bin.py"],
+    deps = [":my_ext"],
 )
