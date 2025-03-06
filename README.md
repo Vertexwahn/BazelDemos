@@ -38,6 +38,8 @@ The following table shows on which OS configurations the examples were successfu
 | C++                  | yes     | yes    |  yes     |
 | C#                   | yes     | yes    |  yes     |
 | D                    | no      | yes    |  no      |
+| Go                   |         | yes    |          |
+| Python               |         | yes    |          |
 | Rust                 |         | yes    |          |
 
 ## Similar projects
