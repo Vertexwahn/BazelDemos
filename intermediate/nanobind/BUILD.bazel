@@ -1,0 +1,9 @@
+cc_library(
+    name = "lib",
+    hdrs = ["lib.hpp"],
+    srcs = ["lib.cpp"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@nanobind",
+    ],
+)
