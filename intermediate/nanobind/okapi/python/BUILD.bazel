@@ -1,0 +1,12 @@
+load("@nanobind_bazel//:build_defs.bzl", "nanobind_extension")
+
+nanobind_extension(
+    name = "okapi",
+    srcs = ["lib.cpp"],
+)
+
+py_binary(
+    name = "my_bin",
+    srcs = ["my_bin.py"],
+    deps = [":okapi"],
+)
