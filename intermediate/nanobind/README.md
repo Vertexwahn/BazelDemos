@@ -1,5 +1,5 @@
 # Reademe
 
 ```shell
-bazel run //:my_bin
+bazel run //okapi/python:my_bin
 ```
