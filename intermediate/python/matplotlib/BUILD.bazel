@@ -1,0 +1,24 @@
+"""
+    SPDX-FileCopyrightText: 2025 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
+load("@rules_python//python:pip.bzl", "compile_pip_requirements")
+load("@rules_python//python:py_binary.bzl", "py_binary")
+
+compile_pip_requirements(
+    name = "requirements",
+    src = "requirements.in",
+    requirements_txt = "requirements_lock.txt",
+    requirements_windows = "requirements_windows.txt",
+)
+
+py_binary(
+    name = "demo",
+    srcs = ["demo.py"],
+    deps = [
+        "@pypi//matplotlib:matplotlib",
+        "@pypi//pyqt6:pyqt6",
+        "@pypi//pyside6:pyside6",
+    ],
+)

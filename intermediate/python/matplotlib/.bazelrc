@@ -1,0 +1,4 @@
+common --incompatible_python_disallow_native_rules
+
+startup --windows_enable_symlinks
+build --enable_runfiles
