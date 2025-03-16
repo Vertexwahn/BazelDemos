@@ -24,6 +24,13 @@ steps:
  
   - script: |
       ROOT_DIR=$(pwd)
+      cd ${ROOT_DIR}/intermediate/nanobind
+      bazel run //okapi/python:my_bin
+      bazel test //...
+    displayName: "Blaze"
+
+  - script: |
+      ROOT_DIR=$(pwd)
       cd ${ROOT_DIR}/intermediate/cpp/Blaze
       bazel build --config=gcc11 
       bazel build --config=gcc11 --compilation_mode=dbg //...
