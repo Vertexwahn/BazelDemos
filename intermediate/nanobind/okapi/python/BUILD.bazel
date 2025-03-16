@@ -6,7 +6,7 @@ nanobind_extension(
 )
 
 py_binary(
-    name = "my_bin",
-    srcs = ["my_bin.py"],
+    name = "plot",
+    srcs = ["plot.py"],
     deps = [":okapi"],
 )

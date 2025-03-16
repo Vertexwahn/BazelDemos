@@ -7,24 +7,29 @@ namespace nb = nanobind;
 
 using namespace nb::literals;
 
-namespace muhkuk {
-    struct Pet {
-        std::string name;
+namespace okapi {
+    struct Spectrum {
+        virtual float evaluate(float lambda) const = 0;
     };
     
-    struct Dog : Pet {
-        std::string bark() const { return name + ": woof!"; }
+    class ConstantSpectrum : Spectrum {
+    public:
+        ConstantSpectrum(float value) : value(value) {}
+        float evaluate(float lambda) const override { return value; }
+
+    private:
+        float value;
     };
 }
 
-using namespace muhkuk;
+using namespace okapi;
 
 NB_MODULE(okapi, m) {
-    nb::class_<Pet>(m, "Pet")
-       .def(nb::init<const std::string &>())
-       .def_rw("name", &Pet::name);
-
-    nb::class_<Dog, Pet /* <- C++ parent type */>(m, "Dog")
-        .def(nb::init<const std::string &>())
-        .def("bark", &Dog::bark);
+    
+    nb::class_<Spectrum>(m, "Spectrum")
+        .def("evaluate", &Spectrum::evaluate);
+  
+    nb::class_<ConstantSpectrum, Spectrum>(m, "ConstantSpectrum")
+        .def(nb::init<float>())
+        .def("evaluate", &ConstantSpectrum::evaluate);
 }
