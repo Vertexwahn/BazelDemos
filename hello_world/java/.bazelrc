@@ -1,0 +1,29 @@
+#-------------------------------------------------------------------------------------
+# Common
+#-------------------------------------------------------------------------------------
+
+common --enable_platform_specific_config
+
+# TODO: Find out if this workaround is really needed
+common --incompatible_disallow_empty_glob=false
+
+#-------------------------------------------------------------------------------------
+# Bzlmod
+#-------------------------------------------------------------------------------------
+
+common --registry=https://bcr.bazel.build
+
+#-------------------------------------------------------------------------------------
+# Java
+#-------------------------------------------------------------------------------------
+common --jvmopt=-Djava.security.manager=allow
+common --nojava_header_compilation
+
+build:java21 --java_language_version=21
+build:java21 --tool_java_language_version=21
+build:java21 --java_runtime_version=remotejdk_21
+build:java21 --tool_java_runtime_version=remotejdk_21
+
+build --config=java21
+
+build --enable_runfiles # https://github.com/bazelbuild/bazel/issues/8843
