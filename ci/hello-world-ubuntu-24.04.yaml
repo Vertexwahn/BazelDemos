@@ -22,9 +22,9 @@ steps:
       gcc --version
     displayName: "Show GCC version"
 
-  - script: |
-      sudo apt-get install erlang-base
-    displayName: "Install Erlang"
+  #- script: |
+  #    sudo apt-get install erlang-base
+  #  displayName: "Install Erlang"
 
   - script: |
       ROOT_DIR=$(pwd)
@@ -60,13 +60,13 @@ steps:
       bazel run //:hello_world
     displayName: "Hello World D"
 
-  - script: |
-      ROOT_DIR=$(pwd)
-
-      cd ${ROOT_DIR}/hello_world/erlang
-      bazel build //...
-      bazel run //:hello_world
-    displayName: "Hello World Erlang"
+  #- script: |
+  #    ROOT_DIR=$(pwd)
+  #
+  #   cd ${ROOT_DIR}/hello_world/erlang
+  #   bazel build //...
+  #   bazel run //:hello_world
+  # displayName: "Hello World Erlang"
 
   - script: |
       ROOT_DIR=$(pwd)
