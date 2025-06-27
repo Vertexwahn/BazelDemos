@@ -19,13 +19,6 @@ jobs:
     steps:
       - template: ci/core-principles-macOS-14.yaml
 
-  - job: CorePrinciplesUbuntu20
-    displayName: 'Core Principles: Ubuntu 20.04'
-    pool:
-      vmImage: ubuntu-20.04
-    steps:
-      - template: ci/core-principles-ubuntu-20.04.yaml
-
   - job: CorePrinciplesUbuntu22
     displayName: 'Core Principles: Ubuntu 22.04'
     pool:
@@ -60,13 +53,6 @@ jobs:
       vmImage: macOS-14
     steps:
       - template: ci/hello-world-macOS-14.yaml
-
-  - job: HelloWorldUbuntu20
-    displayName: 'Hello World: Ubuntu 20.04'
-    pool:
-      vmImage: ubuntu-20.04
-    steps:
-      - template: ci/hello-world-ubuntu-20.04.yaml
 
   - job: HelloWorldUbuntu22
     displayName: 'Hello World: Ubuntu 22.04'
@@ -109,13 +95,6 @@ jobs:
       vmImage: macOS-14
     steps:
       - template: ci/intermediate-macOS-14.yaml
-
-  - job: IntermediateUbuntu20
-    displayName: 'Intermediate: Ubuntu 20.04'
-    pool:
-      vmImage: ubuntu-20.04
-    steps:
-      - template: ci/intermediate-ubuntu-20.04.yaml
 
   - job: IntermediateUbuntu22
     displayName: 'Intermediate: Ubuntu 22.04'
