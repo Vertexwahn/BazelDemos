@@ -1,10 +1,12 @@
-bazel_dep(name = "aspect_rules_js", version = "2.1.2")
-bazel_dep(name = "rules_nodejs", version = "6.3.2")
+bazel_dep(name = "aspect_rules_js", version = "2.3.8")
+bazel_dep(name = "rules_nodejs", version = "6.4.0")
+
+# Override with specific commit
 git_override(
     module_name = "rules_nodejs",
-    commit = "b32837c0c3b9777fdadba9491cfd48fee2a16f27",
+    commit = "6b7609179ac1728c6e102d0050117a9b71e55fa5",
     remote = "https://github.com/bazel-contrib/rules_nodejs",
 )
 
 node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node", dev_dependency = True)
-node.toolchain(node_version = "22.12.0")
+node.toolchain(node_version = "22.17.0")

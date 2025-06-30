@@ -1,1 +1,6 @@
+"""
+    SPDX-FileCopyrightText: 2025 Julian Amann <dev@vertexwahn.de>
+    SPDX-License-Identifier: Apache-2.0
+"""
+
 bazel_dep(name = "rules_perl", version = "0.4.2")

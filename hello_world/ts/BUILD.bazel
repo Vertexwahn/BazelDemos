@@ -3,14 +3,20 @@
     SPDX-License-Identifier: Apache-2.0
 """
 
+load("@aspect_rules_js//js:defs.bzl", "js_binary")
 load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
 ts_project(
-    name = "compile",
-    srcs = ["test.ts"],
-    tsconfig = {
-        "compilerOptions": {
-            "inlineSourceMap": True,
-        },
-    },
+    name = "hello_world_ts",
+    srcs = [
+        "hello_world.ts",
+    ],
+)
+
+js_binary(
+    name = "hello_world",
+    data = [
+        ":hello_world_ts",
+    ],
+    entry_point = "hello_world.js",
 )

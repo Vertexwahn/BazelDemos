@@ -10,5 +10,5 @@ SPDX-License-Identifier: Apache-2.0
 Run hello_world application:
 
 ```shell
-bazel build //:compile
+bazel run //:hello_world
 ```
