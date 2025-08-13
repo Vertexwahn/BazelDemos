@@ -1,5 +1,6 @@
-#include <iostream>
 #include "blaze/Math.h"
+
+#include <iostream>
 
 using blaze::StaticVector;
 using blaze::DynamicVector;

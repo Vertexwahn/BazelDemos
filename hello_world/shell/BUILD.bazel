@@ -1,11 +1,11 @@
 """
-    SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+    SPDX-FileCopyrightText: 2022-2025 Julian Amann <dev@vertexwahn.de>
     SPDX-License-Identifier: Apache-2.0
 """
 
-package(default_visibility = ["//visibility:public"])
+load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
 
 sh_binary(
     name = "hello_world",
-    srcs = ["HelloWorld.sh"],
+    srcs = ["hello_world.sh"],
 )

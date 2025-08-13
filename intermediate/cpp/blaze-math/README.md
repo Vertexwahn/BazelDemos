@@ -1,0 +1,3 @@
+```shell
+bazel run //:main
+```
