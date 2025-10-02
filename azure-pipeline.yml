@@ -26,13 +26,6 @@ jobs:
     steps:
       - template: ci/core-principles-ubuntu-22.04.yaml
 
-  - job: CorePrinciplesWindows2019
-    displayName: 'Core Principles: Windows Server 2019'
-    pool:
-      vmImage: windows-2019
-    steps:
-      - template: ci/core-principles-windows-2022.yaml
-
   - job: CorePrinciplesWindows2022
     displayName: 'Core Principles: Windows Server 2022'
     pool:
@@ -68,19 +61,19 @@ jobs:
     steps:
       - template: ci/hello-world-ubuntu-24.04.yaml
 
-  - job: HelloWorldWindows2019
-    displayName: "Hello World: Windows Server 2019"
-    pool:
-      vmImage: windows-2019
-    steps:
-      - template: ci/hello-world-windows-2019.yaml
-
   - job: HelloWorldWindows2022
     displayName: 'Hello World: Windows Server 2022'
     pool:
       vmImage: windows-2022
     steps:
       - template: ci/hello-world-windows-2022.yaml
+
+  - job: HelloWorldWindows2025
+    displayName: 'Hello World: Windows Server 2025'
+    pool:
+      vmImage: windows-2025
+    steps:
+      - template: ci/hello-world-windows-2025.yaml
 
   - job: IntermediateMacOS13
     displayName: 'Intermediate: macOS 13 (Ventura)'
@@ -109,13 +102,6 @@ jobs:
       vmImage: ubuntu-24.04
     steps:
       - template: ci/intermediate-ubuntu-24.04.yaml
-
-  - job: IntermediateWindows2019
-    displayName: 'Intermediate: Windows 2019'
-    pool:
-      vmImage: windows-2019
-    steps:
-      - template: ci/intermediate-windows-2019.yaml
 
   - job: IntermediateWindows2022
     displayName: 'Intermediate: Windows 2022'
