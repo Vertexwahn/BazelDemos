@@ -1,5 +1,5 @@
 #
-#   SPDX-FileCopyrightText: 2022 Julian Amann <dev@vertexwahn.de>
+#   SPDX-FileCopyrightText: 2022-2025 Julian Amann <dev@vertexwahn.de>
 #   SPDX-License-Identifier: Apache-2.0
 #
 
@@ -25,11 +25,11 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/Blaze
+      cd ${ROOT_DIR}/intermediate/cpp/blaze-math
       bazel build --config=gcc11 --enable_bzlmod //...
       bazel build --config=gcc11 --enable_bzlmod //... --compilation_mode=dbg //...
       bazel build --config=gcc11 --enable_bzlmod //... --compilation_mode=opt //...
-    displayName: "Blaze"
+    displayName: "blaze-math"
 
   - script: |
       ROOT_DIR=$(pwd)
