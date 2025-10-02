@@ -1,0 +1,20 @@
+# Ignore Bazel output and generated files
+bazel-*
+*.bazelrc
+bazel-out/
+**/bazel-out/
+**/bazel-bin/
+**/bazel-testlogs/
+**/bazel-cache/
+**/.cache/
+**/.bazel*
+**/BUILD.bazel.py
+**/BUILD.bazel.pyc
+**/bazel-
+.cache/
+.bazelrc
+.bazelversion
+bazel-workspace
+bazel-
+# Ignore VSCode settings (optional)
+.vscode/

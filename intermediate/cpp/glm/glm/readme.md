@@ -1028,7 +1028,7 @@ generation distribution
 - Fixed MacOS X build
 
 ---
-### GLM 0.8.4.0 final - 2009-09-16
+### GLM 0.8.4.1 final - 2009-09-16
 - Added GCC 4.4 and VC2010 support
 - Added matrix optimizations
 
@@ -1051,7 +1051,7 @@ generation distribution
 - Added GLM_GTC_type_precision
 
 ---
-### GLM 0.8.3.1 final - 2009-05-21
+### GLM 0.8.4.1 final - 2009-05-21
 - Fixed old extension system.
 
 ---
