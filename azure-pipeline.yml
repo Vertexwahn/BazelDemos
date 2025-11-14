@@ -5,20 +5,12 @@
 
 
 jobs:
-  - job: CorePrinciplesMacOS13
-    displayName: 'Core Principles: macOS 13 (Monterey)'
+  - job: CorePrinciplesMacOS15
+    displayName: 'Core Principles: macOS 15 (Sequoia)'
     pool:
-      vmImage: macOS-13
+      vmImage: macOS-15
     steps:
-      - template: ci/core-principles-macOS-13.yaml
-
-  - job: CorePrinciplesMacOS14
-    displayName: 'Core Principles: macOS 14 (Sonoma)'
-    pool:
-      vmImage: macOS-14
-    steps:
-      - template: ci/core-principles-macOS-14.yaml
-
+      - template: ci/core-principles-macOS-15.yaml
   - job: CorePrinciplesUbuntu22
     displayName: 'Core Principles: Ubuntu 22.04'
     pool:
