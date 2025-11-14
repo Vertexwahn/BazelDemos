@@ -11,12 +11,6 @@ jobs:
       vmImage: macOS-15
     steps:
       - template: ci/core-principles-macOS-15.yaml
-  - job: CorePrinciplesUbuntu22
-    displayName: 'Core Principles: Ubuntu 22.04'
-    pool:
-      vmImage: ubuntu-22.04
-    steps:
-      - template: ci/core-principles-ubuntu-22.04.yaml
 
   - job: CorePrinciplesWindows2022
     displayName: 'Core Principles: Windows Server 2022'
@@ -31,13 +25,6 @@ jobs:
       vmImage: macOS-15
     steps:
       - template: ci/hello-world-macOS-15.yaml
-
-  - job: HelloWorldUbuntu22
-    displayName: 'Hello World: Ubuntu 22.04'
-    pool:
-      vmImage: ubuntu-22.04
-    steps:
-      - template: ci/hello-world-ubuntu-22.04.yaml
 
   - job: HelloWorldUbuntu24
     displayName: 'Hello World: Ubuntu 24.04'
@@ -66,13 +53,6 @@ jobs:
       vmImage: macOS-15
     steps:
       - template: ci/intermediate-macOS-15.yaml
-
-  - job: IntermediateUbuntu22
-    displayName: 'Intermediate: Ubuntu 22.04'
-    pool:
-      vmImage: ubuntu-22.04
-    steps:
-      - template: ci/intermediate-ubuntu-22.04.yaml
 
   - job: IntermediateUbuntu24
     displayName: 'Intermediate: Ubuntu 24.04'
