@@ -78,12 +78,12 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR/bzlmod
+      cd ${ROOT_DIR}/intermediate/cpp/openexr/bzlmod
       bazel build //...
     displayName: 'OpenEXR bzlmod'
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/OpenEXR/repo-focused
+      cd ${ROOT_DIR}/intermediate/cpp/openexr/repo-focused
       bazel build //...
     displayName: 'OpenEXR'
