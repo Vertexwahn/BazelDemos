@@ -1,0 +1,10 @@
+load("@rules_gleam//gleam:defs.bzl", "gleam_binary")
+
+gleam_binary(
+    name = "main",
+    srcs = ["main.gleam"],
+    deps = [
+        "@hex_gleam_json//gleam",
+        "@hex_gleam_stdlib//gleam",
+    ],
+)

@@ -1,0 +1,105 @@
+#version 460
+#extension GL_EXT_ray_tracing : require
+#extension GL_GOOGLE_include_directive : require
+
+#include "random.glsl"
+#include "structs.glsl"
+
+
+// INPUTS
+layout(binding = 0, rgba8) uniform image2D renderTarget;
+layout(binding = 1) uniform accelerationStructureEXT accelerationStructure;
+layout(binding = 3, rgba32f) uniform image2D summedPixelColorImage;
+layout(binding = 4) uniform RenderCallInfo {
+    uint number;
+    uint samplesPerRenderCall;
+} renderCallInfo;
+
+layout(location = 0) rayPayloadEXT Payload payload;
+
+
+// CONSTANTS
+const float MAX_RAY_COLLISION_DISTANCE = 10000.0f;
+const uint MAX_DEPTH = 50;
+
+const Camera camera = Camera(25.0f, 0.0f, 10.0f, vec3(13.0f, 2.0f, -3.0f), vec3(0.0f), vec3(0.0f, 1.0f, 0.0f));
+
+
+// METHODS
+vec3 calculateRayColor(in Ray ray);
+Viewport calculateViewport(const float aspectRatio);
+Ray getCameraRay(const Viewport viewport, const vec2 uv);
+
+
+// MAIN
+void main() {
+    payload.seed = getRandomSeed(getRandomSeed(gl_LaunchIDEXT.x, gl_LaunchIDEXT.y), renderCallInfo.number);
+
+    const vec2 size = vec2(gl_LaunchSizeEXT.xy);
+    const float aspectRatio = size.x / size.y;
+
+    const Viewport viewport = calculateViewport(aspectRatio);
+
+    vec3 summedPixelColor = imageLoad(summedPixelColorImage, ivec2(gl_LaunchIDEXT.xy)).rgb;
+
+    dvec3 sum = summedPixelColor;
+    for (uint i = 0; i < renderCallInfo.samplesPerRenderCall; i++) {
+        const vec2 uv = vec2(gl_LaunchIDEXT.x + randomFloat(payload.seed), gl_LaunchIDEXT.y + randomFloat(payload.seed)) / size;
+        const Ray ray = getCameraRay(viewport, uv);
+        sum += calculateRayColor(ray);
+    }
+    summedPixelColor = vec3(sum);
+
+    imageStore(summedPixelColorImage, ivec2(gl_LaunchIDEXT.xy), vec4(summedPixelColor, 1.0f));
+
+    const vec3 pixelColor = sqrt(summedPixelColor / float(renderCallInfo.number * renderCallInfo.samplesPerRenderCall));
+    imageStore(renderTarget, ivec2(gl_LaunchIDEXT.xy), vec4(pixelColor, 1.0f));
+}
+
+// RENDERING
+vec3 calculateRayColor(in Ray ray) {
+    vec3 reflectedColor = vec3(1.0f);
+    vec3 lightSourceColor = vec3(0.0f);
+
+    for (uint depth = 0; depth < MAX_DEPTH; depth++) {
+        traceRayEXT(accelerationStructure, gl_RayFlagsOpaqueEXT, 0xFF, 0, 0, 0, ray.origin, 0.001f, ray.direction, MAX_RAY_COLLISION_DISTANCE, 0);
+
+        if (payload.doesScatter) {
+            reflectedColor *= payload.attenuation;
+            ray = Ray(payload.pointOnSphere, normalize(payload.scatterDirection));
+
+        } else {
+            // BACKGROUND
+            lightSourceColor = payload.attenuation;
+            break;
+        }
+    }
+
+    return reflectedColor * lightSourceColor;
+}
+
+// VIEWPORT
+Viewport calculateViewport(const float aspectRatio) {
+    const float viewportHeight = tan(radians(camera.fov) / 2.0f) * 2.0f;
+    const float viewportWidth = aspectRatio * viewportHeight;
+
+    const vec3 cameraForward = normalize(camera.lookAt - camera.lookFrom);
+    const vec3 cameraRight = normalize(cross(camera.up, cameraForward));
+    const vec3 cameraUp = normalize(cross(cameraForward, cameraRight));
+
+    const vec3 horizontal = viewportWidth * cameraRight * camera.focusDistance;
+    const vec3 vertical = viewportHeight * cameraUp * camera.focusDistance;
+    const vec3 upperLeftCorner = camera.lookFrom - horizontal / 2.0f + vertical / 2.0f + cameraForward * camera.focusDistance;
+
+    return Viewport(horizontal, vertical, upperLeftCorner, cameraUp, cameraRight);
+}
+
+Ray getCameraRay(const Viewport viewport, const vec2 uv) {
+    const vec2 random = (camera.aperture / 2.0f) * normalize(vec2(randomInInterval(payload.seed, -1.0f, 1.0f), randomInInterval(payload.seed, -1.0f, 1.0f)));
+    const vec3 offset = viewport.cameraRight * random.x + viewport.cameraUp * random.y;
+
+    const vec3 from = camera.lookFrom + offset;
+    const vec3 to = viewport.upperLeftCorner + viewport.horizontal * uv.x - viewport.vertical * uv.y;
+
+    return Ray(from, normalize(to - from));
+}

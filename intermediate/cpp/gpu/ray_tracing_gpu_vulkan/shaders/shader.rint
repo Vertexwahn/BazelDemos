@@ -1,0 +1,60 @@
+#version 460
+#extension GL_EXT_ray_tracing : require
+#extension GL_GOOGLE_include_directive : require
+
+#include "structs.glsl"
+
+
+// INPUTS
+layout(binding = 2) uniform Scene {
+    Sphere spheres[512];
+    uint sphereAmount;
+} scene;
+
+hitAttributeEXT vec3 pointOnSphere;
+
+
+// METHODS
+vec2 calculateIntersections(vec3 rayOrigin, vec3 rayDirection, vec3 center, float radius);
+
+
+// MAIN
+void main() {
+    const vec3 origin = gl_WorldRayOriginEXT;
+    const vec3 direction = gl_WorldRayDirectionEXT;
+    const float tMin = gl_RayTminEXT;
+    const float tMax = gl_RayTmaxEXT;
+
+    const Sphere sphere = scene.spheres[gl_PrimitiveID];
+
+    const vec2 results = calculateIntersections(origin, direction, sphere.geometry.xyz, sphere.geometry.w);
+
+    if (results.x >= tMin && results.x <= tMax) {
+        pointOnSphere = origin + results.x * direction;
+        reportIntersectionEXT(results.x, 0);
+
+    } else if (results.y >= tMin && results.y <= tMax) {
+        pointOnSphere = origin + results.y * direction;
+        reportIntersectionEXT(results.y, 0);
+    }
+}
+
+
+// INTERSECTIONS
+vec2 calculateIntersections(vec3 rayOrigin, vec3 rayDirection, vec3 center, float radius) {
+    vec3 oc = rayOrigin - center;
+    float a = dot(rayDirection, rayDirection);
+    float b = dot(oc, rayDirection);
+    float c = dot(oc, oc) - radius * radius;
+    float D = b * b - a * c;
+
+    vec2 t = vec2(-1.0, -1.0);
+
+    if (D >= 0.0) {
+        const float t1 = (-b - sqrt(D)) / a;
+        const float t2 = (-b + sqrt(D)) / a;
+        t = vec2(t1, t2);
+    }
+
+    return t;
+}

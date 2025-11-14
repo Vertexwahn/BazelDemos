@@ -1,0 +1,88 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@rules_vulkan//vulkan:defs.bzl", "glsl_shader", "shader_group")
+
+# Compile GLSL shaders to SPIR-V using rules_vulkan
+glsl_shader(
+    name = "shader_rgen",
+    src = "shaders/shader.rgen",
+    hdrs = [
+        "shaders/random.glsl",
+        "shaders/structs.glsl",
+    ],
+    stage = "rgen",
+    target_env = "vulkan1.3",
+)
+
+glsl_shader(
+    name = "shader_rint",
+    src = "shaders/shader.rint",
+    hdrs = [
+        "shaders/random.glsl",
+        "shaders/structs.glsl",
+    ],
+    stage = "rint",
+    target_env = "vulkan1.3",
+)
+
+glsl_shader(
+    name = "shader_rchit",
+    src = "shaders/shader.rchit",
+    hdrs = [
+        "shaders/random.glsl",
+        "shaders/structs.glsl",
+    ],
+    stage = "rchit",
+    target_env = "vulkan1.3",
+)
+
+glsl_shader(
+    name = "shader_rmiss",
+    src = "shaders/shader.rmiss",
+    hdrs = [
+        "shaders/random.glsl",
+        "shaders/structs.glsl",
+    ],
+    stage = "rmiss",
+    target_env = "vulkan1.3",
+)
+
+# Group all shaders together
+shader_group(
+    name = "all_shaders",
+    deps = [
+        ":shader_rgen",
+        ":shader_rint",
+        ":shader_rchit",
+        ":shader_rmiss",
+    ],
+)
+
+# Main executable
+cc_binary(
+    name = "RayTracingGPUVulkan",
+    srcs = [
+        "src/main.cpp",
+        "src/vulkan.cpp",
+        "src/vulkan_dispatch.cpp",
+        "src/scene.cpp",
+        "src/vulkan.h",
+        "src/scene.h",
+        "src/render_call_info.h",
+        "src/vulkan_settings.h",
+    ],
+    copts = [
+        "-std=c++20",
+        "-DVULKAN_HPP_DISPATCH_LOADER_DYNAMIC=1",
+    ],
+    data = [
+        ":shader_rgen",
+        ":shader_rint",
+        ":shader_rchit",
+        ":shader_rmiss",
+    ],
+    deps = [
+        "@glfw",
+        "@glm",
+        "@vk_sdk//:vulkan",
+    ],
+)

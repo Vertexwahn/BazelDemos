@@ -1,0 +1,4 @@
+# Append global options to dxc that will be added to all HLSL targets.
+build --@rules_vulkan//vulkan/settings:dxc_opts=-Ges,-Zpc
+build --@rules_vulkan//vulkan/settings:slangc_opts=-disable-short-circuit
+build --@rules_vulkan//vulkan/settings:glslc_opts=-g

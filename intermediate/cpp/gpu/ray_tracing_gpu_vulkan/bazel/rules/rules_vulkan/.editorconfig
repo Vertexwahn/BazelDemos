@@ -1,0 +1,9 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[{BUILD,*.BUILD,MODULE.bazel,*.bzl}]
+indent_style = space
+indent_size = 4

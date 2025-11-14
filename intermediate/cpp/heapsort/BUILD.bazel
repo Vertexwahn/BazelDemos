@@ -1,0 +1,21 @@
+cc_library(
+    name = "heapsort",
+    srcs = ["heapsort.cpp"],
+    hdrs = ["heapsort.h"],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "heapsort_test",
+    srcs = ["heapsort_test.cpp"],
+    deps = [
+        ":heapsort",
+        "@googletest//:gtest_main",
+    ],
+)
+
+cc_binary(
+    name = "main",
+    srcs = ["main.cpp"],
+    deps = [":heapsort"],
+)

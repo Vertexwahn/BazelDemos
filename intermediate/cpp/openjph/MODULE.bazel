@@ -1,0 +1,7 @@
+bazel_dep(name = "openjph", version = "0.22.0")
+bazel_dep(name = "rules_cc", version = "0.2.12")
+
+local_path_override(
+    module_name = "openjph",
+    path = "../../../../third_party/OpenJPH-0.24.1",
+)

@@ -1,0 +1,29 @@
+bazel_dep(name = "boost.asio", version = "1.89.0")
+bazel_dep(name = "glfw", version = "3.4.0")
+bazel_dep(name = "glm", version = "1.0.2")
+bazel_dep(name = "platforms", version = "1.0.0")
+bazel_dep(name = "rules_cc", version = "0.2.14")
+
+local_path_override(
+    module_name = "glfw",
+    path = "third_party/glfw-3.4",
+)
+
+#-------------------------------------------------------------------------------------
+# Vulkan
+#-------------------------------------------------------------------------------------
+
+bazel_dep(name = "rules_vulkan", version = "0.6.1")
+local_path_override(
+    module_name = "rules_vulkan",
+    path = "bazel/rules/rules_vulkan",
+)
+
+vulkan_sdk = use_extension("@rules_vulkan//vulkan:extensions.bzl", "vulkan_sdk")
+vulkan_sdk.toolchain(
+    name = "vk_sdk",
+    version = "1.4.328.1",
+)
+use_repo(vulkan_sdk, "vk_sdk")
+
+register_toolchains("@vk_sdk//:all")

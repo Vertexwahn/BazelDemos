@@ -8,7 +8,7 @@ Install [Bazel](https://docs.bazel.build/versions/4.2.1/install.html) and run:
 
 
 ```shell
-bazel run //:Demo
+bazel run //:main
 ```
 
 This should output `The answer is 42`.

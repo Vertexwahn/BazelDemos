@@ -1,0 +1,113 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 6 * * 1'  # Run every Monday at 6:00 AM UTC
+
+jobs:
+  buildifier:
+    name: Buildifier
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bazel-contrib/setup-bazel@0.15.0
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ github.workflow }}
+          repository-cache: true
+      - run: bazelisk run :lint
+
+  gazelle:
+    name: Gazelle
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bazel-contrib/setup-bazel@0.15.0
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ github.workflow }}
+          repository-cache: true
+      - name: Check Gazelle files are up to date
+        run: |
+          bazelisk run :gazelle
+          if ! git diff --exit-code; then
+            echo "ERROR: Gazelle files are out of date. Please run 'bazelisk run :gazelle' and commit the changes."
+            exit 1
+          fi
+
+  docs:
+    name: Docs
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bazel-contrib/setup-bazel@0.15.0
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ github.workflow }}
+          repository-cache: true
+
+      - run: bazelisk run //docs:update_test
+
+  tests:
+    name: Unit Tests
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        bazel: [7.6.1, 8.3.1]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bazel-contrib/setup-bazel@0.15.0
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ github.workflow }}
+          repository-cache: true
+
+      - run: bazelisk test //...
+        env:
+          USE_BAZEL_VERSION: ${{ matrix.bazel }}
+
+  e2e:
+    name: Integration Tests
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: e2e/smoke
+        shell: bash
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: bazel-contrib/setup-bazel@0.15.0
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ github.workflow }}
+          repository-cache: true
+      - name: Test direct binary invocation
+        run: |
+          bazelisk run @vk_sdk//:spirv_cross -- --help
+          bazelisk run @vk_sdk//:glslc -- --version
+          bazelisk run @vk_sdk//:dxc -- --version
+          bazelisk run @vk_sdk//:slangc -- -h
+      - run: bazelisk run :app --verbose_failures
+

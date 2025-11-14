@@ -1,0 +1,20 @@
+module(name = "hello")
+
+bazel_dep(name = "rules_cc", version = "0.1.1")
+bazel_dep(name = "platforms", version = "1.0.0")
+bazel_dep(name = "bazel_skylib", version = "1.8.1")
+bazel_dep(name = "rules_pkg", version = "1.1.0")
+bazel_dep(name = "rules_vulkan", version = "0.1")
+local_path_override(
+    module_name = "rules_vulkan",
+    path = "../..",
+)
+
+vulkan_sdk = use_extension("@rules_vulkan//vulkan:extensions.bzl", "vulkan_sdk")
+vulkan_sdk.toolchain(
+    name = "vk_sdk",
+    version = "1.4.313",
+)
+use_repo(vulkan_sdk, "vk_sdk")
+
+register_toolchains("@vk_sdk//:all")

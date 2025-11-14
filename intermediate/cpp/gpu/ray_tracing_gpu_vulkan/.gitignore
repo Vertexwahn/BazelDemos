@@ -1,0 +1,7 @@
+.idea
+/cmake-build-*
+/build
+/.vs
+/out
+bazel-*
+MODULE.bazel.lock
