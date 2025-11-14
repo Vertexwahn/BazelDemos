@@ -64,13 +64,13 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd intermediate/cpp/GPU/OpenGL/EmscriptenGL
+      cd intermediate/cpp/gpu/opengl/EmscriptenGL
       bazel build --config=macos -- //:index_wasm
     displayName: 'EmscriptenGL'
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd intermediate/cpp/GPU/OpenGL/EmscriptenGLFW
+      cd intermediate/cpp/gpu/opengl/EmscriptenGLFW
       # Desktop app
       bazel build --config=macos //:main
       bazel build --config=macos -- //:emscripten_main_wasm
