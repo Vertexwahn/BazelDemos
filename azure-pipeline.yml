@@ -25,19 +25,12 @@ jobs:
     steps:
       - template: ci/core-principles-windows-2022.yaml
 
-  - job: HelloWorldMacOS13
-    displayName: 'Hello World: macOS 13 (Ventura)'
+  - job: HelloWorldMacOS15
+    displayName: 'Hello World: macOS 15 (Sequoia)'
     pool:
-      vmImage: macOS-13
+      vmImage: macOS-15
     steps:
-      - template: ci/hello-world-macOS-13.yaml
-
-  - job: HelloWorldMacOS14
-    displayName: 'Hello World: macOS 14 (Sonoma)'
-    pool:
-      vmImage: macOS-14
-    steps:
-      - template: ci/hello-world-macOS-14.yaml
+      - template: ci/hello-world-macOS-15.yaml
 
   - job: HelloWorldUbuntu22
     displayName: 'Hello World: Ubuntu 22.04'
@@ -67,19 +60,12 @@ jobs:
     steps:
       - template: ci/hello-world-windows-2025.yaml
 
-  - job: IntermediateMacOS13
-    displayName: 'Intermediate: macOS 13 (Ventura)'
+  - job: IntermediateMacOS15
+    displayName: 'Intermediate: macOS 15 (Sequoia)'
     pool:
-      vmImage: macOS-13
+      vmImage: macOS-15
     steps:
-      - template: ci/intermediate-macOS-13.yaml
-
-  - job: IntermediateMacOS14
-    displayName: 'Intermediate: macOS 14 (Sonoma)'
-    pool:
-      vmImage: macOS-14
-    steps:
-      - template: ci/intermediate-macOS-14.yaml
+      - template: ci/intermediate-macOS-15.yaml
 
   - job: IntermediateUbuntu22
     displayName: 'Intermediate: Ubuntu 22.04'
