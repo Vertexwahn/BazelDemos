@@ -86,7 +86,7 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/cpp/oneTBB
+      cd ${ROOT_DIR}/intermediate/cpp/onetbb
       bazel build //...
     displayName: 'oneTBB'
 
