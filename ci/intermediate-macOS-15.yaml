@@ -51,9 +51,9 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/k8s/nginx
+      cd ${ROOT_DIR}/intermediate/infrastructure/k8s/nginx
       bazel query //...
-    displayName: "Bazel query K8s/nginx"
+    displayName: "Bazel query infrastructure/K8s/nginx"
     
   #- script: |
   #    ROOT_DIR=$(pwd)
