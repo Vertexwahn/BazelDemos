@@ -4,9 +4,9 @@ SPDX-License-Identifier: Apache-2.0
 -->
 
 [![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB)](https://opensource.fb.com/support-ukraine)
-[![Build Status](https://vertexwahn.visualstudio.com/BazelDemos/_apis/build/status/Vertexwahn.BazelDemos?branchName=main)](https://vertexwahn.visualstudio.com/BazelDemos/_build/latest?definitionId=6&branchName=master)
+[![Build Status](https://vertexwahn.visualstudio.com/bazel_demos/_apis/build/status/Vertexwahn.bazel_demos?branchName=main)](https://vertexwahn.visualstudio.com/bazel_demos/_build/latest?definitionId=6&branchName=master)
 
-# BazelDemos
+# Bazel Demos
 
 [Bazel](https://bazel.build/) is a build system.
 In this repository,
