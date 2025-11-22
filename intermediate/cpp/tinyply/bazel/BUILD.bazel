@@ -1,0 +1,2 @@
+# BUILD file for bazel directory
+exports_files(["tinyply.BUILD"])

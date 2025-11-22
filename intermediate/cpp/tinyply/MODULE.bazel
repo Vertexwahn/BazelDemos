@@ -1,0 +1,20 @@
+"""Tinyply demo - PLY to OBJ converter using Bazel 8.4.2"""
+
+module(
+    name = "tinyply_demo",
+    version = "1.0.0",
+)
+
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
+bazel_dep(name = "rules_cc", version = "0.0.16")
+
+# Fetch tinyply from GitHub
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "tinyply",
+    build_file = "@//bazel:tinyply.BUILD",
+    sha256 = "1bb1462727a363f7b77a10e51cd023095db7b281d2f201167620a83e495513c6",
+    strip_prefix = "tinyply-2.3.4",
+    urls = ["https://github.com/ddiakopoulos/tinyply/archive/refs/tags/2.3.4.tar.gz"],
+)
