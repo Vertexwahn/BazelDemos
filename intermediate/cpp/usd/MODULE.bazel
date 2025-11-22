@@ -1,0 +1,2 @@
+bazel_dep(name = "openusd", version = "25.11")
+bazel_dep(name = "rules_cc", version = "0.2.14")
