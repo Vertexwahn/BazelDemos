@@ -1,0 +1,20 @@
+"""Miniply demo - PLY to OBJ converter using Bazel 8.4.2"""
+
+module(
+    name = "miniply_demo",
+    version = "1.0.0",
+)
+
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
+bazel_dep(name = "rules_cc", version = "0.0.16")
+
+# Fetch miniply from GitHub
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "miniply",
+    build_file = "@//bazel:miniply.BUILD",
+    sha256 = "81b0c3341706ee1b5fbdd50ab4d14fc3cec2486f9443014cf58c1d67cec31fa4",
+    strip_prefix = "miniply-1a235c70390fadf789695c9ccbf285ae712416b3",
+    urls = ["https://github.com/vilya/miniply/archive/1a235c70390fadf789695c9ccbf285ae712416b3.tar.gz"],
+)

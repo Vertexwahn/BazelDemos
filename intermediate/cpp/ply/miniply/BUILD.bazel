@@ -1,0 +1,7 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+cc_binary(
+    name = "ply2obj",
+    srcs = ["main.cpp"],
+    deps = ["@miniply//:miniply"],
+)

@@ -1,0 +1,4 @@
+# Build file for bazel directory
+# This directory contains BUILD files for external dependencies
+
+exports_files(["miniply.BUILD"])
