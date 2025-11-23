@@ -104,7 +104,7 @@ steps:
 
   - script: |
       ROOT_DIR=$(pwd)
-      cd ${ROOT_DIR}/intermediate/docker/rules_oci_bash
+      cd ${ROOT_DIR}/intermediate/infrastructure/docker/rules_oci_bash
       bazel run //:tarball
       docker run vertexwahn/my_example:v0.0.1
     displayName: 'rules_oci_bash'
